@@ -1,0 +1,18 @@
+{
+  "species": "gigalith",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "roggenrola",
+      "level": 15
+    },
+    {
+      "species": "boldore",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:stony_peaks",
+    "minecraft:windswept_hills"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "species": "clefable",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "cleffa",
+      "level": 15
+    },
+    {
+      "species": "clefairy",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:meadow",
+    "minecraft:plains",
+    "minecraft:sunflower_forest"
+  ]
+}

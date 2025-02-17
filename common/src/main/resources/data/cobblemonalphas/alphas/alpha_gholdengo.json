@@ -1,0 +1,14 @@
+{
+  "species": "gholdengo",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "gimmighoul",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:pale_garden",
+    "minecraft:dark_forest"
+  ]
+}

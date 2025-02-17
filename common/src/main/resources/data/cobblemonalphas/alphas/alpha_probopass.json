@@ -1,0 +1,14 @@
+{
+  "species": "probopass",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "nosepass",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:stony_peaks",
+    "minecraft:windswept_hills"
+  ]
+}

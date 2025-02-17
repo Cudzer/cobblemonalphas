@@ -1,0 +1,13 @@
+{
+  "species": "golisopod",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "wimpod",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:stony_shore"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "species": "bouffalant",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:meadow",
+    "minecraft:plains",
+    "minecraft:windswept_hills",
+    "minecraft:savanna"
+  ]
+}

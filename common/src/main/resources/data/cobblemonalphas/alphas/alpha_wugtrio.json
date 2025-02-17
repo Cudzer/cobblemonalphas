@@ -1,0 +1,14 @@
+{
+  "species": "wugtrio",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "wiglett",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:beach",
+    "minecraft:stony_shore"
+  ]
+}

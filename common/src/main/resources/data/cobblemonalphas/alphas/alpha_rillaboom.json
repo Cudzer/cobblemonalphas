@@ -1,0 +1,18 @@
+{
+  "species": "rillaboom",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "grookey",
+      "level": 15
+    },
+    {
+      "species": "thwackey",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:jungle",
+    "minecraft:sparse_jungle"
+  ]
+}

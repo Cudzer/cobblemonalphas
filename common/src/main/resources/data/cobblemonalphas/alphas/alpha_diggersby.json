@@ -1,0 +1,17 @@
+{
+  "species": "diggersby",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "bunnelby",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:dark_forest",
+    "minecraft:forest",
+    "minecraft:birch_forest",
+    "minecraft:plains",
+    "minecraft:meadow"
+  ]
+}

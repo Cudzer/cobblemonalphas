@@ -1,0 +1,18 @@
+{
+  "species": "victreebel",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "bellsprout",
+      "level": 15
+    },
+    {
+      "species": "weepinbell",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:jungle",
+    "minecraft:sparse_jungle"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "species": "feraligatr",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "totodile",
+      "level": 15
+    },
+    {
+      "species": "croconaw",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:river",
+    "minecraft:ocean",
+    "minecraft:beach",
+    "minecraft:stony_shore"
+  ]
+}

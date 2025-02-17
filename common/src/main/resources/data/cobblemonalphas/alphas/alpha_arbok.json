@@ -1,0 +1,14 @@
+{
+  "species": "arbok",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "ekans",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:savanna_plateau",
+    "minecraft:savanna"
+  ]
+}

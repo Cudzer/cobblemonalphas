@@ -1,0 +1,15 @@
+{
+  "species": "darmanitan",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "darumaka",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:nether_wastes",
+    "minecraft:crimson_forest",
+    "minecraft:stony_peaks"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "species": "oinkologne",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "lechonk",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:savanna"
+  ]
+}

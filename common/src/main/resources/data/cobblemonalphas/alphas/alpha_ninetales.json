@@ -1,0 +1,15 @@
+{
+  "species": "ninetales",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "vulpix",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:dark_forest",
+    "minecraft:savanna",
+    "minecraft:eroded_savanna"
+  ]
+}

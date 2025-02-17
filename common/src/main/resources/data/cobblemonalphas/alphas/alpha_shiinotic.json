@@ -1,0 +1,14 @@
+{
+  "species": "shiinotic",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "morelull",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:dark_forest",
+    "minecraft:flower_forest"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "species": "tyranitar",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "larvitar",
+      "level": 15
+    },
+    {
+      "species": "pupitar",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:frozen_peaks",
+    "minecraft:jagged_peaks",
+    "minecraft:stony_peaks",
+    "minecraft:windswept_hills"
+  ]
+}

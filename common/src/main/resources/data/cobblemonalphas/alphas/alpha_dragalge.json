@@ -1,0 +1,16 @@
+{
+  "species": "dragalge",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "skrelp",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:ocean",
+    "minecraft:deep_cold_ocean",
+    "minecraft:deep_ocean",
+    "minecraft:deep_lukewarm_ocean"
+  ]
+}

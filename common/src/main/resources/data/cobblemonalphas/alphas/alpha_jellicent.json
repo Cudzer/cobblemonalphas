@@ -1,0 +1,16 @@
+{
+  "species": "jellicent",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "frillish",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:ocean",
+    "minecraft:deep_ocean",
+    "minecraft:cold_ocean",
+    "minecraft:warm_ocean"
+  ]
+}

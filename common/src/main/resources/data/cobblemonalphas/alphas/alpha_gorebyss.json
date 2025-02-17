@@ -1,0 +1,14 @@
+{
+  "species": "gorebyss",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "clamperl",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:deep_ocean",
+    "minecraft:warm_ocean"
+  ]
+}

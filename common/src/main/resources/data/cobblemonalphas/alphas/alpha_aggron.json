@@ -1,0 +1,19 @@
+{
+  "species": "aggron",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "aron",
+      "level": 15
+    },
+    {
+      "species": "lairon",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:jagged_peaks",
+    "minecraft:frozen_peaks",
+    "minecraft:stony_peaks"
+  ]
+}

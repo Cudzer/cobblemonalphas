@@ -1,0 +1,17 @@
+{
+  "species": "pelipper",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "wingull",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:beach",
+    "minecraft:river",
+    "minecraft:ocean",
+    "minecraft:lukewarm_ocean",
+    "minecraft:cold_ocean"
+  ]
+}

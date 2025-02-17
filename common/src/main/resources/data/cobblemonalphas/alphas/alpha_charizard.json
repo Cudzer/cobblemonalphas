@@ -1,0 +1,19 @@
+{
+  "species": "charizard",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "charmander",
+      "level": 15
+    },
+    {
+      "species": "charmeleon",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:crimson_forest",
+    "minecraft:nether_wastes",
+    "minecraft:stony_peaks"
+  ]
+}

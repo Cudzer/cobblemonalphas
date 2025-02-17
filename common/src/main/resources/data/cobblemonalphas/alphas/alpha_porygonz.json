@@ -1,0 +1,18 @@
+{
+  "species": "porygonz",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "porygon",
+      "level": 15
+    },
+    {
+      "species": "porygon2",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:dark_forest",
+    "minecraft:plains"
+  ]
+}

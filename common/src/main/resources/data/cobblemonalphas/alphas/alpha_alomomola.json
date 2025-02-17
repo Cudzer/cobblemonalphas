@@ -1,0 +1,10 @@
+{
+  "species": "alomomola",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:lukewarm_ocean",
+    "minecraft:warm_ocean"
+  ]
+}

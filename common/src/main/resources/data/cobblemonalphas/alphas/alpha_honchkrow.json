@@ -1,0 +1,15 @@
+{
+  "species": "honchkrow",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "murkrow",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:dark_forest",
+    "minecraft:pale_garden",
+    "minecraft:plains"
+  ]
+}

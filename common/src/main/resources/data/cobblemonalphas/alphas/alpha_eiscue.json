@@ -1,0 +1,10 @@
+{
+  "species": "eiscue",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:frozen_ocean",
+    "minecraft:deep_frozen_ocean"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "species": "crabominable",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "crabrawler",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:frozen_river",
+    "minecraft:snowy_beach"
+  ]
+}

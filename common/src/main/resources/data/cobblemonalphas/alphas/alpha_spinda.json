@@ -1,0 +1,10 @@
+{
+  "species": "spinda",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:meadow",
+    "minecraft:bamboo_forest"
+  ]
+}

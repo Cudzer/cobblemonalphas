@@ -1,0 +1,13 @@
+{
+  "species": "dodrio",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "doduo",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:savanna"
+  ]
+}

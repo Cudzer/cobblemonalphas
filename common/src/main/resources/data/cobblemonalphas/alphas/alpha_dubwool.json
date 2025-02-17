@@ -1,0 +1,16 @@
+{
+  "species": "dubwool",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "wooloo",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:meadow",
+    "minecraft:plains",
+    "minecraft:windswept_hills",
+    "minecraft:jagged_peaks"
+  ]
+}

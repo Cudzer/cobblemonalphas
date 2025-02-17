@@ -1,0 +1,18 @@
+{
+  "species": "gardevoir",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "ralts",
+      "level": 15
+    },
+    {
+      "species": "kirlia",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:cherry_grove",
+    "minecraft:pale_garden"
+  ]
+}

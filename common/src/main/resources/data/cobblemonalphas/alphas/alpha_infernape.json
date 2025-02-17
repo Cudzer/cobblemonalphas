@@ -1,0 +1,21 @@
+{
+  "species": "infernape",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "chimchar",
+      "level": 15
+    },
+    {
+      "species": "monferno",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:forest",
+    "minecraft:birch_forest",
+    "minecraft:old_growth_birch_forest",
+    "minecraft:meadow",
+    "minecraft:nether_wastes"
+  ]
+}

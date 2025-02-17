@@ -1,0 +1,19 @@
+{
+  "species": "chesnaught",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "chespin",
+      "level": 15
+    },
+    {
+      "species": "quilladin",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:jungle",
+    "minecraft:sparse_jungle",
+    "minecraft:sunflower_forest"
+  ]
+}

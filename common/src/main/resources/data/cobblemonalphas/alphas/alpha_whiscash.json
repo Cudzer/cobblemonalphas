@@ -1,0 +1,15 @@
+{
+  "species": "whiscash",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "barboach",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:river",
+    "minecraft:ocean",
+    "minecraft:cold_ocean"
+  ]
+}

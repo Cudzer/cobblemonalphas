@@ -1,0 +1,10 @@
+{
+  "species": "turtonator",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:savanna",
+    "minecraft:stony_peaks"
+  ]
+}

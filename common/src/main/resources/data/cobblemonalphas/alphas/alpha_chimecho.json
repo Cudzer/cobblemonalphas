@@ -1,0 +1,14 @@
+{
+  "species": "chimecho",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "chinling",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:dark_forest",
+    "minecraft:flower_forest"
+  ]
+}

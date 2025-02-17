@@ -1,0 +1,19 @@
+{
+  "species": "klinklang",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "klink",
+      "level": 15
+    },
+    {
+      "species": "klang",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:stony_peaks",
+    "minecraft:stony_shore"
+  ]
+}

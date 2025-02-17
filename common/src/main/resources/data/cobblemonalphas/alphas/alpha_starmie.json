@@ -1,0 +1,15 @@
+{
+  "species": "starmie",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "staryu",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:river",
+    "minecraft:beach",
+    "minecraft:ocean"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "species": "sharpedo",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "carvanha",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:ocean",
+    "minecraft:deep_ocean",
+    "minecraft:warm_ocean"
+  ]
+}

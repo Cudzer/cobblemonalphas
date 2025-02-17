@@ -1,0 +1,16 @@
+{
+  "species": "arcanine",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "growlithe",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:meadow",
+    "minecraft:savanna",
+    "minecraft:savanna_plateau"
+  ]
+}

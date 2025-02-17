@@ -1,0 +1,19 @@
+{
+  "species": "kingdra",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "horsea",
+      "level": 15
+    },
+    {
+      "species": "seadra",
+      "level": 35
+    }
+  ],
+  "biome": [
+    "minecraft:ocean",
+    "minecraft:cold_ocean",
+    "minecraft:warm_ocean"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "species": "nidoking",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "nidoranm",
+      "level": 15
+    },
+    {
+      "species": "nidorino",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:savanna"
+  ]
+}

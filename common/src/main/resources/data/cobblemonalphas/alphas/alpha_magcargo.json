@@ -1,0 +1,14 @@
+{
+  "species": "magcargo",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "slugma",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:nether_wastes",
+    "minecraft:crimson_forest"
+  ]
+}

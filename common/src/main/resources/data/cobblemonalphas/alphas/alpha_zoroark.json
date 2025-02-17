@@ -1,0 +1,14 @@
+{
+  "species": "zoroark",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "zorua",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:dark_forest",
+    "minecraft:pale_garden"
+  ]
+}

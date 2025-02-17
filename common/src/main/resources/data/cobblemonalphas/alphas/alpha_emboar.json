@@ -1,0 +1,19 @@
+{
+  "species": "emboar",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "tepig",
+      "level": 15
+    },
+    {
+      "species": "pignite",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:eroded_badlands",
+    "minecraft:desert",
+    "minecraft:badlands"
+  ]
+}

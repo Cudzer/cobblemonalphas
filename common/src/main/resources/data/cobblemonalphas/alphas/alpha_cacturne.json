@@ -1,0 +1,15 @@
+{
+  "species": "cacturne",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "cacnea",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:desert",
+    "minecraft:badlands",
+    "minecraft:wooded_badlands"
+  ]
+}

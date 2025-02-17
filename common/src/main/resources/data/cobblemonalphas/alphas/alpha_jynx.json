@@ -1,0 +1,16 @@
+{
+  "species": "jynx",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "smoochum",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:snowy_plains",
+    "minecraft:ice_spike_plains",
+    "minecraft:ice_plains",
+    "minecraft:snowy_taiga"
+  ]
+}

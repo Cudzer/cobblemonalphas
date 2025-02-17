@@ -1,0 +1,16 @@
+{
+  "species": "camerupt",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "numel",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:desert",
+    "minecraft:badlands",
+    "minecraft:eroded_badlands",
+    "minecraft:savanna_plateau"
+  ]
+}

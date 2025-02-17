@@ -1,0 +1,22 @@
+{
+  "species": "serperior",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "snivy",
+      "level": 15
+    },
+    {
+      "species": "servine",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:forest",
+    "minecraft:taiga",
+    "minecraft:birch_forest",
+    "minecraft:old_growth_birch_forest",
+    "minecraft:flower_forest",
+    "minecraft:sunflower_forest"
+  ]
+}

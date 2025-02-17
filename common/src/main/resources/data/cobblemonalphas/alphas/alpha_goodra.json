@@ -1,0 +1,17 @@
+{
+  "species": "goodra",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "goomy",
+      "level": 15
+    },
+    {
+      "species": "sliggoo",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:swamp"
+  ]
+}

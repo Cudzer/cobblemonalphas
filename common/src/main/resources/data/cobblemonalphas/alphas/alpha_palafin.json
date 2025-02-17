@@ -1,0 +1,17 @@
+{
+  "species": "palafin",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "finizen",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:ocean",
+    "minecraft:warm_ocean",
+    "minecraft:lukewarm_ocean",
+    "minecraft:deep_lukewarm_ocean",
+    "minecraft:deep_ocean"
+  ]
+}

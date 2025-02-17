@@ -1,0 +1,14 @@
+{
+  "species": "trevenant",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "phantump",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:dark_forest",
+    "minecraft:pale_garden"
+  ]
+}

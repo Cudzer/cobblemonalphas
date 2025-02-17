@@ -1,0 +1,19 @@
+{
+  "species": "walrein",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "spheal",
+      "level": 15
+    },
+    {
+      "species": "sealeo",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:ice_plains",
+    "minecraft:ice_spike_plains",
+    "minecraft:frozen_ocean"
+  ]
+}

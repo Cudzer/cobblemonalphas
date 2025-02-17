@@ -1,0 +1,14 @@
+{
+  "species": "xatu",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "natu",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:badlands",
+    "minecraft:eroded_badlands"
+  ]
+}

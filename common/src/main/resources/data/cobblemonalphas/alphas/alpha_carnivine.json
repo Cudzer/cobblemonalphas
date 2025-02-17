@@ -1,0 +1,10 @@
+{
+  "species": "carnivine",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:swamp",
+    "minecraft:mangrove_swamp"
+  ]
+}

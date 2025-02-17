@@ -1,0 +1,19 @@
+{
+  "species": "inteleon",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "sobble",
+      "level": 15
+    },
+    {
+      "species": "drizzile",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:beach",
+    "minecraft:stony_shore",
+    "minecraft:river"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "species": "dusknoir",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "duskull",
+      "level": 15
+    },
+    {
+      "species": "dusclops",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:dark_forest",
+    "minecraft:pale_garden"
+  ]
+}

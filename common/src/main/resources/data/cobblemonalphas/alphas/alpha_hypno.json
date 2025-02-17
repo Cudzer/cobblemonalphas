@@ -1,0 +1,14 @@
+{
+  "species": "hypno",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "drowzee",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:meadow"
+  ]
+}

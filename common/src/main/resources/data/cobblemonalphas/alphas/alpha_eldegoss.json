@@ -1,0 +1,14 @@
+{
+  "species": "eldegoss",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "gossifleur",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:meadow",
+    "minecraft:flower_forest"
+  ]
+}

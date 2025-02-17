@@ -1,0 +1,15 @@
+{
+  "species": "mudsdale",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "mudbray",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:savanna",
+    "minecraft:badlands",
+    "minecraft:eroded_badlands"
+  ]
+}

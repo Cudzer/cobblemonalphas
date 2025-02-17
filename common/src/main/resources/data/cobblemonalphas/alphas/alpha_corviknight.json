@@ -1,0 +1,20 @@
+{
+  "species": "corviknight",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "rookidee",
+      "level": 15
+    },
+    {
+      "species": "corvisquire",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:forest",
+    "minecraft:birch_forest",
+    "minecraft:dark_forest",
+    "minecraft:taiga"
+  ]
+}

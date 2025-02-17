@@ -1,0 +1,12 @@
+{
+  "species": "heracross",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:jungle",
+    "minecraft:sparse_jungle",
+    "minecraft:forest",
+    "minecraft:birch_forest"
+  ]
+}

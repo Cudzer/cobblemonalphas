@@ -1,0 +1,10 @@
+{
+  "species": "shuckle",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:windswept_forest",
+    "minecraft:windswept_hills"
+  ]
+}

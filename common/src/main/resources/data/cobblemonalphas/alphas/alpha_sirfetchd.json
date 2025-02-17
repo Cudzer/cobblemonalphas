@@ -1,0 +1,14 @@
+{
+  "species": "sirfetchd",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "farfetchd",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:dark_forest",
+    "minecraft:forest"
+  ]
+}

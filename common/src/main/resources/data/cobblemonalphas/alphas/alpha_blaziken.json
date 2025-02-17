@@ -1,0 +1,19 @@
+{
+  "species": "blaziken",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "torchic",
+      "level": 15
+    },
+    {
+      "species": "combusken",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:savanna",
+    "minecraft:crimson_forest",
+    "minecraft:savanna_plateau"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "species": "meowscarada",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "sprigatito",
+      "level": 15
+    },
+    {
+      "species": "floragato",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:forest",
+    "minecraft:birch_forest"
+  ]
+}

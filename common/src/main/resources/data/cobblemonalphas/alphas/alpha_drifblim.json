@@ -1,0 +1,14 @@
+{
+  "species": "drifblim",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "drifloon",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:dark_forest",
+    "minecraft:soul_sand_valley"
+  ]
+}

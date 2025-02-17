@@ -1,0 +1,16 @@
+{
+  "species": "lumineon",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "finneon",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:river",
+    "minecraft:ocean",
+    "minecraft:warm_ocean",
+    "minecraft:lukewarm_ocean"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "species": "weezing",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "koffing",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:river",
+    "minecraft:savanna",
+    "minecraft:badlands",
+    "minecraft:eroded_badlands"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "species": "greninja",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "froakie",
+      "level": 15
+    },
+    {
+      "species": "frogadier",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:beach",
+    "minecraft:river",
+    "minecraft:stony_shore"
+  ]
+}

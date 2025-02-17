@@ -1,0 +1,10 @@
+{
+  "species": "stonjourner",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:windswept_hills",
+    "minecraft:plains"
+  ]
+}

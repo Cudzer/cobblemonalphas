@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "cobblemonalphas:plains_den",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 246138556,
+    "spacing": 35,
+    "separation": 20
+  }
+}

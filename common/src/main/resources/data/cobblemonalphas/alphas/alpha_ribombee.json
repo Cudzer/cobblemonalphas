@@ -1,0 +1,14 @@
+{
+  "species": "ribombee",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "cutiefly",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:flower_forest",
+    "minecraft:sunflower_plains"
+  ]
+}

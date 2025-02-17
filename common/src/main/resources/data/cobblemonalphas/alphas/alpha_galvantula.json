@@ -1,0 +1,15 @@
+{
+  "species": "galvantula",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "joltik",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:jungle",
+    "minecraft:sparse_jungle",
+    "minecraft:savanna"
+  ]
+}

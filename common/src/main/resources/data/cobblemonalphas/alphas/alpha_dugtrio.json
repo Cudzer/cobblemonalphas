@@ -1,0 +1,14 @@
+{
+  "species": "dugtrio",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "diglett",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:badlands",
+    "minecraft:savanna_plateau"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "species": "hatterene",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "hatenna",
+      "level": 15
+    },
+    {
+      "species": "hattrem",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:meadow",
+    "minecraft:dark_forest"
+  ]
+}

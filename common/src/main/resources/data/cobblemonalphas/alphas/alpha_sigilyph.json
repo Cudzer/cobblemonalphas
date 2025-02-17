@@ -1,0 +1,11 @@
+{
+  "species": "sigilyph",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:windswept_hills",
+    "minecraft:stony_peaks",
+    "minecraft:savanna"
+  ]
+}

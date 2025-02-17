@@ -1,0 +1,20 @@
+{
+  "species": "venusaur",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "bulbasaur",
+      "level": 15
+    },
+    {
+      "species": "ivysaur",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:sparse_jungle",
+    "minecraft:plains",
+    "minecraft:flower_forest",
+    "minecraft:sunflower_forest"
+  ]
+}

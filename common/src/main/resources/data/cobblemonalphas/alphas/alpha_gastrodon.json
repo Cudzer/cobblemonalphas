@@ -1,0 +1,15 @@
+{
+  "species": "gastrodon",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "shellos",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:beach",
+    "minecraft:stony_shore",
+    "minecraft:river"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "species": "smeargle",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:savanna"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "species": "grimmsnarl",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "impidimp",
+      "level": 15
+    },
+    {
+      "species": "morgrem",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:dark_forest",
+    "minecraft:pale_garden"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "species": "corsola",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:river",
+    "minecraft:warm_ocean",
+    "minecraft:lukewarm_ocean"
+  ]
+}

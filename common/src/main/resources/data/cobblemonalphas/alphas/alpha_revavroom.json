@@ -1,0 +1,14 @@
+{
+  "species": "revavroom",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "varoom",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:badlands",
+    "minecraft:savanna_plateau"
+  ]
+}

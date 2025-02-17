@@ -1,0 +1,14 @@
+{
+  "species": "glimmora",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "glimmet",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:dark_forest",
+    "minecraft:jungle"
+  ]
+}

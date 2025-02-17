@@ -1,0 +1,17 @@
+{
+  "species": "tentacruel",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "tentacool",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:ocean",
+    "minecraft:deep_ocean",
+    "minecraft:cold_ocean",
+    "minecraft:warm_ocean",
+    "minecraft:lukewarm_ocean"
+  ]
+}

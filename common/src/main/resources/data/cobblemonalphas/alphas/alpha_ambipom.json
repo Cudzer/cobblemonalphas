@@ -1,0 +1,15 @@
+{
+  "species": "ambipom",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "aipom",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:jungle",
+    "minecraft:bamboo_jungle",
+    "minecraft:sparse_jungle"
+  ]
+}

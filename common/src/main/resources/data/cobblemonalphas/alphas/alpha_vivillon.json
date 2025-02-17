@@ -1,0 +1,22 @@
+{
+  "species": "vivillon",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "scatterbug",
+      "level": 15
+    },
+    {
+      "species": "spewpa",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:dark_forest",
+    "minecraft:forest",
+    "minecraft:birch_forest",
+    "minecraft:old_growth_birch_forest",
+    "minecraft:taiga",
+    "minecraft:old_growth_pine_forest"
+  ]
+}

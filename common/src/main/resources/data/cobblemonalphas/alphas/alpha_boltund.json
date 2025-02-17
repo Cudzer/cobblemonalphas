@@ -1,0 +1,14 @@
+{
+  "species": "boltund",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "yamper",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:savanna"
+  ]
+}

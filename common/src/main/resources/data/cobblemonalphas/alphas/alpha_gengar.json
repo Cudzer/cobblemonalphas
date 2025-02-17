@@ -1,0 +1,19 @@
+{
+  "species": "gengar",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "ghastly",
+      "level": 15
+    },
+    {
+      "species": "haunter",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:soul_sand_valley",
+    "minecraft:pale_garden",
+    "minecraft:dark_forest"
+  ]
+}

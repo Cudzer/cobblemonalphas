@@ -1,0 +1,14 @@
+{
+  "species": "grafaiai",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "shroodle",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:jungle",
+    "minecraft:sparse_jungle"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "species": "bewear",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "stufful",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:jungle",
+    "minecraft:bamboo_jungle"
+  ]
+}

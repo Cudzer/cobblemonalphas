@@ -1,0 +1,17 @@
+{
+  "species": "mightyena",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "poochyena",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:badlands",
+    "minecraft:birch_forest",
+    "minecraft:old_growth_birch_forest",
+    "minecraft:eroded_badlands",
+    "minecraft:sunflower_forest"
+  ]
+}

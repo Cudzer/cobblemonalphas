@@ -1,0 +1,15 @@
+{
+  "species": "crawdaunt",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "corphish",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:river",
+    "minecraft:cold_ocean",
+    "minecraft:ocean"
+  ]
+}

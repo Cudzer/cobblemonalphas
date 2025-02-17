@@ -1,0 +1,20 @@
+{
+  "species": "bellossom",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "oddish",
+      "level": 15
+    },
+    {
+      "species": "gloom",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:forest",
+    "minecraft:birch_forest",
+    "minecraft:flower_forest"
+
+  ]
+}

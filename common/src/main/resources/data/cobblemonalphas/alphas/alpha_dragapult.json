@@ -1,0 +1,19 @@
+{
+  "species": "dragapult",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "dreepy",
+      "level": 15
+    },
+    {
+      "species": "drakloak",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:frozen_ocean",
+    "minecraft:stony_peaks",
+    "minecraft:jagged_peaks"
+  ]
+}

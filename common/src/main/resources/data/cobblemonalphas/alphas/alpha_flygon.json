@@ -1,0 +1,17 @@
+{
+  "species": "flygon",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "trapinch",
+      "level": 15
+    },
+    {
+      "species": "vibrava",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:desert"
+  ]
+}

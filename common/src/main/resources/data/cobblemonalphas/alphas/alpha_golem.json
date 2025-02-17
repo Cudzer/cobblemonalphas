@@ -1,0 +1,20 @@
+{
+  "species": "golem",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "geodude",
+      "level": 15
+    },
+    {
+      "species": "graveler",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:windswept_hills",
+    "minecraft:stony_peaks",
+    "minecraft:jagged_peaks",
+    "minecraft:frozen_peaks"
+  ]
+}

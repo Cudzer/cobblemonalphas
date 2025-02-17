@@ -1,0 +1,29 @@
+plugins {
+    id "dev.architectury.loom"
+    id 'org.jetbrains.kotlin.jvm' version "2.0.0"
+    id 'org.jetbrains.kotlin.plugin.serialization' version '2.0.0'
+}
+
+architectury {
+    common rootProject.enabled_platforms.split(',')
+}
+
+dependencies {
+    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+    mappings( loom.officialMojangMappings() )
+    modApi "dev.architectury:architectury:${rootProject.architectury_api_version}"
+
+    implementation "org.jetbrains.kotlin:kotlin-reflect:2.0.0"
+
+    modImplementation "com.cobblemon:mod:${rootProject.cobblemon_version}"
+}
+
+publishing {
+    publications {
+        mavenCommon(MavenPublication) {
+            artifactId = rootProject.archives_name
+            from components.java
+        }
+    }
+    repositories { }
+}

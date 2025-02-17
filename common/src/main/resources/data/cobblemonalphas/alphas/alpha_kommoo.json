@@ -1,0 +1,19 @@
+{
+  "species": "kommoo",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "jangmoo",
+      "level": 15
+    },
+    {
+      "species": "hakamoo",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:frozen_peaks",
+    "minecraft:stony_peaks",
+    "minecraft:jagged_peaks"
+  ]
+}

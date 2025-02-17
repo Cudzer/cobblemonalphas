@@ -1,0 +1,18 @@
+{
+  "species": "florges",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "flabebe",
+      "level": 15
+    },
+    {
+      "species": "floette",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:flower_forest",
+    "minecraft:sunflower_plains"
+  ]
+}

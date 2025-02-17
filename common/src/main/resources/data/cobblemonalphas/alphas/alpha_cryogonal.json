@@ -1,0 +1,12 @@
+{
+  "species": "cryogonal",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:ice_plains",
+    "minecraft:ice_spike_plains",
+    "minecraft:snowy_plains",
+    "minecraft:snowy_taiga"
+  ]
+}

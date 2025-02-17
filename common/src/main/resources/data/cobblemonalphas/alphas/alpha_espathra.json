@@ -1,0 +1,14 @@
+{
+  "species": "espathra",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "flittle",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:badlands",
+    "minecraft:savanna"
+  ]
+}

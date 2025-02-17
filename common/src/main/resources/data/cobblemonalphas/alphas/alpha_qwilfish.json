@@ -1,0 +1,11 @@
+{
+  "species": "qwilfish",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:river",
+    "minecraft:ocean",
+    "minecraft:warm_ocean"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "species": "krookodile",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "sandile",
+      "level": 15
+    },
+    {
+      "species": "krokorok",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:desert",
+    "minecraft:badlands",
+    "minecraft:eroded_badlands"
+  ]
+}

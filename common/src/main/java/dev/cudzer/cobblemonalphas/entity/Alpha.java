@@ -1,0 +1,82 @@
+package dev.cudzer.cobblemonalphas.entity;
+
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import dev.cudzer.cobblemonalphas.CobblemonAlphasMod;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.ExtraCodecs;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class Alpha {
+    public static Codec<Alpha> CODEC = RecordCodecBuilder.create( inst -> inst
+            .group(
+                    Codec.STRING.fieldOf("species").forGetter(t -> t.species),
+                    Codec.INT.fieldOf("level").forGetter(w -> w.level),
+                    HerdMember.CODEC.listOf().fieldOf("herdMembers").forGetter(h -> h.herdMembers),
+                    ExtraCodecs.TAG_OR_ELEMENT_ID.listOf().optionalFieldOf("biome", Collections.emptyList()).forGetter(t -> t.biomeTags)
+            ).apply(inst, Alpha::new));
+
+    protected final String species;
+    protected final int level;
+    protected final List<HerdMember> herdMembers;
+    protected final List<ResourceLocation> spawnBiome;
+    protected final List<ResourceLocation> spawnBiomeTags;
+    protected final List<ExtraCodecs.TagOrElementLocation> biomeTags;
+
+    private ResourceLocation jsonLocation;
+
+    public Alpha(String species, int level, List<HerdMember> herdMembers, List<ExtraCodecs.TagOrElementLocation> spawnBiome){
+        this.species = species;
+        this.level = level;
+        this.herdMembers = herdMembers;
+        List<ResourceLocation> spawnBiomeTags = new ArrayList<>();
+        List<ResourceLocation> spawnBiomes = new ArrayList<>();
+        for(ExtraCodecs.TagOrElementLocation tagOrElementLocation : spawnBiome){
+            if(tagOrElementLocation.tag()){
+                spawnBiomeTags.add(tagOrElementLocation.id());
+            } else {
+                spawnBiomes.add(tagOrElementLocation.id());
+            }
+        }
+        this.spawnBiome = spawnBiomes;
+        this.spawnBiomeTags = spawnBiomeTags;
+
+        this.biomeTags = spawnBiome;
+    }
+
+    public void setJsonLocation(ResourceLocation jsonLocation) {
+        this.jsonLocation = jsonLocation;
+    }
+
+    public ResourceLocation getJsonLocation() {
+        try{
+            return jsonLocation;
+        }catch (Exception e){
+            CobblemonAlphasMod.LOGGER.error(String.format("Could not find json location due to %s", e));
+        }
+        return ResourceLocation.parse("");
+    }
+
+    public String getSpecies() {
+        return this.species;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public List<HerdMember> getHerdMembers() {
+        return herdMembers;
+    }
+
+    public List<ResourceLocation> getSpawnBiome() {
+        return spawnBiome;
+    }
+
+    public List<ResourceLocation> getSpawnBiomeTags() {
+        return spawnBiomeTags;
+    }
+}

@@ -1,0 +1,14 @@
+{
+  "species": "salazzle",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "salandit",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:desert",
+    "minecraft:stony_peaks"
+  ]
+}

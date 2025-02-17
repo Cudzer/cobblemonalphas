@@ -1,0 +1,14 @@
+{
+  "species": "muk",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "grimer",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:swamp",
+    "minecraft:mangrove_swamp"
+  ]
+}

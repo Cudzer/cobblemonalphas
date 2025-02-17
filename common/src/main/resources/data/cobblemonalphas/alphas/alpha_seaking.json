@@ -1,0 +1,14 @@
+{
+  "species": "seaking",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "goldeen",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:river",
+    "minecraft:ocean"
+  ]
+}

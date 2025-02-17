@@ -1,0 +1,17 @@
+{
+  "species": "ursaluna",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "teddiursa",
+      "level": 15
+    },
+    {
+      "species": "ursaring",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:dark_forest"
+  ]
+}

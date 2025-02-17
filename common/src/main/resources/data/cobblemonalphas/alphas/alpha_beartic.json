@@ -1,0 +1,19 @@
+{
+  "species": "beartic",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "cubchoo",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:ice_plains",
+    "minecraft:frozen_peaks",
+    "minecraft:ice_spike_plains",
+    "minecraft:snowy_plains",
+    "minecraft:snowy_taiga",
+    "minecraft:grove",
+    "minecraft:snowy_slopes"
+  ]
+}

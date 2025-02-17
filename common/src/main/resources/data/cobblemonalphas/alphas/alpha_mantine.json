@@ -1,0 +1,15 @@
+{
+  "species": "mantine",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "mantyke",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:cold_ocean",
+    "minecraft:ocean",
+    "minecraft:deep_ocean"
+  ]
+}

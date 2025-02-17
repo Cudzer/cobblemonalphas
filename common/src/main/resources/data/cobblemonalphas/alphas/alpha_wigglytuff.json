@@ -1,0 +1,21 @@
+{
+  "species": "wigglytuff",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "igglybuff",
+      "level": 15
+    },
+    {
+      "species": "jigglypuff",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:forest",
+    "minecraft:birch_forest",
+    "minecraft:plains",
+    "minecraft:flower_forest",
+    "minecraft:sunflower_forest"
+  ]
+}

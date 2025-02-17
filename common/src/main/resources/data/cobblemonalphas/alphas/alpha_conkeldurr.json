@@ -1,0 +1,19 @@
+{
+  "species": "conkeldurr",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "timburr",
+      "level": 15
+    },
+    {
+      "species": "gurdurr",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:windswept_hills",
+    "minecraft:savanna"
+  ]
+}

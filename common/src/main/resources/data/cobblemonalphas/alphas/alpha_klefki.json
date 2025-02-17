@@ -1,0 +1,11 @@
+{
+  "species": "klefki",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:flower_forest",
+    "minecraft:sunflower_forest"
+  ]
+}

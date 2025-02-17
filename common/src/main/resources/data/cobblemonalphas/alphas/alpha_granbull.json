@@ -1,0 +1,14 @@
+{
+  "species": "granbull",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "snubbull",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:flower_forest"
+  ]
+}

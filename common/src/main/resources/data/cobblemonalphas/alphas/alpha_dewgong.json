@@ -1,0 +1,15 @@
+{
+  "species": "dewgong",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "seel",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:cold_ocean",
+    "minecraft:frozen_river",
+    "minecraft:frozen_ocean"
+  ]
+}

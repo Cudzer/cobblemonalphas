@@ -1,0 +1,19 @@
+{
+  "species": "mamoswine",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "swinub",
+      "level": 15
+    },
+    {
+      "species": "piloswine",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:frozen_peaks",
+    "minecraft:ice_spike_plains",
+    "minecraft:snowy_plains"
+  ]
+}

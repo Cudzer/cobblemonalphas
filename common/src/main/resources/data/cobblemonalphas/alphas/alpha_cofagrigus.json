@@ -1,0 +1,14 @@
+{
+  "species": "cofagrigus",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "yamask",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:pale_garden",
+    "minecraft:soul_sand_valley"
+  ]
+}

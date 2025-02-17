@@ -1,0 +1,17 @@
+{
+  "species": "rhyperior",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "rhyhorn",
+      "level": 15
+    },
+    {
+      "species": "rhydon",
+      "level": 35
+    }
+  ],
+  "biome": [
+    "minecraft:stony_peaks"
+  ]
+}

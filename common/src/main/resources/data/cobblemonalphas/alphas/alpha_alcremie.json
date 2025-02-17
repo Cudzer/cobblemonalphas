@@ -1,0 +1,15 @@
+{
+  "species": "alcremie",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "milcery",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:flower_forest",
+    "minecraft:sunflower_plains",
+    "minecraft:old_growth_birth_forest"
+  ]
+}

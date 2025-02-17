@@ -1,0 +1,19 @@
+{
+  "species": "exploud",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "whismur",
+      "level": 15
+    },
+    {
+      "species": "loudred",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:savanna",
+    "minecraft:windswept_forest"
+  ]
+}

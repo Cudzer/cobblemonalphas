@@ -1,0 +1,16 @@
+{
+  "species": "lucario",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "riolu",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:windswept_hills",
+    "minecraft:stony_peaks",
+    "minecraft:frozen_peaks",
+    "minecraft:jagged_peaks"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "species": "absol",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:frozen_peaks"
+  ]
+}

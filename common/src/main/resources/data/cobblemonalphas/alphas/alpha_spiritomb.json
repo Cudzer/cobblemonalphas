@@ -1,0 +1,10 @@
+{
+  "species": "spiritomb",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:pale_garden",
+    "minecraft:dark_forest"
+  ]
+}

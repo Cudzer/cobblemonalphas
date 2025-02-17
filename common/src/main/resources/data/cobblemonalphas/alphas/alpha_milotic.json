@@ -1,0 +1,16 @@
+{
+  "species": "milotic",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "feebas",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:ocean",
+    "minecraft:deep_ocean",
+    "minecraft:lukewarm_ocean",
+    "minecraft:warm_ocean"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "species": "gourgeist",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "pumpkaboo",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:dark_forest",
+    "minecraft:pale_garden"
+  ]
+}

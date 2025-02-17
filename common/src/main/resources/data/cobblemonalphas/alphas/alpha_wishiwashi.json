@@ -1,0 +1,10 @@
+{
+  "species": "wishiwashi",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:ocean",
+    "minecraft:warm_ocean"
+  ]
+}

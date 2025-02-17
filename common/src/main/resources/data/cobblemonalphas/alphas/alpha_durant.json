@@ -1,0 +1,10 @@
+{
+  "species": "durant",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:badlands",
+    "minecraft:eroded_badlands"
+  ]
+}

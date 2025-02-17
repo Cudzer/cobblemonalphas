@@ -1,0 +1,15 @@
+{
+  "species": "hitmontop",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "tyrogue",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:stony_peaks",
+    "minecraft:windswept_hills",
+    "minecraft:forest"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "species": "garchomp",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "gible",
+      "level": 15
+    },
+    {
+      "species": "gabite",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:jagged_peaks"
+  ]
+}

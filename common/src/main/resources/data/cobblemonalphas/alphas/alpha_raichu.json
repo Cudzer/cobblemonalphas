@@ -1,0 +1,19 @@
+{
+  "species": "raichu",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "pichu",
+      "level": 25
+    },
+    {
+      "species": "pikachu",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:savanna",
+    "minecraft:savanna_plateau",
+    "minecraft:windswept_hills"
+  ]
+}

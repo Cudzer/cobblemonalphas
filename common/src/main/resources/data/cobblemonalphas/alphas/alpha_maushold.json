@@ -1,0 +1,16 @@
+{
+  "species": "maushold",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "tendemaus",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:savanna",
+    "minecraft:forest",
+    "minecraft:birch_forest"
+  ]
+}

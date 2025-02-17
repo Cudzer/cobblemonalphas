@@ -1,0 +1,18 @@
+{
+  "species": "snorlax",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "munchlax",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:dark_forest",
+    "minecraft:birch_forest",
+    "minecraft:plains",
+    "minecraft:old_growth_birch_forest",
+    "minecraft:flower_forest",
+    "minecraft:sunflower_forest"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "species": "miltank",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:savanna",
+    "minecraft:flower_forest",
+    "minecraft:sunflower_forest"
+  ]
+}

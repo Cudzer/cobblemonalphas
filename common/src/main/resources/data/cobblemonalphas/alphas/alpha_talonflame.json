@@ -1,0 +1,21 @@
+{
+  "species": "talonflame",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "fletchling",
+      "level": 15
+    },
+    {
+      "species": "fletchinder",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:dark_forest",
+    "minecraft:forest",
+    "minecraft:birch_forest",
+    "minecraft:old_growth_birch_forest",
+    "minecraft:taiga"
+  ]
+}

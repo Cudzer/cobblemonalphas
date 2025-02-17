@@ -1,0 +1,15 @@
+{
+  "species": "mismagius",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "misdreavus",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:dark_forest",
+    "minecraft:pale_garden",
+    "minecraft:soul_sand_valley"
+  ]
+}

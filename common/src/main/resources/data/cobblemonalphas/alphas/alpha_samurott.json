@@ -1,0 +1,18 @@
+{
+  "species": "samurott",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "oshawott",
+      "level": 15
+    },
+    {
+      "species": "dewott",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:beach",
+    "minecraft:stony_shore"
+  ]
+}

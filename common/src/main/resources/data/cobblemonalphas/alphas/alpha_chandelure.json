@@ -1,0 +1,18 @@
+{
+  "species": "chandelure",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "litwik",
+      "level": 15
+    },
+    {
+      "species": "lampent",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:soul_sand_valley",
+    "minecraft:basalt_deltas"
+  ]
+}

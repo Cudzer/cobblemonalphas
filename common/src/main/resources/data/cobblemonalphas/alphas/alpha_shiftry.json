@@ -1,0 +1,22 @@
+{
+  "species": "shiftry",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "seedot",
+      "level": 15
+    },
+    {
+      "species": "nuzleaf",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:forest",
+    "minecraft:dark_forest",
+    "minecraft:birch_forest",
+    "minecraft:old_growth_birch_forest",
+    "minecraft:flower_forest",
+    "minecraft:sunflower_forest"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "species": "ariados",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "spinarak",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:forest",
+    "minecraft:birch_forest",
+    "minecraft:flower_forest",
+    "minecraft:old_growth_birch_forest",
+    "minecraft:jungle"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "species": "swampert",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "mudkip",
+      "level": 15
+    },
+    {
+      "species": "marshtomp",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:beach",
+    "minecraft:stony_shore"
+  ]
+}

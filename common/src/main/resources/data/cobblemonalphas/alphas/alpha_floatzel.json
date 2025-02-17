@@ -1,0 +1,15 @@
+{
+  "species": "floatzel",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "buizel",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:river",
+    "minecraft:beach",
+    "minecraft:snowy_beach"
+  ]
+}

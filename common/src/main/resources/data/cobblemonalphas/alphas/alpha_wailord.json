@@ -1,0 +1,15 @@
+{
+  "species": "wailord",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "wailmer",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:deep_cold_ocean",
+    "minecraft:deep_ocean",
+    "minecraft:deep_lukewarm_ocean"
+  ]
+}

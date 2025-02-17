@@ -1,0 +1,10 @@
+{
+  "species": "flamigo",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:badlands",
+    "minecraft:savanna"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "species": "cinderace",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "scorbunny",
+      "level": 15
+    },
+    {
+      "species": "raboot",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:savanna",
+    "minecraft:wooded_badlands"
+  ]
+}

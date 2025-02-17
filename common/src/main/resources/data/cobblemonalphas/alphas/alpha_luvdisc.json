@@ -1,0 +1,11 @@
+{
+  "species": "luvdisc",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:ocean",
+    "minecraft:deep_ocean",
+    "minecraft:warm_ocean"
+  ]
+}

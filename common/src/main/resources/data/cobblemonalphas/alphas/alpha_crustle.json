@@ -1,0 +1,14 @@
+{
+  "species": "crustle",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "dwebble",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:eroded_badlands",
+    "minecraft:badlands"
+  ]
+}

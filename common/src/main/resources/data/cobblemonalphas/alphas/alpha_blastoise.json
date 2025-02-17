@@ -1,0 +1,19 @@
+{
+  "species": "blastoise",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "squirtle",
+      "level": 15
+    },
+    {
+      "species": "wartortle",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:river",
+    "minecraft:frozen_river",
+    "minecraft:warm_ocean"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "species": "palossand",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "sandygast",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:beach"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "species": "decidueye",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "rowlet",
+      "level": 15
+    },
+    {
+      "species": "dartrix",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:dark_forest",
+    "minecraft:forest",
+    "minecraft:grove"
+  ]
+}

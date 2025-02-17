@@ -1,0 +1,14 @@
+{
+  "species": "avalugg",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "bergmite",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:frozen_ocean",
+    "minecraft:deep_frozen_ocean"
+  ]
+}

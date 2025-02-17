@@ -1,0 +1,15 @@
+{
+  "species": "kilowattrel",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "wattrel",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:ocean",
+    "minecraft:warm_ocean",
+    "minecraft:lukewarm_ocean"
+  ]
+}

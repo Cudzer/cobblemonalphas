@@ -1,0 +1,18 @@
+{
+  "species": "dragonite",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "dratini",
+      "level": 15
+    },
+    {
+      "species": "dragonaire",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:stony_peaks",
+    "minecraft:jagged_peaks"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "species": "sableye",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:dark_forest",
+    "minecraft:pale_garden"
+  ]
+}

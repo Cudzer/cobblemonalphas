@@ -1,0 +1,16 @@
+{
+  "species": "masquerain",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "surskit",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:forest",
+    "minecraft:birch_forest",
+    "minecraft:beach",
+    "minecraft:river"
+  ]
+}

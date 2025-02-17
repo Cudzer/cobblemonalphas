@@ -1,0 +1,14 @@
+{
+  "species": "scrafty",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "scraggy",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:badlands",
+    "minecraft:eroded_badlands"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "species": "exeggutor",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "exeggcute",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:jungle",
+    "minecraft:sparse_jungle"
+  ]
+}

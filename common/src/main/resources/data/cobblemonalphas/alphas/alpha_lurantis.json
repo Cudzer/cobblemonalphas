@@ -1,0 +1,13 @@
+{
+  "species": "lurantis",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "fomantis",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:meadow"
+  ]
+}

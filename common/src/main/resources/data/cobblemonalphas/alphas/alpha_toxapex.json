@@ -1,0 +1,13 @@
+{
+  "species": "toxapex",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "mareanie",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:beach"
+  ]
+}

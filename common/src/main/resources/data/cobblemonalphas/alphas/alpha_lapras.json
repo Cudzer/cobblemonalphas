@@ -1,0 +1,13 @@
+{
+  "species": "lapras",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:ocean",
+    "minecraft:deep_ocean",
+    "minecraft:warm_ocean",
+    "minecraft:lukewarm_ocean",
+    "minecraft:cold_ocean"
+  ]
+}

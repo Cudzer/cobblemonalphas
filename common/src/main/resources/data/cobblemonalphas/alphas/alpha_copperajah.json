@@ -1,0 +1,14 @@
+{
+  "species": "copperajah",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "cufant",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:badlands",
+    "minecraft:eroded_badlands"
+  ]
+}

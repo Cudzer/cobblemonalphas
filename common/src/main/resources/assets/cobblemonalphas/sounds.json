@@ -1,0 +1,8 @@
+{
+  "alpha_spawn": {
+    "subtitle": "subtitles.cobblemonalphas.alpha_nearby",
+    "sounds": [
+      "cobblemonalphas:custom/alpha_spawn"
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "species": "ferrothorn",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "ferroseed",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:forest",
+    "minecraft:birch_forest",
+    "minecraft:dark_forest"
+  ]
+}

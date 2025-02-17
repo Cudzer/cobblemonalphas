@@ -1,0 +1,18 @@
+{
+  "species": "luxray",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "shinx",
+      "level": 15
+    },
+    {
+      "species": "luxio",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:savanna",
+    "minecraft:eroded_savanna"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "species": "slowking",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "slowpoke",
+      "level": 15
+    },
+    {
+      "species": "slowbro",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:beach",
+    "minecraft:stony_shore"
+  ]
+}

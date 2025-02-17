@@ -1,0 +1,12 @@
+{
+  "species": "dondozo",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:ocean",
+    "minecraft:deep_ocean",
+    "minecraft:lukewarm_ocean",
+    "minecraft:warm_ocean"
+  ]
+}

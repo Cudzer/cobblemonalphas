@@ -1,0 +1,14 @@
+{
+  "species": "huntail",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "clamperl",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:deep_ocean",
+    "minecraft:cold_ocean"
+  ]
+}

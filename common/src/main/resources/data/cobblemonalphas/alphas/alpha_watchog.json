@@ -1,0 +1,18 @@
+{
+  "species": "watchog",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "patrat",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:forest",
+    "minecraft:birch_forest",
+    "minecraft:old_growth_birch_forest",
+    "minecraft:flower_forest",
+    "minecraft:sunflower_forest",
+    "minecraft:plains"
+  ]
+}

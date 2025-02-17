@@ -1,0 +1,16 @@
+{
+  "species": "cloyster",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "shellder",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:river",
+    "minecraft:ocean",
+    "minecraft:warm_ocean",
+    "minecraft:lukewarm_ocean"
+  ]
+}

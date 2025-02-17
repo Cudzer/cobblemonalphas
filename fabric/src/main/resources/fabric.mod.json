@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "cobblemonalphas",
+  "version": "${version}",
+  "name": "CobblemonAlphas",
+  "description": "Adds Alpha Pokemon to Minecraft",
+  "authors": [
+    "Cudzer"
+  ],
+  "contact": {
+    "homepage": ""
+  },
+  "license": "All-Rights-Reserved",
+  "icon": "assets/cobblemonalphas/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.cudzer.cobblemonalphas.fabric.CobblemonAlphasModFabric"
+    ],
+    "client": [
+      "dev.cudzer.cobblemonalphas.fabric.client.CobblemonAlphasModFabricClient"
+    ]
+  },
+  "mixins": [
+    "cobblemonalphas.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "architectury": ">=13.0.8",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

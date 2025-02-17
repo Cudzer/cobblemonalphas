@@ -1,0 +1,15 @@
+{
+  "species": "hariyama",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "makuhita",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:stony_peaks",
+    "minecraft:windswept_hills",
+    "minecraft:frozen_peaks"
+  ]
+}

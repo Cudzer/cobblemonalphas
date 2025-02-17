@@ -1,0 +1,17 @@
+{
+  "species": "raticate",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "rattata",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:forest",
+    "minecraft:plains",
+    "minecraft:old_growth_birch_forest",
+    "minecraft:flower_forest",
+    "minecraft:sunflower_forest"
+  ]
+}

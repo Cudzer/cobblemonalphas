@@ -1,0 +1,19 @@
+{
+  "species": "tinkaton",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "tinkatuff",
+      "level": 15
+    },
+    {
+      "species": "tinkatink",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:dark_forest",
+    "minecraft:forest",
+    "minecraft:birch_forest"
+  ]
+}

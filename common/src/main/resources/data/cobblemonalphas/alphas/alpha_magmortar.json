@@ -1,0 +1,18 @@
+{
+  "species": "magmortar",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "magby",
+      "level": 15
+    },
+    {
+      "species": "magmar",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:nether_wastes",
+    "minecraft:crimson_forest"
+  ]
+}

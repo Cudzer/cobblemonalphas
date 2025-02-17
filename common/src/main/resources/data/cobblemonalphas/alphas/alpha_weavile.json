@@ -1,0 +1,14 @@
+{
+  "species": "weavile",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "sneasel",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:snowy_plains",
+    "minecraft:frozen_peaks"
+  ]
+}

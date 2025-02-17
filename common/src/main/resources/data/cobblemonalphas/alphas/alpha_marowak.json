@@ -1,0 +1,14 @@
+{
+  "species": "marowak",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "cubone",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:badlands",
+    "minecraft:eroded_badlands"
+  ]
+}

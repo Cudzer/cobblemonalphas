@@ -1,0 +1,14 @@
+{
+  "species": "perrserker",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "meowth",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:wooded_badlands",
+    "minecraft:savanna"
+  ]
+}

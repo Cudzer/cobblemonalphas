@@ -1,0 +1,10 @@
+{
+  "species": "comfey",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:flower_forest",
+    "minecraft:sunflower_plains"
+  ]
+}

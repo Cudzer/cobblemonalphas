@@ -1,0 +1,16 @@
+{
+  "species": "bibarel",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "bidoof",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:forest",
+    "minecraft:river",
+    "minecraft:birch_forest"
+  ]
+}

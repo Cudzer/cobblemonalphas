@@ -1,0 +1,21 @@
+{
+  "species": "stoutland",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "lillipup",
+      "level": 15
+    },
+    {
+      "species": "herdier",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:savanna",
+    "minecraft:old_growth_birch_forest",
+    "minecraft:flower_forest",
+    "minecraft:snowy_plains"
+  ]
+}

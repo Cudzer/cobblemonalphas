@@ -1,0 +1,10 @@
+{
+  "species": "carbink",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:eroded_badlands",
+    "minecraft:windswept_gravelly_hills"
+  ]
+}

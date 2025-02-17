@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "cobblemonalphas:alpha_den_underground",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 246138556,
+    "spacing": 35,
+    "separation": 20
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "species": "gliscor",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "gligar",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:badlands"
+  ]
+}

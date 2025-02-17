@@ -1,0 +1,11 @@
+{
+  "species": "cramorant",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:beach",
+    "minecraft:stony_shore",
+    "minecraft:river"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "species": "barraskewda",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "arrokuda",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:deep_cold_ocean",
+    "minecraft:deep_ocean",
+    "minecraft:deep_lukewarm_ocean",
+    "minecraft:ocean",
+    "minecraft:lukewarm_ocean",
+    "minecraft:warm_ocean"
+  ]
+}

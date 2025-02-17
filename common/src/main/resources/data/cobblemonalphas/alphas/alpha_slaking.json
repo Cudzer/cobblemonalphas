@@ -1,0 +1,18 @@
+{
+  "species": "slaking",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "slakoth",
+      "level": 15
+    },
+    {
+      "species": "vigoroth",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:jungle",
+    "minecraft:sparse_jungle"
+  ]
+}

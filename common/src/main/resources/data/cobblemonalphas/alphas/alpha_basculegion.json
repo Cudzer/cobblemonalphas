@@ -1,0 +1,17 @@
+{
+  "species": "basculegion",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "basculin",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:river",
+    "minecraft:ocean",
+    "minecraft:cold_ocean",
+    "minecraft:deep_ocean",
+    "minecraft:lukewarm_ocean"
+  ]
+}

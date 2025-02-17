@@ -1,0 +1,10 @@
+{
+  "species": "pincurchin",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:beach",
+    "minecraft:river"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "species": "kangaskhan",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:savanna",
+    "minecraft:savanna_plateau"
+  ]
+}

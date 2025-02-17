@@ -1,0 +1,19 @@
+{
+  "species": "skeledirge",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "fuecoco",
+      "level": 15
+    },
+    {
+      "species": "crocalor",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:nether_wastes",
+    "minecraft:basalt_delta",
+    "minecraft:soul_sand_valley"
+  ]
+}

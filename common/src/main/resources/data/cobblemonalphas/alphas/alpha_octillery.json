@@ -1,0 +1,16 @@
+{
+  "species": "octillery",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "remoraid",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:ocean",
+    "minecraft:deep_ocean",
+    "minecraft:warm_ocean",
+    "minecraft:lukewarm_ocean"
+  ]
+}

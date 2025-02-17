@@ -1,0 +1,19 @@
+{
+  "species": "quaquaval",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "quaxly",
+      "level": 15
+    },
+    {
+      "species": "quaxwell",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:river",
+    "minecraft:stony_shore",
+    "minecraft:beach"
+  ]
+}

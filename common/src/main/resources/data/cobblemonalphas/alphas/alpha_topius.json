@@ -1,0 +1,10 @@
+{
+  "species": "tropius",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:jungle",
+    "minecraft:sparse_jungle"
+  ]
+}

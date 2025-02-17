@@ -1,0 +1,17 @@
+{
+  "species": "hydreigon",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "deino",
+      "level": 15
+    },
+    {
+      "species": "zweilous",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:deep_dark"
+  ]
+}

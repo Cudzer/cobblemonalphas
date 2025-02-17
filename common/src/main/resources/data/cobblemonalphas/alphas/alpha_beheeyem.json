@@ -1,0 +1,15 @@
+{
+  "species": "beheeyem",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "elgyem",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:end_barrens",
+    "minecraft:end_highlands",
+    "minecraft:end_midlands"
+  ]
+}

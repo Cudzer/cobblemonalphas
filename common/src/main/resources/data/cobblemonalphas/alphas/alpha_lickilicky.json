@@ -1,0 +1,14 @@
+{
+  "species": "lickilicky",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "lickitung",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:windswept_hills"
+  ]
+}

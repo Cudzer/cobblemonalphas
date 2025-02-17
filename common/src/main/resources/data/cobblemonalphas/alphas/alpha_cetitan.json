@@ -1,0 +1,14 @@
+{
+  "species": "cetitan",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "cetoddle",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:snowy_taiga",
+    "minecraft:snowy_plains"
+  ]
+}

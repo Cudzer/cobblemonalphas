@@ -1,0 +1,18 @@
+{
+  "species": "alakazam",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "abra",
+      "level": 15
+    },
+    {
+      "species": "kadabra",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:dark_forest"
+  ]
+}

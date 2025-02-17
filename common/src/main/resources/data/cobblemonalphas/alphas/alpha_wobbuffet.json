@@ -1,0 +1,17 @@
+{
+  "species": "wobbuffet",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "wynaut",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:savanna",
+    "minecraft:windswept_hills",
+    "minecraft:flower_forest",
+    "minecraft:sunflower_forest"
+  ]
+}

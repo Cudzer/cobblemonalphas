@@ -1,0 +1,20 @@
+{
+  "species": "politoad",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "poliwag",
+      "level": 15
+    },
+    {
+      "species": "poliwhirl",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:river",
+    "minecraft:beach",
+    "minecraft:old_growth_birch_forest",
+    "minecraft:old_growth_pine_forest"
+  ]
+}

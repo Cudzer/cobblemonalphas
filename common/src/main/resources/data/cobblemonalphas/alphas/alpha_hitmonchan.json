@@ -1,0 +1,11 @@
+{
+  "species": "hitmonchan",
+  "level": 50,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:stony_peaks",
+    "minecraft:windswept_hills",
+    "minecraft:forest"
+  ]
+}

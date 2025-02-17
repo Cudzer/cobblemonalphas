@@ -1,0 +1,19 @@
+{
+  "species": "delphox",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "fennekin",
+      "level": 15
+    },
+    {
+      "species": "braixen",
+      "level": 25
+    }
+  ],
+  "biome": [
+    "minecraft:stony_peaks",
+    "minecraft:crimson_forest",
+    "minecraft:dark_forest"
+  ]
+}

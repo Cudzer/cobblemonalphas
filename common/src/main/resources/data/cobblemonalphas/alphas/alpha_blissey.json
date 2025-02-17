@@ -1,0 +1,18 @@
+{
+  "species": "blissey",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "happiny",
+      "level": 15
+    },
+    {
+      "species": "chansey",
+      "level": 35
+    }
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:beach"
+  ]
+}

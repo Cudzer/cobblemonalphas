@@ -1,0 +1,18 @@
+{
+  "species": "electivire",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "elekid",
+      "level": 15
+    },
+    {
+      "species": "electabuzz",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:windswept_hills",
+    "minecraft:windswept_forest"
+  ]
+}

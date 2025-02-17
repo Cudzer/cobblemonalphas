@@ -1,0 +1,14 @@
+{
+  "species": "clodsire",
+  "level": 50,
+  "herdMembers": [
+    {
+      "species": "whooper",
+      "level": 15
+    }
+  ],
+  "biome": [
+    "minecraft:swamp",
+    "minecraft:mangrove_swamp"
+  ]
+}
