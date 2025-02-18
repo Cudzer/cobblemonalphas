@@ -61,12 +61,12 @@ public class ModConfig {
         defaultConfig.addProperty(ConfigKey.ALPHA_SIZE_MULTIPLIER, 2.0);
         defaultConfig.addProperty(ConfigKey.MAXIMUM_BEST_IVS, 3);
         defaultConfig.addProperty(ConfigKey.DO_HERD_SPAWNING, true);
-        defaultConfig.addProperty(ConfigKey.SECONDS_BETWEEN_SPAWNS, 60);
+        defaultConfig.addProperty(ConfigKey.SECONDS_BETWEEN_SPAWNS, 300);
         defaultConfig.addProperty(ConfigKey.SPAWN_ATTEMPTS, 10);
         defaultConfig.addProperty(ConfigKey.REQUIRED_PLAYER_AMOUNT, 1);
         defaultConfig.addProperty(ConfigKey.SHINY_ODDS, 4096);
-        defaultConfig.addProperty(ConfigKey.MINIMUM_SPAWN_DISTANCE, 15);
-        defaultConfig.addProperty(ConfigKey.MAXIMUM_SPAWN_DISTANCE, 42);
+        defaultConfig.addProperty(ConfigKey.MINIMUM_SPAWN_DISTANCE, 30);
+        defaultConfig.addProperty(ConfigKey.MAXIMUM_SPAWN_DISTANCE, 60);
         defaultConfig.addProperty(ConfigKey.SPAWN_ANNOUNCEMENT_MESSAGE, "An Alpha Pokemon has spawned near somebody!");
     }
 

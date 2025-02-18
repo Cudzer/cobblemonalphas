@@ -51,7 +51,7 @@ public class AlphaParticleEffect {
 
     public static void spawnParticles(PokemonEntity entity){
         List<String> locator = List.of( "root");
-        SpawnSnowstormEntityParticlePacket packet = new SpawnSnowstormEntityParticlePacket(ALPHA_PARTICLE, entity.getId(), locator);
+        SpawnSnowstormEntityParticlePacket packet = new SpawnSnowstormEntityParticlePacket(ALPHA_PARTICLE, entity.getId(), locator, entity.getId(), List.of());
         packet.sendToPlayersAround(entity.getX(), entity.getY(), entity.getZ(), 64, Level.OVERWORLD, (player) ->  false);
 
         SoundEvent sound = SoundEvent.createFixedRangeEvent(ALPHA_NEARBY_SOUND, 64.0f);
