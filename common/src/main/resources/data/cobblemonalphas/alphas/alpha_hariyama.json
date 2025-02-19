@@ -1,10 +1,10 @@
 {
   "species": "hariyama",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "makuhita",
-      "level": 15
+      "level": "15-25"
     }
   ],
   "biome": [

@@ -1,10 +1,10 @@
 {
   "species": "roserade",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "roselia",
-      "level": 15
+      "level": "15-25"
     }
   ],
   "biome": [

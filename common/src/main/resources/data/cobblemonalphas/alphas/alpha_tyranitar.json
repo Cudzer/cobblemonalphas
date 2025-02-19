@@ -1,14 +1,14 @@
 {
   "species": "tyranitar",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "larvitar",
-      "level": 15
+      "level": "15-20"
     },
     {
       "species": "pupitar",
-      "level": 25
+      "level": "25-35"
     }
   ],
   "biome": [

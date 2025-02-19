@@ -1,14 +1,14 @@
 {
   "species": "porygonz",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "porygon",
-      "level": 15
+      "level": "15-20"
     },
     {
       "species": "porygon2",
-      "level": 25
+      "level": "25-30"
     }
   ],
   "biome": [

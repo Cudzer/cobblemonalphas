@@ -1,14 +1,14 @@
 {
   "species": "gardevoir",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "ralts",
-      "level": 15
+      "level": "15-20"
     },
     {
       "species": "kirlia",
-      "level": 25
+      "level": "25-30"
     }
   ],
   "biome": [

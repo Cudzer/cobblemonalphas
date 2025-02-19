@@ -1,14 +1,14 @@
 {
   "species": "quaquaval",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "quaxly",
-      "level": 15
+      "level": "15-20"
     },
     {
       "species": "quaxwell",
-      "level": 25
+      "level": "25-30"
     }
   ],
   "biome": [

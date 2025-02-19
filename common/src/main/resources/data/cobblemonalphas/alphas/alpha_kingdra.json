@@ -1,14 +1,14 @@
 {
   "species": "kingdra",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "horsea",
-      "level": 15
+      "level": "15-20"
     },
     {
       "species": "seadra",
-      "level": 35
+      "level": "35-40"
     }
   ],
   "biome": [

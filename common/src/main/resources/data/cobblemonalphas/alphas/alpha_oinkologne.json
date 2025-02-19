@@ -1,10 +1,10 @@
 {
   "species": "oinkologne",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "lechonk",
-      "level": 15
+      "level": "15-25"
     }
   ],
   "biome": [

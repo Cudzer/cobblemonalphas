@@ -1,10 +1,10 @@
 {
   "species": "tangrowth",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "tangela",
-      "level": 15
+      "level": "15-25"
     }
   ],
   "biome": [

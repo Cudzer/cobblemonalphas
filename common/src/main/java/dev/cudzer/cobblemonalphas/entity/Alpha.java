@@ -9,18 +9,20 @@ import net.minecraft.util.ExtraCodecs;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class Alpha {
     public static Codec<Alpha> CODEC = RecordCodecBuilder.create( inst -> inst
             .group(
                     Codec.STRING.fieldOf("species").forGetter(t -> t.species),
-                    Codec.INT.fieldOf("level").forGetter(w -> w.level),
+                    Codec.STRING.fieldOf("level").forGetter(w -> w.levelRange),
                     HerdMember.CODEC.listOf().fieldOf("herdMembers").forGetter(h -> h.herdMembers),
                     ExtraCodecs.TAG_OR_ELEMENT_ID.listOf().optionalFieldOf("biome", Collections.emptyList()).forGetter(t -> t.biomeTags)
             ).apply(inst, Alpha::new));
 
     protected final String species;
-    protected final int level;
+    //protected final int level;
+    protected final String levelRange;
     protected final List<HerdMember> herdMembers;
     protected final List<ResourceLocation> spawnBiome;
     protected final List<ResourceLocation> spawnBiomeTags;
@@ -28,9 +30,24 @@ public class Alpha {
 
     private ResourceLocation jsonLocation;
 
-    public Alpha(String species, int level, List<HerdMember> herdMembers, List<ExtraCodecs.TagOrElementLocation> spawnBiome){
+    private final int minLevel;
+    private final int maxLevel;
+
+    public Alpha(String species, String levelRange, List<HerdMember> herdMembers, List<ExtraCodecs.TagOrElementLocation> spawnBiome){
         this.species = species;
-        this.level = level;
+        this.levelRange = levelRange;
+
+        String[] levels = levelRange.split("-");
+        if(levels.length != 2){
+            CobblemonAlphasMod.LOGGER.warn(String.format("Incorrect values defined for levels in alpha %s file. Assigning default values", species));
+            this.minLevel = 40;
+            this.maxLevel = 50;
+        }
+        else {
+            this.minLevel = Integer.parseInt(levels[0]);
+            this.maxLevel = Integer.parseInt(levels[1]);
+        }
+
         this.herdMembers = herdMembers;
         List<ResourceLocation> spawnBiomeTags = new ArrayList<>();
         List<ResourceLocation> spawnBiomes = new ArrayList<>();
@@ -64,9 +81,9 @@ public class Alpha {
         return this.species;
     }
 
-    public int getLevel() {
-        return level;
-    }
+//    public int getLevel() {
+//        return level;
+//    }
 
     public List<HerdMember> getHerdMembers() {
         return herdMembers;
@@ -78,5 +95,9 @@ public class Alpha {
 
     public List<ResourceLocation> getSpawnBiomeTags() {
         return spawnBiomeTags;
+    }
+
+    public int getLevelFromRange(){
+        return new Random().nextInt(this.minLevel, this.maxLevel);
     }
 }

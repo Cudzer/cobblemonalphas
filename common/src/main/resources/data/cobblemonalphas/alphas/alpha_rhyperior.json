@@ -1,14 +1,14 @@
 {
   "species": "rhyperior",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "rhyhorn",
-      "level": 15
+      "level": "15-20"
     },
     {
       "species": "rhydon",
-      "level": 35
+      "level": "25-35"
     }
   ],
   "biome": [

@@ -1,14 +1,14 @@
 {
   "species": "grimmsnarl",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "impidimp",
-      "level": 15
+      "level": "15-20"
     },
     {
       "species": "morgrem",
-      "level": 15
+      "level": "25-30"
     }
   ],
   "biome": [

@@ -1,14 +1,14 @@
 {
   "species": "dusknoir",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "duskull",
-      "level": 15
+      "level": "15-20"
     },
     {
       "species": "dusclops",
-      "level": 25
+      "level": "25-30"
     }
   ],
   "biome": [

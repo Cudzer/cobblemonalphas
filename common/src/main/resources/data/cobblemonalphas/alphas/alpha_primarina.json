@@ -1,14 +1,14 @@
 {
   "species": "primarina",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "popplio",
-      "level": 15
+      "level": "15-20"
     },
     {
       "species": "brionne",
-      "level": 25
+      "level": "25-30"
     }
   ],
   "biome": [

@@ -1,14 +1,14 @@
 {
   "species": "garganacl",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "nacli",
-      "level": 15
+      "level": "15-20"
     },
     {
       "species": "naclstack",
-      "level": 15
+      "level": "25-30"
     }
   ],
   "biome": [

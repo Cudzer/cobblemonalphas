@@ -1,14 +1,14 @@
 {
   "species": "charizard",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "charmander",
-      "level": 15
+      "level": "15-20"
     },
     {
       "species": "charmeleon",
-      "level": 25
+      "level": "25-30"
     }
   ],
   "biome": [

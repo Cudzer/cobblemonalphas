@@ -1,14 +1,14 @@
 {
   "species": "raichu",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "pichu",
-      "level": 25
+      "level": "15-20"
     },
     {
       "species": "pikachu",
-      "level": 25
+      "level": "25-30"
     }
   ],
   "biome": [

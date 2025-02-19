@@ -1,14 +1,14 @@
 {
   "species": "cinderace",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "scorbunny",
-      "level": 15
+      "level": "15-20"
     },
     {
       "species": "raboot",
-      "level": 15
+      "level": "25-30"
     }
   ],
   "biome": [

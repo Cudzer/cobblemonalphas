@@ -1,14 +1,14 @@
 {
   "species": "decidueye",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "rowlet",
-      "level": 15
+      "level": "15-20"
     },
     {
       "species": "dartrix",
-      "level": 25
+      "level": "25-30"
     }
   ],
   "biome": [

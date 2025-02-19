@@ -1,14 +1,14 @@
 {
   "species": "electivire",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "elekid",
-      "level": 15
+      "level": "15-20"
     },
     {
       "species": "electabuzz",
-      "level": 15
+      "level": "25-30"
     }
   ],
   "biome": [

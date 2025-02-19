@@ -1,14 +1,14 @@
 {
   "species": "delphox",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "fennekin",
-      "level": 15
+      "level": "15-20"
     },
     {
       "species": "braixen",
-      "level": 25
+      "level": "25-30"
     }
   ],
   "biome": [

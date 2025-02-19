@@ -1,10 +1,10 @@
 {
   "species": "sharpedo",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "carvanha",
-      "level": 15
+      "level": "15-30"
     }
   ],
   "biome": [

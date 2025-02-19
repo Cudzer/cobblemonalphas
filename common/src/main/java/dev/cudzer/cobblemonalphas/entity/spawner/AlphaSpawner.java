@@ -140,7 +140,7 @@ public class AlphaSpawner {
     private PokemonEntity generateAlpha(Alpha chosenAlpha, Level spawnLevel, Vec3i spawnPos){
         Pokemon pokemon = new Pokemon();
         pokemon.setSpecies(Objects.requireNonNull(PokemonSpecies.INSTANCE.getByName(chosenAlpha.getSpecies())));
-        pokemon.setLevel(chosenAlpha.getLevel());
+        pokemon.setLevel(chosenAlpha.getLevelFromRange());
         pokemon.initializeMoveset(true);
         pokemon.setScaleModifier((float)ModConfig.alphaSizeMultiplier);
 
@@ -180,7 +180,7 @@ public class AlphaSpawner {
             }
 
             herdMemberPokemon.setSpecies(herdMemberSpecies);
-            herdMemberPokemon.setLevel(herdMember.getLevel());
+            herdMemberPokemon.setLevel(herdMember.getLevelFromRange());
             herdMemberPokemon.initializeMoveset(true);
 
             herdMemberPokemon.getPersistentData().putUUID("ALPHA_ID", alphaEntity.getUUID());

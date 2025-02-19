@@ -1,14 +1,14 @@
 {
   "species": "crobat",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "zubat",
-      "level": 15
+      "level": "15-20"
     },
     {
       "species": "golbat",
-      "level": 15
+      "level": "25-30"
     }
   ],
   "biome": [

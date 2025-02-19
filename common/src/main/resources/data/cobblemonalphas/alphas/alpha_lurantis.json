@@ -1,10 +1,10 @@
 {
   "species": "lurantis",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "fomantis",
-      "level": 15
+      "level": "15-25"
     }
   ],
   "biome": [

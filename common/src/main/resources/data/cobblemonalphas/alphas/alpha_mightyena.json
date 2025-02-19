@@ -1,10 +1,10 @@
 {
   "species": "mightyena",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "poochyena",
-      "level": 15
+      "level": "15-20"
     }
   ],
   "biome": [

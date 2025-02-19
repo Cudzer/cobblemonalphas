@@ -1,10 +1,10 @@
 {
   "species": "scizor",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "scyther",
-      "level": 15
+      "level": "20-35"
     }
   ],
   "biome": [

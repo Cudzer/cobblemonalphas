@@ -1,14 +1,14 @@
 {
   "species": "dragonite",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "dratini",
-      "level": 15
+      "level": "15-20"
     },
     {
       "species": "dragonaire",
-      "level": 25
+      "level": "25-30"
     }
   ],
   "biome": [

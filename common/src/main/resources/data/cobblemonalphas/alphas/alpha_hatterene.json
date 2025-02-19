@@ -1,14 +1,14 @@
 {
   "species": "hatterene",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "hatenna",
-      "level": 15
+      "level": "15-20"
     },
     {
       "species": "hattrem",
-      "level": 15
+      "level": "25-30"
     }
   ],
   "biome": [

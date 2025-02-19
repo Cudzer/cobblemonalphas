@@ -1,14 +1,14 @@
 {
   "species": "blissey",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "happiny",
-      "level": 15
+      "level": "15-20"
     },
     {
       "species": "chansey",
-      "level": 35
+      "level": "35-40"
     }
   ],
   "biome": [

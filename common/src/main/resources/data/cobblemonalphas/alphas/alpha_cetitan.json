@@ -1,10 +1,10 @@
 {
   "species": "cetitan",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "cetoddle",
-      "level": 15
+      "level": "15-20"
     }
   ],
   "biome": [

@@ -1,14 +1,14 @@
 {
   "species": "luxray",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "shinx",
-      "level": 15
+      "level": "15-20"
     },
     {
       "species": "luxio",
-      "level": 25
+      "level": "25-30"
     }
   ],
   "biome": [

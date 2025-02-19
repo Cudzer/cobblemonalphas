@@ -1,14 +1,14 @@
 {
   "species": "vivillon",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "scatterbug",
-      "level": 15
+      "level": "15-20"
     },
     {
       "species": "spewpa",
-      "level": 25
+      "level": "25-30"
     }
   ],
   "biome": [

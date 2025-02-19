@@ -1,14 +1,14 @@
 {
   "species": "rillaboom",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "grookey",
-      "level": 15
+      "level": "15-20"
     },
     {
       "species": "thwackey",
-      "level": 15
+      "level": "25-30"
     }
   ],
   "biome": [

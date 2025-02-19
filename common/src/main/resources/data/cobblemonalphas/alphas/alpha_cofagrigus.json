@@ -1,10 +1,10 @@
 {
   "species": "cofagrigus",
-  "level": 50,
+  "level": "50-60",
   "herdMembers": [
     {
       "species": "yamask",
-      "level": 15
+      "level": "15-20"
     }
   ],
   "biome": [
