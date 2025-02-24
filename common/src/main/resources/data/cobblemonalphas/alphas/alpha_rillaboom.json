@@ -1,6 +1,7 @@
 {
   "species": "rillaboom",
   "level": "50-60",
+  "spawnUnderground": false,
   "herdMembers": [
     {
       "species": "grookey",

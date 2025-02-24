@@ -1,6 +1,7 @@
 {
   "species": "spiritomb",
   "level": "50-60",
+  "spawnUnderground": true,
   "herdMembers": [
   ],
   "biome": [

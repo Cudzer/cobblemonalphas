@@ -1,6 +1,7 @@
 {
   "species": "cloyster",
   "level": "50-60",
+  "spawnUnderground": false,
   "herdMembers": [
     {
       "species": "shellder",

@@ -1,6 +1,7 @@
 {
   "species": "aggron",
   "level": "50-60",
+  "spawnUnderground": true,
   "herdMembers": [
     {
       "species": "aron",

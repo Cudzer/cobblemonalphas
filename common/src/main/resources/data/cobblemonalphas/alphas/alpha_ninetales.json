@@ -1,6 +1,7 @@
 {
   "species": "ninetales",
   "level": "50-60",
+  "spawnUnderground": false,
   "herdMembers": [
     {
       "species": "vulpix",

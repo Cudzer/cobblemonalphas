@@ -1,6 +1,7 @@
 {
   "species": "golisopod",
   "level": "50-60",
+  "spawnUnderground": false,
   "herdMembers": [
     {
       "species": "wimpod",

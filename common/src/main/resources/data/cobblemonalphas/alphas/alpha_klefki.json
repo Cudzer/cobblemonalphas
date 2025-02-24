@@ -1,6 +1,7 @@
 {
   "species": "klefki",
   "level": "50-60",
+  "spawnUnderground": false,
   "herdMembers": [
   ],
   "biome": [

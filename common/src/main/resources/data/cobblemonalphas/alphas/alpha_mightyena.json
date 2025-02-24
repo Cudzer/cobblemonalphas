@@ -1,6 +1,7 @@
 {
   "species": "mightyena",
   "level": "50-60",
+  "spawnUnderground": false,
   "herdMembers": [
     {
       "species": "poochyena",

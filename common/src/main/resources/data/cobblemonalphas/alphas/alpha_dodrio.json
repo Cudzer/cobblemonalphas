@@ -1,6 +1,7 @@
 {
   "species": "dodrio",
   "level": "50-60",
+  "spawnUnderground": false,
   "herdMembers": [
     {
       "species": "doduo",

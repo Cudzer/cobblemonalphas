@@ -1,6 +1,7 @@
 {
   "species": "pachirisu",
   "level": "50-60",
+  "spawnUnderground": false,
   "herdMembers": [
   ],
   "biome": [

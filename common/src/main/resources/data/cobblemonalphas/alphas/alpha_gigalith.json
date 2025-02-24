@@ -1,6 +1,7 @@
 {
   "species": "gigalith",
   "level": "50-60",
+  "spawnUnderground": true,
   "herdMembers": [
     {
       "species": "roggenrola",

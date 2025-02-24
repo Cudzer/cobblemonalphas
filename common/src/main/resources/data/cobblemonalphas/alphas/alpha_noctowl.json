@@ -1,6 +1,7 @@
 {
   "species": "noctowl",
   "level": "50-60",
+  "spawnUnderground": false,
   "herdMembers": [
     {
       "species": "hoothoot",

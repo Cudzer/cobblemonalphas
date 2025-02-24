@@ -1,6 +1,7 @@
 {
   "species": "unfezant",
   "level": "50-60",
+  "spawnUnderground": false,
   "herdMembers": [
     {
       "species": "pidove",

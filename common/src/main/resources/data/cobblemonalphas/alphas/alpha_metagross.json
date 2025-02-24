@@ -1,6 +1,7 @@
 {
   "species": "metagross",
   "level": "50-60",
+  "spawnUnderground": false,
   "herdMembers": [
     {
       "species": "beldum",

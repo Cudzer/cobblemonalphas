@@ -1,6 +1,7 @@
 {
   "species": "golem",
   "level": "50-60",
+  "spawnUnderground": true,
   "herdMembers": [
     {
       "species": "geodude",

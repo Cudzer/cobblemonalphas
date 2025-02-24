@@ -19,6 +19,7 @@ import dev.cudzer.cobblemonalphas.data.AlphaJsonDataManager;
 import dev.cudzer.cobblemonalphas.entity.Alpha;
 import dev.cudzer.cobblemonalphas.entity.HerdMember;
 import dev.cudzer.cobblemonalphas.entity.spawner.spawnData.location.ISpawnLocation;
+import dev.cudzer.cobblemonalphas.entity.spawner.spawnData.location.RandomSpawnAroundPlayer;
 import dev.cudzer.cobblemonalphas.entity.spawner.spawnData.location.RandomSurfaceSpawn;
 import dev.cudzer.cobblemonalphas.entity.spawner.spawnData.safety.BlockBlacklist;
 import dev.cudzer.cobblemonalphas.entity.spawner.spawnData.safety.HeightBounds;
@@ -49,7 +50,7 @@ public class AlphaSpawner {
     public void init(){
         spawnCountdown = ModConfig.ticksBetweenSpawns;
 
-        spawnLocationSelector = new RandomSurfaceSpawn(ModConfig.minimumSpawnDistance, ModConfig.maximumSpawnDistance);
+        spawnLocationSelector = new RandomSpawnAroundPlayer(ModConfig.minimumSpawnDistance, ModConfig.maximumSpawnDistance);
         spawnConditions = List.of(
                 new BlockBlacklist(
                         List.of(
@@ -58,8 +59,7 @@ public class AlphaSpawner {
                                 Blocks.CACTUS
                         )
                 ),
-                new HeightBounds(60, 200),
-                new SkyVisible(true)
+                new HeightBounds(-50, 200)
         );
         AlphaDespawner.getInstance().setMinimumDespawnDistance(ModConfig.minimumSpawnDistance);
         AlphaDespawner.getInstance().setSpawnIntervalTicks(ModConfig.ticksBetweenSpawns);
@@ -85,6 +85,7 @@ public class AlphaSpawner {
 
         if(Math.random() > (ModConfig.alphaSpawnChance + (0.02f * (server.getPlayerCount() - ModConfig.requiredPlayerAmount)))) return;
 
+        //default value for the alpha
         Alpha chosenAlpha = AlphaJsonDataManager.getRandomAlphaObj(server.overworld());
 
         int attemptedSpawns = 0;
@@ -98,6 +99,7 @@ public class AlphaSpawner {
                 return;
             }
 
+            //TODO: Change so any dimension can be used
             Optional<ServerPlayer> chosenPlayerOpt = players.stream()
                     .filter(player -> player.level().dimension() == Level.OVERWORLD)
                     .skip((int) (players.size() * Math.random()))
@@ -114,10 +116,17 @@ public class AlphaSpawner {
                 if(spawnConditions.stream().anyMatch(condition -> !condition.isSafe(chosenPlayerSpawnLevel, finalSpawnPos))) continue;
 
                 var biomeKey = chosenPlayerSpawnLevel.getBiome(finalSpawnPos).unwrapKey();
-                if(biomeKey.isPresent()){
-                    chosenAlpha = AlphaJsonDataManager.getRandomAlphaForBiome(chosenPlayer.level(), biomeKey.get()).values().stream().toList().getFirst();
-                }
 
+                if(chosenPlayerSpawnLevel.canSeeSky(finalSpawnPos)){
+                    if(biomeKey.isPresent()){
+                        chosenAlpha = AlphaJsonDataManager.getRandomAlphaForBiome(chosenPlayer.level(), biomeKey.get(), false).values().stream().toList().getFirst();
+                    }
+                }
+                else {
+                    if(biomeKey.isPresent()){
+                        chosenAlpha = AlphaJsonDataManager.getRandomAlphaForBiome(chosenPlayer.level(), biomeKey.get(), true).values().stream().toList().getFirst();
+                    }
+                }
                 spawnPos = spawnLocation;
                 spawnLevel = chosenPlayerSpawnLevel;
                 break;

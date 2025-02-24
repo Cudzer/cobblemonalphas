@@ -1,6 +1,7 @@
 {
   "species": "parasect",
   "level": "50-60",
+  "spawnUnderground": true,
   "herdMembers": [
     {
       "species": "paras",

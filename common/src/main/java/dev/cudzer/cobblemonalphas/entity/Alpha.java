@@ -16,6 +16,7 @@ public class Alpha {
             .group(
                     Codec.STRING.fieldOf("species").forGetter(t -> t.species),
                     Codec.STRING.fieldOf("level").forGetter(w -> w.levelRange),
+                    Codec.BOOL.fieldOf("spawnUnderground").forGetter(s -> s.spawnUnderground),
                     HerdMember.CODEC.listOf().fieldOf("herdMembers").forGetter(h -> h.herdMembers),
                     ExtraCodecs.TAG_OR_ELEMENT_ID.listOf().optionalFieldOf("biome", Collections.emptyList()).forGetter(t -> t.biomeTags)
             ).apply(inst, Alpha::new));
@@ -23,6 +24,7 @@ public class Alpha {
     protected final String species;
     //protected final int level;
     protected final String levelRange;
+    protected final boolean spawnUnderground;
     protected final List<HerdMember> herdMembers;
     protected final List<ResourceLocation> spawnBiome;
     protected final List<ResourceLocation> spawnBiomeTags;
@@ -33,9 +35,10 @@ public class Alpha {
     private final int minLevel;
     private final int maxLevel;
 
-    public Alpha(String species, String levelRange, List<HerdMember> herdMembers, List<ExtraCodecs.TagOrElementLocation> spawnBiome){
+    public Alpha(String species, String levelRange, boolean spawnUnderground, List<HerdMember> herdMembers, List<ExtraCodecs.TagOrElementLocation> spawnBiome){
         this.species = species;
         this.levelRange = levelRange;
+        this.spawnUnderground = spawnUnderground;
 
         String[] levels = levelRange.split("-");
         if(levels.length != 2){
@@ -79,6 +82,10 @@ public class Alpha {
 
     public String getSpecies() {
         return this.species;
+    }
+
+    public boolean canSpawnUnderground(){
+        return spawnUnderground;
     }
 
 //    public int getLevel() {
