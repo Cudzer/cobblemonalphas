@@ -159,6 +159,7 @@ public class AlphaSpawner {
         pokemon.setScaleModifier((float)ModConfig.alphaSizeMultiplier);
 
         pokemon.getPersistentData().putBoolean("IS_ALPHA", true);
+        pokemon.getAspects().add("alpha");
 
         IVs ivs = pokemon.getIvs();
         pokemon.setIvs$common(maximizeRandomIVs(ivs));
