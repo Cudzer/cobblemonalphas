@@ -1,8 +1,11 @@
 package dev.cudzer.cobblemonalphas;
 
+import com.mojang.brigadier.CommandDispatcher;
 import dev.architectury.registry.ReloadListenerRegistry;
+import dev.cudzer.cobblemonalphas.command.SpawnAlphaCommand;
 import dev.cudzer.cobblemonalphas.config.ModConfig;
 import dev.cudzer.cobblemonalphas.data.AlphaJsonDataManager;
+import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import org.slf4j.Logger;
@@ -24,5 +27,9 @@ public final class CobblemonAlphasMod {
         ReloadListenerRegistry.register(PackType.SERVER_DATA, new AlphaJsonDataManager(), cobblemonAlphasResource("alphas"));
 
         ModEvents.registerEvents();
+    }
+
+    public static void registerCommands(CommandDispatcher<CommandSourceStack> dispatcher){
+        SpawnAlphaCommand.registerCommand(dispatcher);
     }
 }

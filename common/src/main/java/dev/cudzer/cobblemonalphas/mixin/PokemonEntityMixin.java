@@ -20,5 +20,7 @@ public abstract class PokemonEntityMixin extends ShoulderRidingEntity {
     @Inject(method = "registerGoals", at= @At("TAIL"))
     public void registerGoalsCA(CallbackInfo callbackInfo){
         this.goalSelector.addGoal(3, new PokemonFollowAlphaGoal((PokemonEntity)(Object)this));
+        //TODO: refine this
+        //this.goalSelector.addGoal(1, new HerdMemberFleeGoal((PokemonEntity)(Object)this, 2.0));
     }
 }

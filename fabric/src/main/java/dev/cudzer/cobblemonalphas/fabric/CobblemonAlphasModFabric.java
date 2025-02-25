@@ -6,6 +6,7 @@ import dev.cudzer.cobblemonalphas.IPlatform;
 import dev.cudzer.cobblemonalphas.entity.spawner.AlphaSpawner;
 import dev.cudzer.cobblemonalphas.particles.AlphaParticleEffect;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.loader.api.FabricLoader;
@@ -18,6 +19,10 @@ public final class CobblemonAlphasModFabric implements ModInitializer, IPlatform
     public void onInitialize() {
         // Run our common setup.
         CobblemonAlphasMod.init(this);
+
+        CommandRegistrationCallback.EVENT.register((((commandDispatcher, commandBuildContext, commandSelection) -> {
+            CobblemonAlphasMod.registerCommands(commandDispatcher);
+        })));
 
         ServerLifecycleEvents.SERVER_STARTING.register(event -> {
             try{

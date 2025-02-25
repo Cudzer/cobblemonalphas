@@ -19,7 +19,7 @@ public class AlphaDespawner implements Despawner<PokemonEntity> {
     }
 
     public void setSpawnIntervalTicks(int spawnIntervalTicks) {
-        this.spawnIntervalTicks = spawnIntervalTicks * 2;
+        this.spawnIntervalTicks = spawnIntervalTicks;
     }
 
     @Override

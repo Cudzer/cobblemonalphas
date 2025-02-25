@@ -103,10 +103,28 @@ public class AlphaJsonDataManager extends SimpleJsonResourceReloadListener {
 
     public static Alpha getRandomAlphaObj(Level level){
         ResourceLocation rl = getRandomResourceLocation(level);
+        if(rl == null){
+            rl = getRandomUndergroundResourceLocation(level);
+            return undergroundSpawnsMap.get(rl);
+        }
         return data.get(rl);
     }
 
-    private static ResourceLocation getRandomResourceLocation(Level level){
+    public static Alpha getAlphaObj(Level level, String alphaName){
+        for(Alpha alpha : data.values()){
+            if(alpha.getSpecies().equalsIgnoreCase(alphaName)){
+                return alpha;
+            }
+        }
+        for(Alpha alpha : undergroundSpawnsMap.values()){
+            if(alpha.getSpecies().equalsIgnoreCase(alphaName)){
+                return alpha;
+            }
+        }
+        return null;
+    }
+
+    private static ResourceLocation getRandomResourceLocation(Level level) {
         return resourceLocationList.get(level.random.nextInt(resourceLocationList.size()));
     }
 
@@ -183,6 +201,12 @@ public class AlphaJsonDataManager extends SimpleJsonResourceReloadListener {
     public static void populateBiomeData(ServerLevel level){
         applySurfaceBiomeAlphas(level);
         applyUndergroundBiomeAlphas(level);
+    }
+
+    public static Map<ResourceLocation, Alpha> getAlphaData(){
+        var newData = data;
+        newData.putAll(undergroundSpawnsMap);
+        return newData;
     }
 
     private static void applySurfaceBiomeAlphas(Level level){

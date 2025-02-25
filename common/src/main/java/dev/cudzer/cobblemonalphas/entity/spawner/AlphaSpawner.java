@@ -10,6 +10,7 @@ import com.cobblemon.mod.common.api.pokemon.PokemonSpecies;
 import com.cobblemon.mod.common.api.pokemon.stats.Stat;
 import com.cobblemon.mod.common.api.pokemon.stats.Stats;
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
+import com.cobblemon.mod.common.pokemon.FormData;
 import com.cobblemon.mod.common.pokemon.IVs;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.cobblemon.mod.common.pokemon.Species;
@@ -133,12 +134,16 @@ public class AlphaSpawner {
             }
         }
 
-        PokemonEntity alphaEntity = generateAlpha(chosenAlpha, spawnLevel, spawnPos);
+        spawnAlphaEntity(chosenAlpha, spawnLevel, spawnPos, ModConfig.doHerdSpawning);
+    }
 
-        spawnLevel.addFreshEntity(alphaEntity);
+    public void spawnAlphaEntity(Alpha alpha, Level level, Vec3i spawnPosition, boolean doHerdSpawning){
+        PokemonEntity alphaEntity = generateAlpha(alpha, level, spawnPosition);
 
-        if(ModConfig.doHerdSpawning){
-            spawnHerdPokemon(alphaEntity, chosenAlpha.getHerdMembers(), spawnLevel, spawnPos);
+        level.addFreshEntity(alphaEntity);
+
+        if(doHerdSpawning){
+            spawnHerdPokemon(alphaEntity, alpha.getHerdMembers(), level, spawnPosition);
         }
 
         server.getPlayerList().broadcastSystemMessage(
