@@ -20,4 +20,5 @@ public class ConfigKey {
     public static String MAXIMUM_SPAWN_DISTANCE = "maximumSpawnDistance";
 
     public static String SPAWN_ANNOUNCEMENT_MESSAGE = "spawnAnnouncementMessage";
+    public static String SHOW_COORDS_IN_ANNOUNCEMENT = "showCoordinatesInAnnouncement";
 }

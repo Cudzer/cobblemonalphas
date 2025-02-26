@@ -135,6 +135,15 @@ public class AlphaSpawner {
         }
 
         spawnAlphaEntity(chosenAlpha, spawnLevel, spawnPos, ModConfig.doHerdSpawning);
+
+        String announcement = ModConfig.spawnAnnouncementMessage;
+        if(ModConfig.showCoordinatesInAnnouncement){
+            announcement += " (" + spawnPos.getX() + ", " + spawnPos.getY() + ", " + spawnPos.getZ() + ")";
+        }
+
+        server.getPlayerList().broadcastSystemMessage(
+                Component.literal(announcement), false
+        );
     }
 
     public void spawnAlphaEntity(Alpha alpha, Level level, Vec3i spawnPosition, boolean doHerdSpawning){
@@ -145,10 +154,6 @@ public class AlphaSpawner {
         if(doHerdSpawning){
             spawnHerdPokemon(alphaEntity, alpha.getHerdMembers(), level, spawnPosition);
         }
-
-        server.getPlayerList().broadcastSystemMessage(
-                Component.literal(ModConfig.spawnAnnouncementMessage), false
-        );
     }
 
     private PokemonEntity generateAlpha(Alpha chosenAlpha, Level spawnLevel, Vec3i spawnPos){

@@ -29,6 +29,7 @@ public class ModConfig {
     public static int maximumSpawnDistance;
 
     public static String spawnAnnouncementMessage;
+    public static boolean showCoordinatesInAnnouncement;
 
     public static void init(Path baseConfigPath){
         fullConfigPath = baseConfigPath.resolve(ConfigKey.configPath);
@@ -68,6 +69,7 @@ public class ModConfig {
         defaultConfig.addProperty(ConfigKey.MINIMUM_SPAWN_DISTANCE, 30);
         defaultConfig.addProperty(ConfigKey.MAXIMUM_SPAWN_DISTANCE, 60);
         defaultConfig.addProperty(ConfigKey.SPAWN_ANNOUNCEMENT_MESSAGE, "An Alpha Pokemon has spawned near somebody!");
+        defaultConfig.addProperty(ConfigKey.SHOW_COORDS_IN_ANNOUNCEMENT, false);
     }
 
     private static void rewriteConfig(Gson gson, JsonObject defaultConfig, JsonObject finalConfig){
@@ -100,5 +102,6 @@ public class ModConfig {
         minimumSpawnDistance = finalConfiguration.get(ConfigKey.MINIMUM_SPAWN_DISTANCE).getAsInt();
         maximumSpawnDistance = finalConfiguration.get(ConfigKey.MAXIMUM_SPAWN_DISTANCE).getAsInt();
         spawnAnnouncementMessage = finalConfiguration.get(ConfigKey.SPAWN_ANNOUNCEMENT_MESSAGE).getAsString();
+        showCoordinatesInAnnouncement = finalConfiguration.get(ConfigKey.SHOW_COORDS_IN_ANNOUNCEMENT).getAsBoolean();
     }
 }
