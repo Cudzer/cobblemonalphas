@@ -1,5 +1,6 @@
 package dev.cudzer.cobblemonalphas.blockEntity;
 
+import dev.cudzer.cobblemonalphas.block.ModBlocks;
 import dev.cudzer.cobblemonalphas.config.ModConfig;
 import dev.cudzer.cobblemonalphas.data.AlphaJsonDataManager;
 import dev.cudzer.cobblemonalphas.entity.Alpha;
@@ -21,14 +22,10 @@ public class AlphaSpawnBlockEntity extends BlockEntity {
     protected static int ticks = 0;
 
     public AlphaSpawnBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(ModBlockEntityType.ALPHA_SPAWNER, blockPos, blockState);
+        super(ModBlocks.ALPHA_SPAWNER_BLOCK_ENTITY.get(), blockPos, blockState);
     }
 
-    public static void clientTick(Level level, BlockPos blockPos, BlockState blockState, AlphaSpawnBlockEntity spawnerBlockEntity) {
-        //check range
-    }
-
-    public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, AlphaSpawnBlockEntity spawnerBlockEntity) {
+    public static <T extends BlockEntity> void tick(Level level, BlockPos blockPos, BlockState blockState, T t) {
         if(ticks++ % 40 == 0){
             Optional<Player> opt = level.getEntities(EntityType.PLAYER, new AABB(blockPos).inflate(8, 8, 8), EntitySelector.NO_CREATIVE_OR_SPECTATOR).stream().findFirst();
             opt.ifPresent(player -> {

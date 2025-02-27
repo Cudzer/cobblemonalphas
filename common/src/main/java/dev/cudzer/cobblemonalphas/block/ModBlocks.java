@@ -1,29 +1,25 @@
 package dev.cudzer.cobblemonalphas.block;
 
+import dev.architectury.registry.registries.DeferredRegister;
+import dev.architectury.registry.registries.RegistrySupplier;
 import dev.cudzer.cobblemonalphas.CobblemonAlphasMod;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import dev.cudzer.cobblemonalphas.blockEntity.AlphaSpawnBlockEntity;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
-import net.minecraft.world.level.material.MapColor;
 
 public class ModBlocks {
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(CobblemonAlphasMod.MOD_ID, Registries.BLOCK);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(CobblemonAlphasMod.MOD_ID, Registries.ITEM);
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(CobblemonAlphasMod.MOD_ID, Registries.BLOCK_ENTITY_TYPE);
 
-    public static Block ALPHA_SPAWNER;
+    public static final RegistrySupplier<Block> ALPHA_SPAWNER_BLOCK = BLOCKS.register("alpha_spawner", () -> new AlphaSpawnBlock(BlockBehaviour.Properties.of()));
+    public static final RegistrySupplier<BlockItem> ALPHA_SPAWNER_ITEM = ITEMS.register("alpha_spawner", () -> new BlockItem(ALPHA_SPAWNER_BLOCK.get(), new Item.Properties()));
+    public static final RegistrySupplier<BlockEntityType<AlphaSpawnBlockEntity>> ALPHA_SPAWNER_BLOCK_ENTITY = BLOCK_ENTITIES.register("alpha_spawner", () -> BlockEntityType.Builder.of(AlphaSpawnBlockEntity::new, ALPHA_SPAWNER_BLOCK.get()).build(null));
 
-    private static Block register(ResourceLocation key, Block block) {
-        Block registeredBlock = Registry.register(BuiltInRegistries.BLOCK, key, block);
-        Registry.register(BuiltInRegistries.ITEM, key, new BlockItem(registeredBlock, new Item.Properties()));
-        return registeredBlock;
-    }
 
-    public static void init(){
-        CobblemonAlphasMod.LOGGER.info("Registering blocks...");
-        ALPHA_SPAWNER = register(ResourceLocation.fromNamespaceAndPath(CobblemonAlphasMod.MOD_ID,"alpha_spawner"), new AlphaSpawnBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F).sound(SoundType.METAL).noOcclusion()));
-    }
+
 }

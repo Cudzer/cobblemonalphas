@@ -3,7 +3,6 @@ package dev.cudzer.cobblemonalphas;
 import com.mojang.brigadier.CommandDispatcher;
 import dev.architectury.registry.ReloadListenerRegistry;
 import dev.cudzer.cobblemonalphas.block.ModBlocks;
-import dev.cudzer.cobblemonalphas.blockEntity.ModBlockEntityType;
 import dev.cudzer.cobblemonalphas.command.SpawnAlphaCommand;
 import dev.cudzer.cobblemonalphas.config.ModConfig;
 import dev.cudzer.cobblemonalphas.data.AlphaJsonDataManager;
@@ -28,10 +27,14 @@ public final class CobblemonAlphasMod {
         ModConfig.init(platform.getConfigDirectory());
         ReloadListenerRegistry.register(PackType.SERVER_DATA, new AlphaJsonDataManager(), cobblemonAlphasResource("alphas"));
 
-        ModBlocks.init();
-        ModBlockEntityType.init();
-
+        registerBlocks();
         ModEvents.registerEvents();
+    }
+
+    public static void registerBlocks(){
+        ModBlocks.BLOCKS.register();
+        ModBlocks.ITEMS.register();
+        ModBlocks.BLOCK_ENTITIES.register();
     }
 
     public static void registerCommands(CommandDispatcher<CommandSourceStack> dispatcher){

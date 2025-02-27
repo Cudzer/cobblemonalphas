@@ -10,7 +10,6 @@ import com.cobblemon.mod.common.api.pokemon.PokemonSpecies;
 import com.cobblemon.mod.common.api.pokemon.stats.Stat;
 import com.cobblemon.mod.common.api.pokemon.stats.Stats;
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
-import com.cobblemon.mod.common.pokemon.FormData;
 import com.cobblemon.mod.common.pokemon.IVs;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.cobblemon.mod.common.pokemon.Species;
@@ -21,11 +20,9 @@ import dev.cudzer.cobblemonalphas.entity.Alpha;
 import dev.cudzer.cobblemonalphas.entity.HerdMember;
 import dev.cudzer.cobblemonalphas.entity.spawner.spawnData.location.ISpawnLocation;
 import dev.cudzer.cobblemonalphas.entity.spawner.spawnData.location.RandomSpawnAroundPlayer;
-import dev.cudzer.cobblemonalphas.entity.spawner.spawnData.location.RandomSurfaceSpawn;
 import dev.cudzer.cobblemonalphas.entity.spawner.spawnData.safety.BlockBlacklist;
 import dev.cudzer.cobblemonalphas.entity.spawner.spawnData.safety.HeightBounds;
 import dev.cudzer.cobblemonalphas.entity.spawner.spawnData.safety.ISpawnCondition;
-import dev.cudzer.cobblemonalphas.entity.spawner.spawnData.safety.SkyVisible;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.network.chat.Component;
@@ -76,7 +73,7 @@ public class AlphaSpawner {
         if(spawnCountdown > 0) spawnCountdown--;
         else {
             attemptSpawn();
-                spawnCountdown = ModConfig.ticksBetweenSpawns;
+            spawnCountdown = ModConfig.ticksBetweenSpawns;
         }
     }
 
@@ -147,12 +144,15 @@ public class AlphaSpawner {
     }
 
     public void spawnAlphaEntity(Alpha alpha, Level level, Vec3i spawnPosition, boolean doHerdSpawning){
-        PokemonEntity alphaEntity = generateAlpha(alpha, level, spawnPosition);
+        if(!level.isClientSide()){
+            PokemonEntity alphaEntity = generateAlpha(alpha, level, spawnPosition);
 
-        level.addFreshEntity(alphaEntity);
+            level.getChunkAt(new BlockPos(spawnPosition));
+            level.addFreshEntity(alphaEntity);
 
-        if(doHerdSpawning){
-            spawnHerdPokemon(alphaEntity, alpha.getHerdMembers(), level, spawnPosition);
+            if(doHerdSpawning){
+                spawnHerdPokemon(alphaEntity, alpha.getHerdMembers(), level, spawnPosition);
+            }
         }
     }
 
