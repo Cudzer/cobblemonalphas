@@ -117,12 +117,18 @@ public class AlphaSpawner {
 
                 if(chosenPlayerSpawnLevel.canSeeSky(finalSpawnPos)){
                     if(biomeKey.isPresent()){
-                        chosenAlpha = AlphaJsonDataManager.getRandomAlphaForBiome(chosenPlayer.level(), biomeKey.get(), false).values().stream().toList().getFirst();
+                        var tempAlpha = AlphaJsonDataManager.getRandomAlphaForBiome(chosenPlayer.level(), biomeKey.get(), false).values().stream().toList().getFirst();
+                        if(tempAlpha != null){
+                            chosenAlpha = tempAlpha;
+                        }
                     }
                 }
                 else {
                     if(biomeKey.isPresent()){
-                        chosenAlpha = AlphaJsonDataManager.getRandomAlphaForBiome(chosenPlayer.level(), biomeKey.get(), true).values().stream().toList().getFirst();
+                        var tempAlpha = AlphaJsonDataManager.getRandomAlphaForBiome(chosenPlayer.level(), biomeKey.get(), true).values().stream().toList().getFirst();
+                        if(tempAlpha != null){
+                            chosenAlpha = tempAlpha;
+                        }
                     }
                 }
                 spawnPos = spawnLocation;

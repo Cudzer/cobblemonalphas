@@ -47,6 +47,10 @@ public class AlphaJsonDataManager extends SimpleJsonResourceReloadListener {
             Alpha alpha = alphaMap.getOrDefault(rl, null);
             if(alpha == null){
                 alphaMap = getRandomAlpha(level);
+                if(alphaMap == null){
+                    CobblemonAlphasMod.LOGGER.error("Something went wrong when trying to choose an alpha to spawn!");
+                    return Map.of();
+                }
                 rl = alphaMap.keySet().stream().toList().getFirst();
                 alpha = alphaMap.values().stream().toList().getFirst();
             }
@@ -88,6 +92,9 @@ public class AlphaJsonDataManager extends SimpleJsonResourceReloadListener {
     public static Map<ResourceLocation, Alpha> getRandomAlpha(Level level){
         Map<ResourceLocation, Alpha> map = new HashMap<>();
         ResourceLocation rl = getRandomResourceLocation(level);
+        if(rl == null){
+            return null;
+        }
         Alpha alpha = data.get(rl);
         map.put(rl, alpha);
         return map;
@@ -125,7 +132,10 @@ public class AlphaJsonDataManager extends SimpleJsonResourceReloadListener {
     }
 
     private static ResourceLocation getRandomResourceLocation(Level level) {
-        return resourceLocationList.get(level.random.nextInt(resourceLocationList.size()));
+        if(!resourceLocationList.isEmpty()){
+            return resourceLocationList.get(level.random.nextInt(resourceLocationList.size()));
+        }
+        return null;
     }
 
     private static ResourceLocation getRandomUndergroundResourceLocation(Level level){

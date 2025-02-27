@@ -31,8 +31,11 @@ public class AlphaSpawnBlockEntity extends BlockEntity {
             opt.ifPresent(player -> {
                 level.setBlockAndUpdate(blockPos, Blocks.AIR.defaultBlockState());
 
-                Alpha alpha = AlphaJsonDataManager.getRandomAlphaForBiome(level, level.getBiome(blockPos).unwrapKey().get(), false).values().stream().toList().getFirst();
-
+                var alphaMap = AlphaJsonDataManager.getRandomAlphaForBiome(level, level.getBiome(blockPos).unwrapKey().get(), false);
+                if(alphaMap == null || alphaMap.isEmpty()){
+                    return;
+                }
+                Alpha alpha = alphaMap.values().stream().toList().getFirst();
                 AlphaSpawner.getInstance().spawnAlphaEntity(alpha, level, blockPos, ModConfig.doHerdSpawning);
             });
         }
