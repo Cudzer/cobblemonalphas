@@ -22,7 +22,7 @@ public class Alpha {
             ).apply(inst, Alpha::new));
 
     protected final String species;
-    //protected final int level;
+    protected int level = 1;
     protected final String levelRange;
     protected final boolean spawnUnderground;
     protected final List<HerdMember> herdMembers;
@@ -32,8 +32,8 @@ public class Alpha {
 
     private ResourceLocation jsonLocation;
 
-    private final int minLevel;
-    private final int maxLevel;
+    private int minLevel = 1;
+    private int maxLevel = 1;
 
     public Alpha(String species, String levelRange, boolean spawnUnderground, List<HerdMember> herdMembers, List<ExtraCodecs.TagOrElementLocation> spawnBiome){
         this.species = species;
@@ -41,14 +41,17 @@ public class Alpha {
         this.spawnUnderground = spawnUnderground;
 
         String[] levels = levelRange.split("-");
-        if(levels.length != 2){
+        if(levels.length == 1){
+            this.level = Integer.parseInt(levels[0]);
+        }
+        else if(levels.length == 2){
+            this.minLevel = Integer.parseInt(levels[0]);
+            this.maxLevel = Integer.parseInt(levels[1]);
+        }
+        else {
             CobblemonAlphasMod.LOGGER.warn(String.format("Incorrect values defined for levels in alpha %s file. Assigning default values", species));
             this.minLevel = 40;
             this.maxLevel = 50;
-        }
-        else {
-            this.minLevel = Integer.parseInt(levels[0]);
-            this.maxLevel = Integer.parseInt(levels[1]);
         }
 
         this.herdMembers = herdMembers;
@@ -105,6 +108,9 @@ public class Alpha {
     }
 
     public int getLevelFromRange(){
+        if(level != 1){
+            return level;
+        }
         return new Random().nextInt(this.minLevel, this.maxLevel);
     }
 }
