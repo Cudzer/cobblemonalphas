@@ -1,17 +1,8 @@
 package dev.cudzer.cobblemonalphas.entity.spawner;
 
 import com.cobblemon.mod.common.CobblemonEntities;
-import com.cobblemon.mod.common.NetworkManager;
-import com.cobblemon.mod.common.api.Priority;
-import com.cobblemon.mod.common.api.abilities.Ability;
-import com.cobblemon.mod.common.api.abilities.AbilityPool;
-import com.cobblemon.mod.common.api.abilities.AbilityTemplate;
-import com.cobblemon.mod.common.api.abilities.PotentialAbility;
 import com.cobblemon.mod.common.api.pokemon.PokemonSpecies;
-import com.cobblemon.mod.common.api.pokemon.stats.Stat;
-import com.cobblemon.mod.common.api.pokemon.stats.Stats;
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
-import com.cobblemon.mod.common.pokemon.IVs;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.cobblemon.mod.common.pokemon.Species;
 import dev.cudzer.cobblemonalphas.CobblemonAlphasMod;
@@ -28,6 +19,7 @@ import dev.cudzer.cobblemonalphas.entity.spawner.spawnData.safety.ISpawnConditio
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.Level;
@@ -85,7 +77,7 @@ public class AlphaSpawner {
         if(players.size() < ModConfig.requiredPlayerAmount) return;
 
         if(RNG.nextDouble() > (ModConfig.alphaSpawnChance + (0.02f * (server.getPlayerCount() - ModConfig.requiredPlayerAmount)))) return;
-        Alpha chosenAlpha = AlphaJsonDataManager.getRandomAlphaObj(server.overworld());
+        Alpha chosenAlpha;
 
         int attemptedSpawns = 0;
         Level spawnLevel;
@@ -98,13 +90,12 @@ public class AlphaSpawner {
                 return;
             }
 
-            //TODO: Change so any dimension can be used
             Optional<ServerPlayer> chosenPlayerOpt = players.stream()
-                    .filter(player -> player.level().dimension() == Level.OVERWORLD)
                     .skip((int) (players.size() * RNG.nextDouble()))
                     .findFirst();
             if(chosenPlayerOpt.isPresent()){
                 chosenPlayer = chosenPlayerOpt.get();
+                spawnLevel = chosenPlayer.level();
 
                 final Level chosenPlayerSpawnLevel = chosenPlayer.level();
                 final Vec3i spawnLocation = spawnLocationSelector.getSpawnLocation(chosenPlayer.level(), chosenPlayer.position());
@@ -115,25 +106,19 @@ public class AlphaSpawner {
                 if(spawnConditions.stream().anyMatch(condition -> !condition.isSafe(chosenPlayerSpawnLevel, finalSpawnPos))) continue;
 
                 var biomeKey = chosenPlayerSpawnLevel.getBiome(finalSpawnPos).unwrapKey();
+                if (biomeKey.isEmpty())
+                    continue;
 
-                if(chosenPlayerSpawnLevel.canSeeSky(finalSpawnPos)){
-                    if(biomeKey.isPresent()){
-                        var tempAlpha = AlphaJsonDataManager.getRandomAlphaForBiome(chosenPlayer.level(), biomeKey.get(), false).values().stream().toList().getFirst();
-                        if(tempAlpha != null){
-                            chosenAlpha = tempAlpha;
-                        }
-                    }
-                }
-                else {
-                    if(biomeKey.isPresent()){
-                        var tempAlpha = AlphaJsonDataManager.getRandomAlphaForBiome(chosenPlayer.level(), biomeKey.get(), true).values().stream().toList().getFirst();
-                        if(tempAlpha != null){
-                            chosenAlpha = tempAlpha;
-                        }
-                    }
-                }
+                boolean underground = !spawnLevel.canSeeSky(finalSpawnPos);
+
+                Map<ResourceLocation, Alpha> alphaMap =
+                        AlphaJsonDataManager.getRandomAlphaForBiome(spawnLevel, biomeKey.get(), underground);
+
+                if (alphaMap == null || alphaMap.isEmpty())
+                    continue;
+
+                chosenAlpha = alphaMap.values().iterator().next();
                 spawnPos = spawnLocation;
-                spawnLevel = chosenPlayerSpawnLevel;
                 break;
             }
         }
