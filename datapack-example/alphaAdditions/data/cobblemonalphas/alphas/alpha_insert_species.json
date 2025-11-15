@@ -1,0 +1,19 @@
+ {
+      "species": "<insert species here>",
+      "level": "50-60",
+      "spawnUnderground" : false,
+      "herdMembers": [
+        {
+          "species": "<insert species here>",
+          "level": "15-20"
+        },
+        {
+          "species": "<insert species here>",
+          "level": "25"
+        }
+      ],
+      "biome": [
+        "minecraft:plains",
+        "minecraft:meadow"
+      ]
+    }

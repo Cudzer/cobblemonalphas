@@ -10,9 +10,7 @@ import com.cobblemon.mod.common.pokemon.Pokemon;
 import dev.cudzer.cobblemonalphas.particles.AlphaParticleEffect;
 import kotlin.Unit;
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
 
 public class ModEvents {
