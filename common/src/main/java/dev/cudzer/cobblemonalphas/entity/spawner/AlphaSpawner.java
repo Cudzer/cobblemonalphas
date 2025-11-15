@@ -1,6 +1,7 @@
 package dev.cudzer.cobblemonalphas.entity.spawner;
 
 import com.cobblemon.mod.common.CobblemonEntities;
+import com.cobblemon.mod.common.NetworkManager;
 import com.cobblemon.mod.common.api.Priority;
 import com.cobblemon.mod.common.api.abilities.Ability;
 import com.cobblemon.mod.common.api.abilities.AbilityPool;
@@ -17,6 +18,7 @@ import dev.cudzer.cobblemonalphas.CobblemonAlphasMod;
 import dev.cudzer.cobblemonalphas.config.ModConfig;
 import dev.cudzer.cobblemonalphas.data.AlphaJsonDataManager;
 import dev.cudzer.cobblemonalphas.entity.Alpha;
+import dev.cudzer.cobblemonalphas.entity.AlphaGenerator;
 import dev.cudzer.cobblemonalphas.entity.HerdMember;
 import dev.cudzer.cobblemonalphas.entity.spawner.spawnData.location.ISpawnLocation;
 import dev.cudzer.cobblemonalphas.entity.spawner.spawnData.location.RandomSpawnAroundPlayer;
@@ -36,6 +38,7 @@ import java.util.*;
 public class AlphaSpawner {
     private static final AlphaSpawner instance = new AlphaSpawner();
     public static AlphaSpawner getInstance() {return instance;}
+    private static final Random RNG = new Random();
 
     private int spawnCountdown;
     private ISpawnLocation spawnLocationSelector;
@@ -81,9 +84,7 @@ public class AlphaSpawner {
         List<ServerPlayer> players = server.getPlayerList().getPlayers();
         if(players.size() < ModConfig.requiredPlayerAmount) return;
 
-        if(Math.random() > (ModConfig.alphaSpawnChance + (0.02f * (server.getPlayerCount() - ModConfig.requiredPlayerAmount)))) return;
-
-        //default value for the alpha
+        if(RNG.nextDouble() > (ModConfig.alphaSpawnChance + (0.02f * (server.getPlayerCount() - ModConfig.requiredPlayerAmount)))) return;
         Alpha chosenAlpha = AlphaJsonDataManager.getRandomAlphaObj(server.overworld());
 
         int attemptedSpawns = 0;
@@ -100,7 +101,7 @@ public class AlphaSpawner {
             //TODO: Change so any dimension can be used
             Optional<ServerPlayer> chosenPlayerOpt = players.stream()
                     .filter(player -> player.level().dimension() == Level.OVERWORLD)
-                    .skip((int) (players.size() * Math.random()))
+                    .skip((int) (players.size() * RNG.nextDouble()))
                     .findFirst();
             if(chosenPlayerOpt.isPresent()){
                 chosenPlayer = chosenPlayerOpt.get();
@@ -151,41 +152,20 @@ public class AlphaSpawner {
 
     public void spawnAlphaEntity(Alpha alpha, Level level, Vec3i spawnPosition, boolean doHerdSpawning){
         if(!level.isClientSide()){
-            PokemonEntity alphaEntity = generateAlpha(alpha, level, spawnPosition);
+            PokemonEntity alphaEntity = AlphaGenerator.generate(alpha, level, spawnPosition);
 
-            level.getChunkAt(new BlockPos(spawnPosition));
-            level.addFreshEntity(alphaEntity);
+            if(alphaEntity != null){
+                level.getChunkAt(new BlockPos(spawnPosition));
+                level.addFreshEntity(alphaEntity);
 
-            if(doHerdSpawning){
-                spawnHerdPokemon(alphaEntity, alpha.getHerdMembers(), level, spawnPosition);
+                if(doHerdSpawning){
+                    spawnHerdPokemon(alphaEntity, alpha.getHerdMembers(), level, spawnPosition);
+                }
+            }
+            else{
+                CobblemonAlphasMod.LOGGER.error("An alpha spawn was attempted but the entity creation failed...");
             }
         }
-    }
-
-    private PokemonEntity generateAlpha(Alpha chosenAlpha, Level spawnLevel, Vec3i spawnPos){
-        Pokemon pokemon = new Pokemon();
-        pokemon.setSpecies(Objects.requireNonNull(PokemonSpecies.INSTANCE.getByName(chosenAlpha.getSpecies())));
-        pokemon.setLevel(chosenAlpha.getLevelFromRange());
-        pokemon.initializeMoveset(true);
-        pokemon.setScaleModifier((float)ModConfig.alphaSizeMultiplier);
-
-        pokemon.getPersistentData().putBoolean("IS_ALPHA", true);
-        pokemon.getAspects().add("alpha");
-
-        IVs ivs = pokemon.getIvs();
-        pokemon.setIvs$common(maximizeRandomIVs(ivs));
-
-        pokemon.setAbility$common(doHiddenAbilityCheck(pokemon));
-
-        if(Math.random() < (1d / ModConfig.shinyOdds)) pokemon.setShiny(true);
-
-        PokemonEntity alphaEntity = new PokemonEntity(spawnLevel, pokemon, CobblemonEntities.POKEMON);
-        alphaEntity.setDespawner(AlphaDespawner.getInstance());
-
-        alphaEntity.setPos(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ());
-        spawnLevel.getChunkAt(new BlockPos(spawnPos));
-        return alphaEntity;
-
     }
 
     private void spawnHerdPokemon(PokemonEntity alphaEntity, List<HerdMember> herdMembers, Level spawnLevel, Vec3i spawnPos){
@@ -196,8 +176,7 @@ public class AlphaSpawner {
         }
 
         for (int i = 1; i <= HERD_SIZE; i++) {
-            int random = new Random().nextInt(herdMembers.size());
-            HerdMember herdMember = herdMembers.get(random);
+            HerdMember herdMember = herdMembers.get(RNG.nextInt(herdMembers.size()));
             Pokemon herdMemberPokemon = new Pokemon();
             Species herdMemberSpecies = PokemonSpecies.INSTANCE.getByName(herdMember.getSpecies());
             if(herdMemberSpecies == null){
@@ -211,7 +190,7 @@ public class AlphaSpawner {
 
             herdMemberPokemon.getPersistentData().putUUID("ALPHA_ID", alphaEntity.getUUID());
 
-            if(Math.random() < (1d / ModConfig.shinyOdds)) herdMemberPokemon.setShiny(true);
+            if(RNG.nextDouble() < (1d / ModConfig.shinyOdds)) herdMemberPokemon.setShiny(true);
 
             PokemonEntity herdEntity = new PokemonEntity(spawnLevel, herdMemberPokemon, CobblemonEntities.POKEMON);
             herdEntity.setDespawner(AlphaDespawner.getInstance());
@@ -220,40 +199,5 @@ public class AlphaSpawner {
             spawnLevel.getChunkAt(new BlockPos(spawnPos));
             spawnLevel.addFreshEntity(herdEntity);
         }
-    }
-
-    private Ability doHiddenAbilityCheck(Pokemon pokemon){
-        AbilityPool abilities = pokemon.getSpecies().getAbilities();
-
-        List<AbilityTemplate> hiddenAbilities = new ArrayList<>();
-        for(PotentialAbility potentialAbility : abilities) {
-            if(potentialAbility.getPriority() == Priority.LOW) {
-                hiddenAbilities.add(potentialAbility.getTemplate());
-            }
-        }
-        if(!hiddenAbilities.isEmpty()){
-            if(Math.random() >= 0.6){
-                int selection = new Random().nextInt(hiddenAbilities.size());
-                return new Ability(hiddenAbilities.get(selection), false, Priority.NORMAL);
-            }
-        }
-        return pokemon.getAbility();
-    }
-
-    private static final String[] statNames = new String[]{
-            "HP","ATTACK","DEFENCE","SPECIAL_ATTACK","SPECIAL_DEFENCE","SPEED"
-    };
-
-    public static IVs maximizeRandomIVs(IVs ivs){
-        List<String> chosenStats = new ArrayList<>(List.of(statNames));
-        for (int i = 1; i <= ModConfig.maximumBestIVs; i++){
-            int ivIndex = new Random().nextInt(chosenStats.size());
-            String statName = chosenStats.get(ivIndex);
-            Stat stat = Stats.valueOf(statName);
-
-            ivs.set(stat, 31);
-            chosenStats.remove(statName);
-        }
-        return ivs;
     }
 }

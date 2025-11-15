@@ -100,6 +100,10 @@ public class AlphaJsonDataManager extends SimpleJsonResourceReloadListener {
         return map;
     }
 
+    public static Alpha getAlphaById(ResourceLocation id){
+        return data.get(id);
+    }
+
     public static Map<ResourceLocation, Alpha> getRandomUndergroundAlpha(Level level){
         Map<ResourceLocation, Alpha> map = new HashMap<>();
         ResourceLocation rl = getRandomUndergroundResourceLocation(level);

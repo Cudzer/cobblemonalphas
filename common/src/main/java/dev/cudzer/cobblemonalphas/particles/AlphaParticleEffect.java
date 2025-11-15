@@ -1,5 +1,6 @@
 package dev.cudzer.cobblemonalphas.particles;
 
+import com.cobblemon.mod.common.client.render.pokemon.PokemonRenderer;
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.cobblemon.mod.common.net.messages.client.effect.SpawnSnowstormEntityParticlePacket;
 import dev.cudzer.cobblemonalphas.CobblemonAlphasMod;
@@ -11,10 +12,15 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Level;
 
 import java.util.*;
+import java.util.List;
 
 public class AlphaParticleEffect {
     private static final ResourceLocation ALPHA_PARTICLE = ResourceLocation.fromNamespaceAndPath("cobblemon", "alpha_burst");
+    private static final ResourceLocation ALPHA_AURA = ResourceLocation.fromNamespaceAndPath("cobblemon", "alpha_aura");
+    private static final ResourceLocation WILD_MIGHT = ResourceLocation.fromNamespaceAndPath("cobblemon", "wild_might");
+
     private static final ResourceLocation ALPHA_NEARBY_SOUND = ResourceLocation.fromNamespaceAndPath(CobblemonAlphasMod.MOD_ID, "alpha_spawn");
+    private static final ResourceLocation ALPHA_MIGHT_SOUND = ResourceLocation.fromNamespaceAndPath(CobblemonAlphasMod.MOD_ID, "wild_might");
 
     private static final Map<UUID, Long> alphaAmbientTimer = new HashMap<>();
     private static final double particleDistance = 26.0;
@@ -26,6 +32,14 @@ public class AlphaParticleEffect {
             level.getAllEntities().forEach( entity -> {
                 if(!(entity instanceof PokemonEntity pokemonEntity) || !pokemonEntity.getPokemon().getPersistentData().getBoolean("IS_ALPHA")){
                     return;
+                }
+                //pokemonEntity.getPokemon().updateAspects();
+                if(pokemonEntity.isBattling()){
+                    if (pokemonEntity.getPokemon().getPersistentData().getBoolean("SUPER_ALPHA")) {
+                        AlphaParticleEffect.superAura(pokemonEntity);
+                    } else {
+                        AlphaParticleEffect.aura(pokemonEntity);
+                    }
                 }
 
                 boolean inRange = players.stream().anyMatch( player -> {
@@ -46,6 +60,27 @@ public class AlphaParticleEffect {
                 }
             });
         });
+    }
+
+    public static void wildMight(PokemonEntity entity) {
+        List<String> locator = List.of( "root");
+        SpawnSnowstormEntityParticlePacket packet = new SpawnSnowstormEntityParticlePacket(WILD_MIGHT, entity.getId(), locator, entity.getId(), List.of());
+        packet.sendToPlayersAround(entity.getX(), entity.getY(), entity.getZ(), 64, Level.OVERWORLD, (player) ->  false);
+
+        SoundEvent sound = SoundEvent.createFixedRangeEvent(ALPHA_MIGHT_SOUND, 64.0f);
+        entity.level().playSound(entity, entity.blockPosition(), sound, SoundSource.NEUTRAL, 2.0f, 1.0f);
+    }
+
+    public static void aura(PokemonEntity entity) {
+        List<String> locator = List.of( "root");
+        SpawnSnowstormEntityParticlePacket packet = new SpawnSnowstormEntityParticlePacket(ALPHA_AURA, entity.getId(), locator, entity.getId(), List.of());
+        packet.sendToPlayersAround(entity.getX(), entity.getY(), entity.getZ(), 64, Level.OVERWORLD, (player) ->  false);
+    }
+
+    public static void superAura(PokemonEntity entity) {
+        List<String> locator = List.of( "root");
+        SpawnSnowstormEntityParticlePacket packet = new SpawnSnowstormEntityParticlePacket(ALPHA_AURA, entity.getId(), locator, entity.getId(), List.of());
+        packet.sendToPlayersAround(entity.getX(), entity.getY(), entity.getZ(), 64, Level.OVERWORLD, (player) ->  false);
     }
 
 

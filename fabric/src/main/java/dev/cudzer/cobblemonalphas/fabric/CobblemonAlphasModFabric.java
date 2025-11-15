@@ -1,6 +1,5 @@
 package dev.cudzer.cobblemonalphas.fabric;
 
-import com.cobblemon.mod.common.NetworkManager;
 import dev.cudzer.cobblemonalphas.CobblemonAlphasMod;
 import dev.cudzer.cobblemonalphas.IPlatform;
 import dev.cudzer.cobblemonalphas.entity.spawner.AlphaSpawner;

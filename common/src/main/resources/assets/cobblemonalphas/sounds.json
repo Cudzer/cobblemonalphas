@@ -4,5 +4,11 @@
     "sounds": [
       "cobblemonalphas:custom/alpha_spawn"
     ]
+  },
+  "wild_might": {
+    "subtitle": "subtitles.cobblemonalphas.wild_might",
+    "sounds": [
+      "cobblemonalphas:custom/wild_might"
+    ]
   }
 }

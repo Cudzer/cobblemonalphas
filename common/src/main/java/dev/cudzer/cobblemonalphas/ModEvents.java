@@ -6,9 +6,14 @@ import com.cobblemon.mod.common.api.events.CobblemonEvents;
 import com.cobblemon.mod.common.api.events.battles.BattleStartedPostEvent;
 import com.cobblemon.mod.common.api.pokemon.stats.Stats;
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon;
+import com.cobblemon.mod.common.pokemon.Pokemon;
+import dev.cudzer.cobblemonalphas.particles.AlphaParticleEffect;
 import kotlin.Unit;
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.server.level.ServerPlayer;
 
 public class ModEvents {
 
@@ -17,25 +22,49 @@ public class ModEvents {
     }
 
     private static Unit onBattleStarted(BattleStartedPostEvent event){
-        event.getBattle().getActors().forEach(battleActor -> {
-            if(battleActor.getType() == ActorType.WILD){
-                BattlePokemon battlePokemon = battleActor.getPokemonList().getFirst();
-                if(battlePokemon.getOriginalPokemon().getPersistentData().getBoolean("IS_ALPHA")){
+        var battle = event.getBattle();
+        boolean wildIsAlpha = false;
+        BattlePokemon alphaWild = null;
 
-                    battlePokemon.getStatChanges().put(Stats.ATTACK, 2);
-                    battlePokemon.getStatChanges().put(Stats.DEFENCE, 2);
-                    battlePokemon.getStatChanges().put(Stats.HP, 2);
-                    battlePokemon.getStatChanges().put(Stats.SPECIAL_ATTACK, 2);
-                    battlePokemon.getStatChanges().put(Stats.SPECIAL_DEFENCE, 2);
-                    battlePokemon.getStatChanges().put(Stats.SPEED, 2);
-                }
+        for (var actor : battle.getActors()) {
+
+            if (actor.getType() != ActorType.WILD) continue;
+            if (actor.getPokemonList().isEmpty()) continue;
+
+            BattlePokemon wild = actor.getPokemonList().getFirst();
+            Pokemon original = wild.getOriginalPokemon();
+
+            if (original != null && original.getPersistentData().getBoolean("IS_ALPHA")) {
+                wildIsAlpha = true;
+                alphaWild = wild;
+                break;
             }
-            else if(battleActor.getType() == ActorType.PLAYER){
-                //This doesn't seem to work right now. Work on an alternative
-                MutableComponent component = Component.literal("The alpha is filled with Wild Might");
-                battleActor.sendMessage(component);
-            }
-        });
+        }
+
+        if (!wildIsAlpha || alphaWild == null) return Unit.INSTANCE;
+        Pokemon alphaMon = alphaWild.getOriginalPokemon();
+
+        alphaWild.getStatChanges().put(Stats.ATTACK, 2);
+        alphaWild.getStatChanges().put(Stats.DEFENCE, 2);
+        alphaWild.getStatChanges().put(Stats.HP, 2);
+        alphaWild.getStatChanges().put(Stats.SPECIAL_ATTACK, 2);
+        alphaWild.getStatChanges().put(Stats.SPECIAL_DEFENCE, 2);
+        alphaWild.getStatChanges().put(Stats.SPEED, 2);
+        CobblemonAlphasMod.LOGGER.info("Alpha {} detected — applying Wild Might boosts.", alphaMon.getSpecies().getName());
+
+        var entity = alphaMon.getEntity();
+        if (entity != null) {
+            //AlphaParticleEffect.simpleBurst(entity);
+            AlphaParticleEffect.wildMight(entity);
+        }
+
+        Component msg = Component.literal("The Alpha is filled with Wild Might!")
+                .withStyle(ChatFormatting.RED, ChatFormatting.BOLD);
+
+        for (ServerPlayer player : battle.getPlayers()) {
+            player.displayClientMessage(msg, true);
+        }
+
         return Unit.INSTANCE;
     }
 }

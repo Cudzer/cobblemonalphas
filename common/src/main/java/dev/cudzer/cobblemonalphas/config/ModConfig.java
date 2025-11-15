@@ -76,7 +76,7 @@ public class ModConfig {
         defaultConfig.keySet().stream()
                 .filter(k -> !finalConfig.has(k))
                 .forEach( k -> {
-                    CobblemonAlphasMod.LOGGER.info(String.format("Adding new field '%s' to the config", k));
+                    CobblemonAlphasMod.LOGGER.info("Adding new field '{}' to the config", k);
                     finalConfig.add(k, defaultConfig.get(k));
                 });
         try{

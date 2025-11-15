@@ -10,8 +10,6 @@ import org.joml.Matrix4f;
 
 public class PokemonUtils {
     public static final ResourceLocation ALPHA_ICON = ResourceLocation.fromNamespaceAndPath(CobblemonAlphasMod.MOD_ID, "textures/billboard/alpha_icon.png");
-
-
     public static void buildAlphaIcon(
         PoseStack poseStack,
         float x,
