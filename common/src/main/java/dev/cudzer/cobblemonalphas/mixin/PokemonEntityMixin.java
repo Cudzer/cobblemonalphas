@@ -1,6 +1,8 @@
 package dev.cudzer.cobblemonalphas.mixin;
 
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
+import dev.cudzer.cobblemonalphas.entity.goals.HerdMemberFleeGoal;
+import dev.cudzer.cobblemonalphas.entity.goals.HerdMemberRegroupGoal;
 import dev.cudzer.cobblemonalphas.entity.goals.PokemonFollowAlphaGoal;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.ShoulderRidingEntity;
@@ -20,7 +22,7 @@ public abstract class PokemonEntityMixin extends ShoulderRidingEntity {
     @Inject(method = "registerGoals", at= @At("TAIL"))
     public void registerGoalsCA(CallbackInfo callbackInfo){
         this.goalSelector.addGoal(3, new PokemonFollowAlphaGoal((PokemonEntity)(Object)this));
-        //TODO: refine this
-        //this.goalSelector.addGoal(1, new HerdMemberFleeGoal((PokemonEntity)(Object)this, 2.0));
+        this.goalSelector.addGoal(2, new HerdMemberRegroupGoal((PokemonEntity)(Object)this));
+        this.goalSelector.addGoal(1, new HerdMemberFleeGoal((PokemonEntity)(Object)this, 2.0));
     }
 }

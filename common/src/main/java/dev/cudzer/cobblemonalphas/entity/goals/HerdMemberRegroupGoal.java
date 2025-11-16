@@ -3,20 +3,17 @@ package dev.cudzer.cobblemonalphas.entity.goals;
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import dev.cudzer.cobblemonalphas.util.HerdUtils;
 import net.minecraft.world.entity.ai.goal.Goal;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
-import java.util.Iterator;
-import java.util.List;
 
-public class PokemonFollowAlphaGoal extends Goal {
+public class HerdMemberRegroupGoal extends Goal {
     private final PokemonEntity herdEntity;
     private PokemonEntity alphaEntity;
 
-    private int recalcTimer = 0;
+    private int pathCooldown = 0;
 
-    public PokemonFollowAlphaGoal(PokemonEntity herd) {
-        this.herdEntity = herd;
+    public HerdMemberRegroupGoal(PokemonEntity herdMember) {
+        this.herdEntity = herdMember;
         this.setFlags(EnumSet.of(Flag.MOVE));
     }
 
@@ -27,22 +24,35 @@ public class PokemonFollowAlphaGoal extends Goal {
 
         if (alphaEntity.isBattling()) return false;
 
-        double dist = herdEntity.distanceToSqr(alphaEntity);
-        return dist > 9 && dist < 256;
+        double distSq = herdEntity.distanceToSqr(alphaEntity);
+        if (distSq < 20) return false;
+
+        return true;
     }
 
     @Override
     public boolean canContinueToUse() {
-        if (alphaEntity == null || !alphaEntity.isAlive()) return false;
+        if (alphaEntity == null) return false;
+        if (!alphaEntity.isAlive()) return false;
+
         if (alphaEntity.isBattling()) return false;
 
-        double dist = herdEntity.distanceToSqr(alphaEntity);
-        return dist > 9 && dist < 256;
+        double distSq = herdEntity.distanceToSqr(alphaEntity);
+        return distSq > 16;
     }
 
     @Override
     public void start() {
-        recalcTimer = 0;
+        pathCooldown = 0;
+    }
+
+    @Override
+    public void tick() {
+        if (--pathCooldown <= 0) {
+            pathCooldown = 10;
+
+            herdEntity.getNavigation().moveTo(alphaEntity, 1.2);
+        }
     }
 
     @Override
@@ -50,11 +60,4 @@ public class PokemonFollowAlphaGoal extends Goal {
         alphaEntity = null;
     }
 
-    @Override
-    public void tick() {
-        if (--recalcTimer <= 0) {
-            recalcTimer = 10;
-            herdEntity.getNavigation().moveTo(alphaEntity, 1.1);
-        }
-    }
 }
