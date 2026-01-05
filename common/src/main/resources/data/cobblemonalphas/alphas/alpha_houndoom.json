@@ -1,0 +1,16 @@
+{
+  "species": "houndoom",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "houndour",
+      "level": "15-20"
+    }
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:dark_forest",
+    "minecraft:nether_wastes"
+  ]
+}

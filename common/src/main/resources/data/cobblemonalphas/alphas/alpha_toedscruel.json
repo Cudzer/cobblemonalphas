@@ -1,0 +1,16 @@
+{
+  "species": "toedscruel",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "toedscool",
+      "level": "15-20"
+    }
+  ],
+  "biome": [
+    "minecraft:forest",
+    "minecraft:birch_forest",
+    "minecraft:taiga"
+  ]
+}

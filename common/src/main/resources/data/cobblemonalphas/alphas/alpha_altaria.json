@@ -1,0 +1,16 @@
+{
+  "species": "altaria",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "swablu",
+      "level": "15-20"
+    }
+  ],
+  "biome": [
+    "minecraft:flower_forest",
+    "minecraft:forest",
+    "minecraft:old_growth_birth_forest"
+  ]
+}

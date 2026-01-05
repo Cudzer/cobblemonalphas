@@ -1,0 +1,15 @@
+{
+  "species": "rabsca",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "rellor",
+      "level": "15-20"
+    }
+  ],
+  "biome": [
+    "minecraft:savanna",
+    "minecraft:badlands"
+  ]
+}

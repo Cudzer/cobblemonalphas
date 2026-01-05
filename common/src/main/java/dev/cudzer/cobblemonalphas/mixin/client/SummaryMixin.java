@@ -27,7 +27,7 @@ public class SummaryMixin {
         Pokemon pokemon = summary.getSelectedPokemon$common();
         if(pokemon.getPersistentData().getBoolean("IS_ALPHA")){
             //draw icon
-            PokemonUtils.buildAlphaIcon(context.pose(), (x + 25f) / SCALE, (y + 101f) / SCALE, 16, 16, SCALE);
+            PokemonUtils.buildAlphaIcon(context.pose(), (x + 8f) / SCALE, (y + 89f) / SCALE, 16, 16, SCALE);
         }
     }
 }

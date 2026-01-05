@@ -1,7 +1,7 @@
 plugins {
-    id "com.github.johnrengelman.shadow" version "7.1.2"
-    id 'org.jetbrains.kotlin.jvm' version "2.0.0"
-    id 'org.jetbrains.kotlin.plugin.serialization' version '2.0.0'
+    id "com.github.johnrengelman.shadow" version "8.1.1"
+    id 'org.jetbrains.kotlin.jvm' version "2.2.0"
+    id 'org.jetbrains.kotlin.plugin.serialization' version '2.2.0'
 }
 
 architectury {
@@ -18,7 +18,7 @@ configurations {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-reflect:2.0.0"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:2.2.0"
 
     minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
@@ -45,6 +45,13 @@ processResources {
 shadowJar {
     configurations = [project.configurations.shadowCommon]
     archiveClassifier = "dev-shadow"
+
+    exclude("META-INF/")
+    exclude("META-INF/*.SF")
+    exclude("META-INF/*.DSA")
+    exclude("META-INF/*.RSA")
+    exclude("META-INF/INDEX.LIST")
+    exclude("META-INF/DEPENDENCIES")
 }
 
 remapJar {

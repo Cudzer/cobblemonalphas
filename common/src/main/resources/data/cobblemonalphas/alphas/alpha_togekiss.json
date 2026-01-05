@@ -1,0 +1,19 @@
+{
+  "species": "togekiss",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "togepi",
+      "level": "15-20"
+    },
+    {
+      "species": "togetic",
+      "level": "25-30"
+    }
+  ],
+  "biome": [
+    "minecraft:sunflower_plains",
+    "minecraft:flower_forest"
+  ]
+}

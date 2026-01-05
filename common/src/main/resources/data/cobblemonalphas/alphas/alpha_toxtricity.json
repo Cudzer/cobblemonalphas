@@ -1,0 +1,16 @@
+{
+  "species": "toxtricity",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "toxel",
+      "level": "15-20"
+    }
+  ],
+  "biome": [
+    "minecraft:windswept_forest",
+    "minecraft:dark_forest",
+    "minecraft:savanna"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "species": "gogoat",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "skiddo",
+      "level": "15-20"
+    }
+  ],
+  "biome": [
+    "minecraft:flower_forest",
+    "minecraft:sunflower_plains",
+    "minecraft:forest",
+    "minecraft:birch_forest",
+    "minecraft:taiga"
+  ]
+}

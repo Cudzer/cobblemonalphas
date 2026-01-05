@@ -1,0 +1,16 @@
+{
+  "species": "glalie",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "snorunt",
+      "level": "15-20"
+    }
+  ],
+  "biome": [
+    "minecraft:snowy_plains",
+    "minecraft:ice_spikes",
+    "minecraft:snowy_beach"
+  ]
+}

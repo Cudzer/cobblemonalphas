@@ -1,7 +1,7 @@
 plugins {
-    id "com.github.johnrengelman.shadow" version "7.1.2"
-    id 'org.jetbrains.kotlin.jvm' version "2.0.0"
-    id 'org.jetbrains.kotlin.plugin.serialization' version '2.0.0'
+    id "com.github.johnrengelman.shadow" version "8.1.1"
+    id 'org.jetbrains.kotlin.jvm' version "2.2.0"
+    id 'org.jetbrains.kotlin.plugin.serialization' version '2.2.0'
 }
 
 architectury {
@@ -67,6 +67,12 @@ processResources {
 shadowJar {
     configurations = [project.configurations.shadowBundle]
     archiveClassifier = 'dev-shadow'
+
+    exclude("META-INF/*.SF")
+    exclude("META-INF/*.DSA")
+    exclude("META-INF/*.RSA")
+    exclude("META-INF/INDEX.LIST")
+    exclude("META-INF/DEPENDENCIES")
 }
 
 remapJar {

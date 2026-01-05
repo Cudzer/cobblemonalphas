@@ -1,0 +1,19 @@
+{
+  "species": "gothitelle",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "gothita",
+      "level": "15-20"
+    },
+    {
+      "species": "gothorita",
+      "level": "25-30"
+    }
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:dark_forest"
+  ]
+}

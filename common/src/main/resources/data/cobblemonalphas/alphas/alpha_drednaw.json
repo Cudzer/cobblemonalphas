@@ -1,0 +1,16 @@
+{
+  "species": "drednaw",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "chewtle",
+      "level": "15-20"
+    }
+  ],
+  "biome": [
+    "minecraft:river",
+    "minecraft:beach",
+    "minecraft:stony_shore"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "species": "dudunsparce",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "dunsparce",
+      "level": "15-25"
+    }
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:forest",
+    "minecraft:taiga",
+    "minecraft:birch_forest",
+    "minecraft:old_growth_birch_forest"
+  ]
+}

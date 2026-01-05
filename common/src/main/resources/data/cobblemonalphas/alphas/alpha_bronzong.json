@@ -1,0 +1,15 @@
+{
+  "species": "bronzong",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "bronzor",
+      "level": "15-20"
+    }
+  ],
+  "biome": [
+    "minecraft:dark_forest",
+    "minecraft:old_growth_birth_forest"
+  ]
+}

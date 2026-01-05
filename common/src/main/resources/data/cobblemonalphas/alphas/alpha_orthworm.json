@@ -1,0 +1,11 @@
+{
+  "species": "orthworm",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:badlands",
+    "minecraft:eroded_badlands"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "species": "cinccino",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "minccino",
+      "level": "15-20"
+    }
+  ],
+  "biome": [
+    "minecraft:flower_forest",
+    "minecraft:sunflower_plains",
+    "minecraft:plains",
+    "minecraft:meadow"
+  ]
+}

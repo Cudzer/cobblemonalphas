@@ -1,28 +1,36 @@
 package dev.cudzer.cobblemonalphas.mixin;
 
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
-import dev.cudzer.cobblemonalphas.entity.goals.HerdMemberFleeGoal;
-import dev.cudzer.cobblemonalphas.entity.goals.HerdMemberRegroupGoal;
-import dev.cudzer.cobblemonalphas.entity.goals.PokemonFollowAlphaGoal;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.animal.ShoulderRidingEntity;
-import net.minecraft.world.level.Level;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Dynamic;
+import dev.cudzer.cobblemonalphas.entity.behavior.HerdMemberFleeBehavior;
+import dev.cudzer.cobblemonalphas.entity.behavior.HerdMemberRegroupBehavior;
+import dev.cudzer.cobblemonalphas.entity.behavior.PokemonFollowAlphaBehavior;
+import net.minecraft.world.entity.ai.Brain;
+import net.minecraft.world.entity.schedule.Activity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(value = PokemonEntity.class)
-public abstract class PokemonEntityMixin extends ShoulderRidingEntity {
+@Mixin(PokemonEntity.class)
+public abstract class PokemonEntityMixin {
 
-    protected PokemonEntityMixin(EntityType<? extends ShoulderRidingEntity> entityType, Level level) {
-        super(entityType, level);
-    }
+    @Inject(
+            method = "makeBrain",
+            at = @At("RETURN")
+    )
+    private void onBrainCreated(Dynamic<?> dynamic, CallbackInfoReturnable<Brain<?>> cir) {
+        Brain<PokemonEntity> brain = (Brain<PokemonEntity>) cir.getReturnValue();
 
-    @Inject(method = "registerGoals", at= @At("TAIL"))
-    public void registerGoalsCA(CallbackInfo callbackInfo){
-        this.goalSelector.addGoal(3, new PokemonFollowAlphaGoal((PokemonEntity)(Object)this));
-        this.goalSelector.addGoal(2, new HerdMemberRegroupGoal((PokemonEntity)(Object)this));
-        this.goalSelector.addGoal(1, new HerdMemberFleeGoal((PokemonEntity)(Object)this, 2.0));
+        brain.addActivity(
+                Activity.IDLE,
+                0,
+                ImmutableList.of(
+                        new PokemonFollowAlphaBehavior(),
+                        new HerdMemberRegroupBehavior(),
+                        new HerdMemberFleeBehavior(2.0)
+                )
+        );
     }
 }

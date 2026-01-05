@@ -1,0 +1,17 @@
+{
+  "species": "musharna",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "munna",
+      "level": "15-20"
+    }
+  ],
+  "biome": [
+    "minecraft:dark_forest",
+    "minecraft:flower_forest",
+    "minecraft:sunflower_plains",
+    "minecraft:old_growth_birth_forest"
+  ]
+}

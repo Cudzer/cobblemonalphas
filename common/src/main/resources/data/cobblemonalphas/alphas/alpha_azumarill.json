@@ -1,0 +1,20 @@
+{
+  "species": "azumarill",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "azurill",
+      "level": "15-20"
+    },
+    {
+      "species": "marill",
+      "level": "25-30"
+    }
+  ],
+  "biome": [
+    "minecraft:beach",
+    "minecraft:river",
+    "minecraft stony_shore"
+  ]
+}

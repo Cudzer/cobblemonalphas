@@ -1,0 +1,19 @@
+{
+  "species": "purugly",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "glameow",
+      "level": "15-20"
+    }
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:savanna",
+    "minecraft:swamp",
+    "minecraft:flower_forest",
+    "minecraft:sunflower_plains",
+    "minecraft:old_growth_birth_forest"
+  ]
+}

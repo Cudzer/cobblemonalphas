@@ -3,12 +3,11 @@ package dev.cudzer.cobblemonalphas;
 import com.cobblemon.mod.common.api.Priority;
 import com.cobblemon.mod.common.api.battles.model.actor.ActorType;
 import com.cobblemon.mod.common.api.events.CobblemonEvents;
-import com.cobblemon.mod.common.api.events.battles.BattleStartedPostEvent;
+import com.cobblemon.mod.common.api.events.battles.BattleStartedEvent;
 import com.cobblemon.mod.common.api.pokemon.stats.Stats;
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import dev.cudzer.cobblemonalphas.particles.AlphaParticleEffect;
-import kotlin.Unit;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -19,7 +18,7 @@ public class ModEvents {
         CobblemonEvents.BATTLE_STARTED_POST.subscribe(Priority.HIGH, ModEvents::onBattleStarted);
     }
 
-    private static Unit onBattleStarted(BattleStartedPostEvent event){
+    private static void onBattleStarted(BattleStartedEvent.Post event){
         var battle = event.getBattle();
         boolean wildIsAlpha = false;
         BattlePokemon alphaWild = null;
@@ -39,7 +38,7 @@ public class ModEvents {
             }
         }
 
-        if (!wildIsAlpha || alphaWild == null) return Unit.INSTANCE;
+        if (!wildIsAlpha || alphaWild == null) return;
         Pokemon alphaMon = alphaWild.getOriginalPokemon();
 
         alphaWild.getStatChanges().put(Stats.ATTACK, 2);
@@ -62,7 +61,5 @@ public class ModEvents {
         for (ServerPlayer player : battle.getPlayers()) {
             player.displayClientMessage(msg, true);
         }
-
-        return Unit.INSTANCE;
     }
 }

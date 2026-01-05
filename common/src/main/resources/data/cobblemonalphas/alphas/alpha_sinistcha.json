@@ -1,0 +1,16 @@
+{
+  "species": "sinistcha",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "poltchageist",
+      "level": "15-20"
+    }
+  ],
+  "biome": [
+    "minecraft:dark_forest",
+    "minecraft:forest",
+    "minecraft:plains"
+  ]
+}

@@ -1,6 +1,5 @@
 package dev.cudzer.cobblemonalphas.particles;
 
-import com.cobblemon.mod.common.client.render.pokemon.PokemonRenderer;
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.cobblemon.mod.common.net.messages.client.effect.SpawnSnowstormEntityParticlePacket;
 import dev.cudzer.cobblemonalphas.CobblemonAlphasMod;

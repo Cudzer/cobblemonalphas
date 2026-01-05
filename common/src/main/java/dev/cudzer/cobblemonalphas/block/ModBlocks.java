@@ -1,5 +1,7 @@
 package dev.cudzer.cobblemonalphas.block;
 
+import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
+import com.cobblemon.mod.common.pokemon.ai.PokemonBrain;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import dev.cudzer.cobblemonalphas.CobblemonAlphasMod;
@@ -25,7 +27,4 @@ public class ModBlocks {
 
     public static final RegistrySupplier<BlockEntityType<AlphaSpawnBlockEntity>> ALPHA_SPAWNER_BLOCK_ENTITY =
             BLOCK_ENTITIES.register("alpha_spawner", () -> BlockEntityType.Builder.of(AlphaSpawnBlockEntity::new, ALPHA_SPAWNER_BLOCK.get()).build(null));
-
-
-
 }

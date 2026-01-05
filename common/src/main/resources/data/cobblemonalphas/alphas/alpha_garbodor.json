@@ -1,0 +1,16 @@
+{
+  "species": "garbodor",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "trubbish",
+      "level": "15-20"
+    }
+  ],
+  "biome": [
+    "minecraft:lush_caves",
+    "minecraft:warped_forest",
+    "minecraft:plains"
+  ]
+}

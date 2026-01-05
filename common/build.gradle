@@ -1,7 +1,7 @@
 plugins {
     id "dev.architectury.loom"
-    id 'org.jetbrains.kotlin.jvm' version "2.0.0"
-    id 'org.jetbrains.kotlin.plugin.serialization' version '2.0.0'
+    id 'org.jetbrains.kotlin.jvm' version "2.2.0"
+    id 'org.jetbrains.kotlin.plugin.serialization' version '2.2.0'
 }
 
 architectury {
@@ -13,7 +13,7 @@ dependencies {
     mappings( loom.officialMojangMappings() )
     modApi "dev.architectury:architectury:${rootProject.architectury_api_version}"
 
-    implementation "org.jetbrains.kotlin:kotlin-reflect:2.0.0"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:2.2.0"
 
     modImplementation "com.cobblemon:mod:${rootProject.cobblemon_version}"
 }

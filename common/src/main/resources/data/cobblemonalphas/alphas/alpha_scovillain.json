@@ -1,0 +1,16 @@
+{
+  "species": "scovillain",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "capsakid",
+      "level": "15-20"
+    }
+  ],
+  "biome": [
+    "minecraft:windswept_hills",
+    "minecraft:forest",
+    "minecraft:plains"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "species": "vanilluxe",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "vanillite",
+      "level": "15-20"
+    },
+    {
+      "species": "vanillish",
+      "level": "25-30"
+    }
+  ],
+  "biome": [
+    "minecraft:snowy_plains",
+    "minecraft:snowy_slopes",
+    "minecraft:grove"
+  ]
+}

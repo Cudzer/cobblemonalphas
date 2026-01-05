@@ -1,0 +1,19 @@
+{
+  "species": "simisage",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "pansage",
+      "level": "15-20"
+    }
+  ],
+  "biome": [
+    "minecraft:forest",
+    "minecraft:birch_forest",
+    "minecraft:taiga",
+    "minecraft:flower_forest",
+    "minecraft:sunflower_plains",
+    "minecraft:old_growth_birth_forest"
+  ]
+}

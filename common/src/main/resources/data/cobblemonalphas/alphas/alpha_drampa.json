@@ -1,0 +1,11 @@
+{
+  "species": "drampa",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:windswept_hills",
+    "minecraft:jungle"
+  ]
+}

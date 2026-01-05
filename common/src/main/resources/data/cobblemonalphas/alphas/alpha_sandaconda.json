@@ -1,0 +1,15 @@
+{
+  "species": "polteageist",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "sinistea",
+      "level": "15-20"
+    }
+  ],
+  "biome": [
+    "minecraft:dark_forest",
+    "minecraft:plains"
+  ]
+}

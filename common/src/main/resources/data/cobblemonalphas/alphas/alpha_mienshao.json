@@ -1,0 +1,15 @@
+{
+  "species": "mienshao",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "mienfoo",
+      "level": "15-20"
+    }
+  ],
+  "biome": [
+    "minecraft:savanna",
+    "minecraft:plains"
+  ]
+}

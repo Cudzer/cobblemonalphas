@@ -1,0 +1,16 @@
+{
+  "species": "drapion",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "skorupi",
+      "level": "15-20"
+    }
+  ],
+  "biome": [
+    "minecraft:swamp",
+    "minecraft:windswept_hills",
+    "minecraft:forest"
+  ]
+}

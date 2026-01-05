@@ -26,7 +26,7 @@ public class PCGuiMixin {
         if(pcgui.getPreviewPokemon$common() != null){
             if(pokemon.getPersistentData().getBoolean("IS_ALPHA")){
                 //draw icon
-                PokemonUtils.buildAlphaIcon(context.pose(), (x + 25f) / PCGUI.SCALE, (y + 95.5f) / PCGUI.SCALE, 16, 16, PCGUI.SCALE);
+                PokemonUtils.buildAlphaIcon(context.pose(), (x + 8f) / PCGUI.SCALE, (y + 74.5f) / PCGUI.SCALE, 16, 16, PCGUI.SCALE);
             }
         }
     }

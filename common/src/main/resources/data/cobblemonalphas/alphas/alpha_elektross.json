@@ -1,0 +1,19 @@
+{
+  "species": "elektross",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "tynamo",
+      "level": "15-20"
+    },
+    {
+      "species": "elektrik",
+      "level": "25-30"
+    }
+  ],
+  "biome": [
+    "minecraft:lush_caves",
+    "minecraft:stony_shore"
+  ]
+}

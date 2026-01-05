@@ -1,0 +1,19 @@
+{
+  "species": "reuniclus",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "solosis",
+      "level": "15-20"
+    },
+    {
+      "species": "duosion",
+      "level": "25-30"
+    }
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:dark_forest"
+  ]
+}

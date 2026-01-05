@@ -1,0 +1,16 @@
+{
+  "species": "gumshoos",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "yungoos",
+      "level": "15-20"
+    }
+  ],
+  "biome": [
+    "minecraft:savanna",
+    "minecraft:plains",
+    "minecraft:forest"
+  ]
+}

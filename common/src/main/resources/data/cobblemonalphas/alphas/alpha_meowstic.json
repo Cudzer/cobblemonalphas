@@ -1,0 +1,16 @@
+{
+  "species": "meowstic",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "espurr",
+      "level": "15-20"
+    }
+  ],
+  "biome": [
+    "minecraft:flower_forest",
+    "minecraft:sunflower_plains",
+    "minecraft:old_growth_birth_forest"
+  ]
+}

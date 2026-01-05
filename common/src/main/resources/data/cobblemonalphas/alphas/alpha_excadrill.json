@@ -1,0 +1,16 @@
+{
+  "species": "excadrill",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "drilbur",
+      "level": "15-20"
+    }
+  ],
+  "biome": [
+    "minecraft:stony_shore",
+    "minecraft:dripstone_caves",
+    "minecraft:windswept_gravelly_hills"
+  ]
+}

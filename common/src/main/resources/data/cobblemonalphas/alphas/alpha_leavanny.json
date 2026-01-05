@@ -1,0 +1,22 @@
+{
+  "species": "leavanny",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "sewaddle",
+      "level": "15-20"
+    },
+    {
+      "species": "swadloon",
+      "level": "25-30"
+    }
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:forest",
+    "minecraft:birch_forest",
+    "minecraft:taiga",
+    "minecraft:jungle"
+  ]
+}

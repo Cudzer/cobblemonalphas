@@ -1,0 +1,11 @@
+{
+  "species": "hawlucha",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+  ],
+  "biome": [
+    "minecraft:plains",
+    "minecraft:savanna"
+  ]
+}

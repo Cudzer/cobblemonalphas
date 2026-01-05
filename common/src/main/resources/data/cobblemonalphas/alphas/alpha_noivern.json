@@ -1,0 +1,16 @@
+{
+  "species": "noivern",
+  "level": "50-60",
+  "spawnUnderground": false,
+  "herdMembers": [
+    {
+      "species": "noibat",
+      "level": "15-20"
+    }
+  ],
+  "biome": [
+    "minecraft:windswept_hills",
+    "minecraft:windswept_forest",
+    "minecraft:old_growth_birth_forest"
+  ]
+}
