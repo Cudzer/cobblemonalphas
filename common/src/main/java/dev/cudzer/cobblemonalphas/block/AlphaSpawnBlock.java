@@ -3,8 +3,6 @@ package dev.cudzer.cobblemonalphas.block;
 import com.mojang.serialization.MapCodec;
 import dev.cudzer.cobblemonalphas.blockEntity.AlphaSpawnBlockEntity;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
@@ -34,8 +32,7 @@ public class AlphaSpawnBlock extends Block implements EntityBlock {
 
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(
-            Level level, BlockState state, BlockEntityType<T> type
-    ) {
+            Level level, BlockState state, BlockEntityType<T> type) {
         if (type == ModBlocks.ALPHA_SPAWNER_BLOCK_ENTITY.get()) {
             return (lvl, pos, st, be) -> {
                 if (be instanceof AlphaSpawnBlockEntity spawner) {
@@ -43,6 +40,7 @@ public class AlphaSpawnBlock extends Block implements EntityBlock {
                 }
             };
         }
+        
         return null;
     }
 }
