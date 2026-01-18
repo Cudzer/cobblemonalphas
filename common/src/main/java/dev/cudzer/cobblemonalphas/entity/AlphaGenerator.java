@@ -6,6 +6,7 @@ import com.cobblemon.mod.common.api.abilities.Ability;
 import com.cobblemon.mod.common.api.abilities.AbilityPool;
 import com.cobblemon.mod.common.api.abilities.AbilityTemplate;
 import com.cobblemon.mod.common.api.abilities.PotentialAbility;
+import com.cobblemon.mod.common.api.moves.Move;
 import com.cobblemon.mod.common.api.pokemon.PokemonSpecies;
 import com.cobblemon.mod.common.api.pokemon.stats.Stat;
 import com.cobblemon.mod.common.api.pokemon.stats.Stats;
@@ -31,11 +32,12 @@ public class AlphaGenerator {
 
     public static PokemonEntity generate(Alpha chosenAlpha, Level spawnLevel, Vec3i spawnPos) {
         Pokemon pokemon = new Pokemon();
-        
+
         // Return early if species is invalid
         Species species = PokemonSpecies.getByName(chosenAlpha.getSpecies());
         if (species == null) {
-            CobblemonAlphasMod.LOGGER.error("Attempted to spawn an alpha with invalid species '{}'", chosenAlpha.getSpecies());
+            CobblemonAlphasMod.LOGGER.error("Attempted to spawn an alpha with invalid species '{}'",
+                    chosenAlpha.getSpecies());
             return null;
         }
 
@@ -54,12 +56,20 @@ public class AlphaGenerator {
         pokemon.getAspects().add("alpha");
         pokemon.getPersistentData().putBoolean("IS_ALPHA", true);
 
-        // Maximize random IVs, check for hidden ability, shiny chance
+        // Maximize random IVs
         IVs ivs = pokemon.getIvs();
         pokemon.setIvs$common(maximizeRandomIVs(ivs, ModConfig.maximumBestIVs));
+    
+        // Select random tutor move
+        List<Move> tutorMoves = pokemon.getMoveSet().getMoves().stream().filter(m -> m.getName().startsWith("tutor:"))
+                .toList();
+        if (!tutorMoves.isEmpty())
+            pokemon.getMoveSet().setMove(RNG.nextInt(4), tutorMoves.get(RNG.nextInt(tutorMoves.size())));
+    
+        // Set ability
         pokemon.setAbility$common(doHiddenAbilityCheck(pokemon));
-
-        // Shiny check
+        
+        // Determine shiny status
         if (RNG.nextDouble() < (1d / ModConfig.shinyOdds)) {
             pokemon.setShiny(true);
         }
