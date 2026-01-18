@@ -6,7 +6,7 @@ import com.cobblemon.mod.common.api.abilities.Ability;
 import com.cobblemon.mod.common.api.abilities.AbilityPool;
 import com.cobblemon.mod.common.api.abilities.AbilityTemplate;
 import com.cobblemon.mod.common.api.abilities.PotentialAbility;
-import com.cobblemon.mod.common.api.moves.Move;
+import com.cobblemon.mod.common.api.moves.MoveTemplate;
 import com.cobblemon.mod.common.api.pokemon.PokemonSpecies;
 import com.cobblemon.mod.common.api.pokemon.stats.Stat;
 import com.cobblemon.mod.common.api.pokemon.stats.Stats;
@@ -59,16 +59,15 @@ public class AlphaGenerator {
         // Maximize random IVs
         IVs ivs = pokemon.getIvs();
         pokemon.setIvs$common(maximizeRandomIVs(ivs, ModConfig.maximumBestIVs));
-    
+
         // Select random tutor move
-        List<Move> tutorMoves = pokemon.getMoveSet().getMoves().stream().filter(m -> m.getName().startsWith("tutor:"))
-                .toList();
+        List<MoveTemplate> tutorMoves = species.getStandardForm().getMoves().getTutorMoves();
         if (!tutorMoves.isEmpty())
-            pokemon.getMoveSet().setMove(RNG.nextInt(4), tutorMoves.get(RNG.nextInt(tutorMoves.size())));
-    
+            pokemon.getMoveSet().setMove(RNG.nextInt(4), tutorMoves.get(RNG.nextInt(tutorMoves.size())).create());
+
         // Set ability
         pokemon.setAbility$common(doHiddenAbilityCheck(pokemon));
-        
+
         // Determine shiny status
         if (RNG.nextDouble() < (1d / ModConfig.shinyOdds)) {
             pokemon.setShiny(true);
