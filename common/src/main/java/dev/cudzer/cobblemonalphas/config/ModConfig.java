@@ -28,6 +28,7 @@ public class ModConfig {
     public static int minimumSpawnDistance;
     public static int maximumSpawnDistance;
 
+    public static boolean doSpawnAnnouncementMessage;
     public static String spawnAnnouncementMessage;
     public static boolean showCoordinatesInAnnouncement;
 
@@ -68,6 +69,7 @@ public class ModConfig {
         defaultConfig.addProperty(ConfigKey.SHINY_ODDS, 4096);
         defaultConfig.addProperty(ConfigKey.MINIMUM_SPAWN_DISTANCE, 30);
         defaultConfig.addProperty(ConfigKey.MAXIMUM_SPAWN_DISTANCE, 60);
+        defaultConfig.addProperty(ConfigKey.DO_SPAWN_ANNOUNCEMENT_MESSAGE, true);
         defaultConfig.addProperty(ConfigKey.SPAWN_ANNOUNCEMENT_MESSAGE, "An Alpha Pokemon has spawned near somebody!");
         defaultConfig.addProperty(ConfigKey.SHOW_COORDS_IN_ANNOUNCEMENT, false);
     }
@@ -103,5 +105,6 @@ public class ModConfig {
         maximumSpawnDistance = finalConfiguration.get(ConfigKey.MAXIMUM_SPAWN_DISTANCE).getAsInt();
         spawnAnnouncementMessage = finalConfiguration.get(ConfigKey.SPAWN_ANNOUNCEMENT_MESSAGE).getAsString();
         showCoordinatesInAnnouncement = finalConfiguration.get(ConfigKey.SHOW_COORDS_IN_ANNOUNCEMENT).getAsBoolean();
+        doSpawnAnnouncementMessage = finalConfiguration.get(ConfigKey.DO_SPAWN_ANNOUNCEMENT_MESSAGE).getAsBoolean();
     }
 }

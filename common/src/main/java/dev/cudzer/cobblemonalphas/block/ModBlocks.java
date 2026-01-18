@@ -1,7 +1,5 @@
 package dev.cudzer.cobblemonalphas.block;
 
-import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
-import com.cobblemon.mod.common.pokemon.ai.PokemonBrain;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import dev.cudzer.cobblemonalphas.CobblemonAlphasMod;

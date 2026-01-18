@@ -125,6 +125,12 @@ public class AlphaSpawner {
 
         spawnAlphaEntity(chosenAlpha, spawnLevel, spawnPos, ModConfig.doHerdSpawning);
 
+        // Return early if announcements are disabled
+        // ? This should probably be it's own function
+        // ! Beware of this return statement
+        if(!ModConfig.doSpawnAnnouncementMessage) return;
+        
+        // Announce spawn to all players
         String announcement = ModConfig.spawnAnnouncementMessage;
         if(ModConfig.showCoordinatesInAnnouncement){
             announcement += " (" + spawnPos.getX() + ", " + spawnPos.getY() + ", " + spawnPos.getZ() + ")";
