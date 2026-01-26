@@ -1,0 +1,19 @@
+{
+    "species": "cobblemon:noctowl",
+    "order": 0,
+    "variations": [
+        {
+            "aspects": [
+                "alpha"
+            ],
+            "layers": [
+                {
+                    "name": "alpha_eyes",
+                    "texture": "cobblemon:textures/pokemon/0164_noctowl/noctowl_eyes.png",
+                    "emissive": true,
+                    "translucent": true
+                }
+            ]
+        }
+    ]
+}

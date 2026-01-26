@@ -1,0 +1,19 @@
+{
+    "species": "cobblemon:ampharos",
+    "order": 0,
+    "variations": [
+        {
+            "aspects": [
+                "alpha"
+            ],
+            "layers": [
+                {
+                    "name": "alpha_eyes",
+                    "texture": "cobblemon:textures/pokemon/0181_ampharos/ampharos_eyes.png",
+                    "emissive": true,
+                    "translucent": true
+                }
+            ]
+        }
+    ]
+}

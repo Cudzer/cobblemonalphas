@@ -1,0 +1,19 @@
+{
+    "species": "cobblemon:jynx",
+    "order": 0,
+    "variations": [
+        {
+            "aspects": [
+                "alpha"
+            ],
+            "layers": [
+                {
+                    "name": "alpha_eyes",
+                    "texture": "cobblemon:textures/pokemon/0124_jynx/jynx_eyes.png",
+                    "emissive": true,
+                    "translucent": true
+                }
+            ]
+        }
+    ]
+}

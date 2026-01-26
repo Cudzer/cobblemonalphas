@@ -2,6 +2,7 @@ package dev.cudzer.cobblemonalphas.entity;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+
 import dev.cudzer.cobblemonalphas.CobblemonAlphasMod;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ExtraCodecs;
