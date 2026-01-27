@@ -12,8 +12,7 @@ import com.cobblemon.mod.common.client.render.pokemon.PokemonRenderer;
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.mojang.blaze3d.vertex.PoseStack;
-
-import dev.cudzer.cobblemonalphas.render.layerEntities.AlphaEyesLayer;
+import dev.cudzer.cobblemonalphas.render.AlphaEyesRender;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 
@@ -23,7 +22,7 @@ public class PokemonRendererMixin {
     private final RenderContext alpha_project$context = new RenderContext();
 
     @Unique
-    private final AlphaEyesLayer alpha_project$alpha_eyes_layer = new AlphaEyesLayer();
+    private final AlphaEyesRender alpha_project$render = new AlphaEyesRender();
 
     @Inject(method = "<init>", at = @At(value = "RETURN"))
     public void init(EntityRendererProvider.Context context, CallbackInfo ci) {
@@ -32,9 +31,14 @@ public class PokemonRendererMixin {
     }
 
     @Inject(method = "render*", at = @At(value = "TAIL"))
-    public void render(PokemonEntity entity, float entityYaw, float partialTicks, PoseStack poseStack,
-            MultiBufferSource buffer, int packedLight, CallbackInfo ci) {
-
+    public void render(
+            PokemonEntity entity,
+            float entityYaw,
+            float partialTicks,
+            PoseStack poseStack,
+            MultiBufferSource buffer,
+            int packedLight,
+            CallbackInfo ci) {
         // Fetch the delegate and the pokemons entity instance
         PokemonClientDelegate clientDelegate = (PokemonClientDelegate) entity.getDelegate();
         Pokemon pokemon = entity.getPokemon();
@@ -43,8 +47,8 @@ public class PokemonRendererMixin {
         if (!pokemon.getAspects().contains("alpha"))
             return;
 
-        alpha_project$alpha_eyes_layer.render(alpha_project$context, clientDelegate, entity, pokemon, entityYaw,
-                partialTicks, poseStack,
-                buffer, packedLight);
+        alpha_project$render.render(entity, poseStack, clientDelegate, buffer);
+
     }
+
 }
