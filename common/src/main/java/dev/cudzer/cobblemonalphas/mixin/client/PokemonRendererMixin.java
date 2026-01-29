@@ -44,11 +44,9 @@ public class PokemonRendererMixin {
         Pokemon pokemon = entity.getPokemon();
 
         // Return early on non-alphas because we have nothing to do with them
-        if (!pokemon.getAspects().contains("alpha"))
+        if (!pokemon.getPersistentData().getBoolean("IS_ALPHA"))
             return;
 
         alpha_project$render.render(entity, poseStack, clientDelegate, buffer);
-
     }
-
 }

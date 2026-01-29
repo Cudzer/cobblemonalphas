@@ -6,6 +6,8 @@ import com.cobblemon.mod.common.api.abilities.Ability;
 import com.cobblemon.mod.common.api.abilities.AbilityPool;
 import com.cobblemon.mod.common.api.abilities.AbilityTemplate;
 import com.cobblemon.mod.common.api.abilities.PotentialAbility;
+import com.cobblemon.mod.common.api.mark.Mark;
+import com.cobblemon.mod.common.api.mark.Marks;
 import com.cobblemon.mod.common.api.moves.MoveTemplate;
 import com.cobblemon.mod.common.api.pokemon.PokemonSpecies;
 import com.cobblemon.mod.common.api.pokemon.stats.Stat;
@@ -21,6 +23,7 @@ import dev.cudzer.cobblemonalphas.entity.spawner.AlphaDespawner;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.Vec3i;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 
 import java.util.ArrayList;
@@ -55,6 +58,10 @@ public class AlphaGenerator {
         // Set alpha aspects and data
         pokemon.getAspects().add("alpha");
         pokemon.getPersistentData().putBoolean("IS_ALPHA", true);
+
+        // Add the alpha mark
+        Mark mark = Marks.getByIdentifier(ResourceLocation.fromNamespaceAndPath("cobblemon", "mark_alpha"));
+        pokemon.exchangeMark(mark, true);
 
         // Maximize random IVs
         IVs ivs = pokemon.getIvs();
