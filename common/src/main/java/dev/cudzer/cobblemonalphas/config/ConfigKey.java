@@ -9,6 +9,7 @@ public class ConfigKey {
 
     // Spawning behavior
     public static String DO_ALPHA_SPAWNING = "doAlphaSpawning";
+    public static String RETAIN_ALPHA_STATUS = "retainAlphaStatus";
     public static String ALPHA_SPAWN_CHANCE = "alphaSpawnChance";
     public static String SECONDS_BETWEEN_SPAWNS = "secondsBetweenSpawns";
     public static String SPAWN_ATTEMPTS = "spawnAttempts";

@@ -16,12 +16,9 @@ import java.util.*;
 public class AlphaParticleEffect {
     private static final ResourceLocation ALPHA_PARTICLE = ResourceLocation.fromNamespaceAndPath("cobblemon",
             "alpha_burst");
-    private static final ResourceLocation WILD_MIGHT = ResourceLocation.fromNamespaceAndPath("cobblemon", "wild_might");
 
     private static final ResourceLocation ALPHA_NEARBY_SOUND = ResourceLocation
             .fromNamespaceAndPath(CobblemonAlphasMod.MOD_ID, "alpha_spawn");
-    private static final ResourceLocation ALPHA_MIGHT_SOUND = ResourceLocation
-            .fromNamespaceAndPath(CobblemonAlphasMod.MOD_ID, "wild_might");
 
     private static final Map<UUID, Long> alphaAmbientTimer = new HashMap<>();
     private static final double particleDistance = 26.0;
@@ -37,7 +34,7 @@ public class AlphaParticleEffect {
                 if (!pokemonEntity.getPokemon().getPersistentData().getBoolean("IS_ALPHA"))
                     return;
 
-                // If there is a player closeby that is looking at a wild alpha play the
+                // If there is a player close by that is looking at a wild alpha play the
                 // particle effect
                 boolean inRange = players.stream().anyMatch(player -> {
                     return player.distanceToSqr(pokemonEntity) <= particleDistance * particleDistance;

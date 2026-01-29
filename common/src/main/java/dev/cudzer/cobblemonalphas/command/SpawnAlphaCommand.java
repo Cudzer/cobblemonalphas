@@ -62,6 +62,7 @@ public class SpawnAlphaCommand {
 
             AlphaSpawner.getInstance().spawnAlphaEntity(alpha, player.level(), spawnPos, spawnHerd);
         }
+        
         return 1;
     }
 

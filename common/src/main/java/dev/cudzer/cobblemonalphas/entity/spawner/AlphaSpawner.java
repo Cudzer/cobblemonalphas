@@ -169,7 +169,7 @@ public class AlphaSpawner {
         for (int i = 1; i <= HERD_SIZE; i++) {
             HerdMember herdMember = herdMembers.get(RNG.nextInt(herdMembers.size()));
             Pokemon herdMemberPokemon = new Pokemon();
-            Species herdMemberSpecies = PokemonSpecies.INSTANCE.getByName(herdMember.getSpecies());
+            Species herdMemberSpecies = PokemonSpecies.getByName(herdMember.getSpecies());
             if(herdMemberSpecies == null){
                 CobblemonAlphasMod.LOGGER.warn(String.format("Incorrect species defined for herd member of %s. %s is not a valid pokemon species", alphaString, herdMember.getSpecies()));
                 return;

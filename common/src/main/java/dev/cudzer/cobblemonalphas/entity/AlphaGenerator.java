@@ -27,8 +27,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 public class AlphaGenerator {
     private static final Random RNG = new Random();
@@ -56,12 +58,20 @@ public class AlphaGenerator {
         pokemon.setScaleModifier(baseSize);
 
         // Set alpha aspects and data
-        pokemon.getAspects().add("alpha");
         pokemon.getPersistentData().putBoolean("IS_ALPHA", true);
 
-        // Add the alpha mark
-        Mark mark = Marks.getByIdentifier(ResourceLocation.fromNamespaceAndPath("cobblemon", "mark_alpha"));
-        pokemon.exchangeMark(mark, true);
+        // If alpha status is return make it a forced aspect
+        // otherwise give it the alpha mark so it gains the title of "former alpha"
+        if (ModConfig.retainAlphaStatus) {
+            Set<String> forced = new HashSet<>(pokemon.getForcedAspects());
+            forced.add("alpha");
+            pokemon.setForcedAspects(forced);
+        } else {
+            pokemon.getAspects().add("alpha");
+
+            Mark mark = Marks.getByIdentifier(ResourceLocation.fromNamespaceAndPath("cobblemon", "mark_alpha"));
+            pokemon.exchangeMark(mark, true);
+        }
 
         // Maximize random IVs
         IVs ivs = pokemon.getIvs();

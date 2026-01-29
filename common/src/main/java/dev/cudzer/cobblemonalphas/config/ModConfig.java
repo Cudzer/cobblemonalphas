@@ -15,12 +15,19 @@ public class ModConfig {
 
     private static Path fullConfigPath;
 
-    //config fields
+    // Binary configs
     public static boolean doAlphaSpawning;
+    public static boolean doHerdSpawning;
+    public static boolean doSpawnAnnouncementMessage;
+    public static boolean showCoordinatesInAnnouncement;
+    public static boolean retainAlphaStatus;
+
+    // Float configs
     public static float alphaSpawnChance;
     public static double alphaSizeMultiplier;
+
+    // Integer configs
     public static int maximumBestIVs;
-    public static boolean doHerdSpawning;
     public static int ticksBetweenSpawns;
     public static int spawnAttempts;
     public static int requiredPlayerAmount;
@@ -28,11 +35,9 @@ public class ModConfig {
     public static int minimumSpawnDistance;
     public static int maximumSpawnDistance;
 
-    public static boolean doSpawnAnnouncementMessage;
     public static String spawnAnnouncementMessage;
-    public static boolean showCoordinatesInAnnouncement;
 
-    public static void init(Path baseConfigPath){
+    public static void init(Path baseConfigPath) {
         fullConfigPath = baseConfigPath.resolve(ConfigKey.configPath);
 
         final JsonObject defaultConfiguration = new JsonObject();
@@ -41,7 +46,7 @@ public class ModConfig {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         JsonObject configuration;
-        try{
+        try {
             configuration = JsonParser.parseReader(new FileReader(fullConfigPath.toString()))
                     .getAsJsonObject();
         } catch (FileNotFoundException e) {
@@ -50,15 +55,16 @@ public class ModConfig {
         }
 
         final JsonObject finalConfiguration = configuration;
-        if(defaultConfiguration.keySet().stream().anyMatch(k -> !finalConfiguration.has(k))){
+        if (defaultConfiguration.keySet().stream().anyMatch(k -> !finalConfiguration.has(k))) {
             rewriteConfig(gson, defaultConfiguration, finalConfiguration);
         }
 
         loadConfig(finalConfiguration);
     }
 
-    private static void addDefaultFields(JsonObject defaultConfig){
+    private static void addDefaultFields(JsonObject defaultConfig) {
         defaultConfig.addProperty(ConfigKey.DO_ALPHA_SPAWNING, true);
+        defaultConfig.addProperty(ConfigKey.RETAIN_ALPHA_STATUS, true);
         defaultConfig.addProperty(ConfigKey.ALPHA_SPAWN_CHANCE, 0.01);
         defaultConfig.addProperty(ConfigKey.ALPHA_SIZE_MULTIPLIER, 2.0);
         defaultConfig.addProperty(ConfigKey.MAXIMUM_BEST_IVS, 3);
@@ -74,25 +80,26 @@ public class ModConfig {
         defaultConfig.addProperty(ConfigKey.SHOW_COORDS_IN_ANNOUNCEMENT, false);
     }
 
-    private static void rewriteConfig(Gson gson, JsonObject defaultConfig, JsonObject finalConfig){
+    private static void rewriteConfig(Gson gson, JsonObject defaultConfig, JsonObject finalConfig) {
         defaultConfig.keySet().stream()
                 .filter(k -> !finalConfig.has(k))
-                .forEach( k -> {
+                .forEach(k -> {
                     CobblemonAlphasMod.LOGGER.info("Adding new field '{}' to the config", k);
                     finalConfig.add(k, defaultConfig.get(k));
                 });
-        try{
+        try {
             Files.createDirectories(Paths.get(fullConfigPath.toString()).getParent());
             FileWriter writer = new FileWriter(fullConfigPath.toString());
             gson.toJson(finalConfig, writer);
             writer.close();
-        } catch (IOException ioException){
+        } catch (IOException ioException) {
             CobblemonAlphasMod.LOGGER.warn("Could not create new config");
         }
     }
 
-    private static void loadConfig(JsonObject finalConfiguration){
+    private static void loadConfig(JsonObject finalConfiguration) {
         doAlphaSpawning = finalConfiguration.get(ConfigKey.DO_ALPHA_SPAWNING).getAsBoolean();
+        retainAlphaStatus = finalConfiguration.get(ConfigKey.RETAIN_ALPHA_STATUS).getAsBoolean();
         alphaSpawnChance = finalConfiguration.get(ConfigKey.ALPHA_SPAWN_CHANCE).getAsFloat();
         alphaSizeMultiplier = finalConfiguration.get(ConfigKey.ALPHA_SIZE_MULTIPLIER).getAsFloat();
         maximumBestIVs = finalConfiguration.get(ConfigKey.MAXIMUM_BEST_IVS).getAsInt();
