@@ -10,8 +10,10 @@ import com.cobblemon.mod.common.api.events.battles.BattleStartedEvent;
 import com.cobblemon.mod.common.api.pokemon.stats.Stats;
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon;
 import com.cobblemon.mod.common.pokemon.Pokemon;
+import com.cobblemon.mod.common.util.LocalizationUtilsKt;
+
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
 
 public class ModEvents {
@@ -33,12 +35,13 @@ public class ModEvents {
                 .findFirst()
                 .orElse(null);
 
-        if (wildAlpha == null) return;
+        if (wildAlpha == null)
+            return;
 
         // Apply the wild might stat boosts
+        wildAlpha.getStatChanges().put(Stats.HP, 2);
         wildAlpha.getStatChanges().put(Stats.ATTACK, 2);
         wildAlpha.getStatChanges().put(Stats.DEFENCE, 2);
-        wildAlpha.getStatChanges().put(Stats.HP, 2);
         wildAlpha.getStatChanges().put(Stats.SPECIAL_ATTACK, 2);
         wildAlpha.getStatChanges().put(Stats.SPECIAL_DEFENCE, 2);
         wildAlpha.getStatChanges().put(Stats.SPEED, 2);
@@ -46,16 +49,18 @@ public class ModEvents {
         // Fetch the associated pokemon of this alpha
         Pokemon alphaPokemon = wildAlpha.getOriginalPokemon();
 
-        // Play the cry
+        // Play the cry / roar animation
         alphaPokemon.getEntity().cry();
 
-        // Display wild might message
-        Component msg = Component
-                .literal("The alpha %s is filled with wild might!".formatted(alphaPokemon.getSpecies().getName()))
+        // Construct wild might message
+        MutableComponent wildMightMessage = LocalizationUtilsKt
+                .battleLang("ability.wildMight", alphaPokemon.getSpecies().getName())
                 .withStyle(ChatFormatting.RED, ChatFormatting.BOLD);
 
+        // Display wild might message
+        battle.broadcastChatMessage(wildMightMessage);
         for (ServerPlayer player : battle.getPlayers()) {
-            player.displayClientMessage(msg, true);
+            player.displayClientMessage(wildMightMessage, true);
         }
     }
 }
