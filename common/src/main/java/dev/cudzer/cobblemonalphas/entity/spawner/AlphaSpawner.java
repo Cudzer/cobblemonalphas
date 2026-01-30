@@ -29,9 +29,12 @@ import java.util.*;
 
 public class AlphaSpawner {
     private static final AlphaSpawner instance = new AlphaSpawner();
-    public static AlphaSpawner getInstance() {return instance;}
-    private static final Random RNG = new Random();
 
+    public static AlphaSpawner getInstance() {
+        return instance;
+    }
+
+    private static final Random RNG = new Random();
     private int spawnCountdown;
     private ISpawnLocation spawnLocationSelector;
     private List<ISpawnCondition> spawnConditions;
@@ -40,23 +43,16 @@ public class AlphaSpawner {
 
     private MinecraftServer server;
 
-    public void init(){
+    public void init() {
         spawnCountdown = ModConfig.ticksBetweenSpawns;
-
-        spawnLocationSelector = new RandomSpawnAroundPlayer(ModConfig.minimumSpawnDistance, ModConfig.maximumSpawnDistance);
+        spawnLocationSelector = new RandomSpawnAroundPlayer(
+                ModConfig.minimumSpawnDistance,
+                ModConfig.maximumSpawnDistance);
         spawnConditions = List.of(
-                new BlockBlacklist(
-                        List.of(
-                                Blocks.LAVA,
-                                Blocks.FIRE,
-                                Blocks.CACTUS
-                        )
-                ),
-                new HeightBounds(-50, 200)
-        );
+                new BlockBlacklist(List.of(Blocks.LAVA, Blocks.FIRE, Blocks.CACTUS)),
+                new HeightBounds(-50, 200));
         AlphaDespawner.getInstance().setMinimumDespawnDistance(ModConfig.minimumSpawnDistance);
         AlphaDespawner.getInstance().setSpawnIntervalTicks(ModConfig.ticksBetweenSpawns);
-
         AlphaJsonDataManager.populateBiomeData(server.getLevel(Level.OVERWORLD));
     }
 
@@ -64,105 +60,136 @@ public class AlphaSpawner {
         this.server = server;
     }
 
-    public void tick(){
-        if(spawnCountdown > 0) spawnCountdown--;
+    public void tick() {
+        if (spawnCountdown > 0)
+            spawnCountdown--;
         else {
             attemptSpawn();
             spawnCountdown = ModConfig.ticksBetweenSpawns;
         }
     }
 
-    private void attemptSpawn(){
+    private void attemptSpawn() {
         List<ServerPlayer> players = server.getPlayerList().getPlayers();
-        if(players.size() < ModConfig.requiredPlayerAmount) return;
+        if (players.isEmpty() || players.size() < ModConfig.requiredPlayerAmount)
+            return;
 
-        if(RNG.nextDouble() > (ModConfig.alphaSpawnChance + (0.02f * (server.getPlayerCount() - ModConfig.requiredPlayerAmount)))) return;
-        Alpha chosenAlpha;
+        // Do spawn attempts
+        for (int attempt = 1; attempt <= ModConfig.spawnAttempts; attempt++) {
 
-        int attemptedSpawns = 0;
-        Level spawnLevel;
-        Vec3i spawnPos;
-        ServerPlayer chosenPlayer;
+            if (ModConfig.spawnBehavior.equals("player")) {
+                for (ServerPlayer player : players) {
+                    boolean spawnSucceeded = doSpawnAttempt(player);
+                    if (spawnSucceeded)
+                        return;
+                }
+            } else {
+                // Pick a random player
+                ServerPlayer chosenPlayer = players.get(RNG.nextInt(players.size()));
 
-        while(true){
-            if(++attemptedSpawns > ModConfig.spawnAttempts){
-                CobblemonAlphasMod.LOGGER.info("Maximum spawn attempts reached. Skipping this alpha spawn");
-                return;
-            }
-
-            Optional<ServerPlayer> chosenPlayerOpt = players.stream()
-                    .skip((int) (players.size() * RNG.nextDouble()))
-                    .findFirst();
-            if(chosenPlayerOpt.isPresent()){
-                chosenPlayer = chosenPlayerOpt.get();
-                spawnLevel = chosenPlayer.level();
-
-                final Level chosenPlayerSpawnLevel = chosenPlayer.level();
-                final Vec3i spawnLocation = spawnLocationSelector.getSpawnLocation(chosenPlayer.level(), chosenPlayer.position());
-
-                if(spawnLocation == null) continue;
-                BlockPos finalSpawnPos = new BlockPos(spawnLocation.getX(), spawnLocation.getY(), spawnLocation.getZ());
-
-                if(spawnConditions.stream().anyMatch(condition -> !condition.isSafe(chosenPlayerSpawnLevel, finalSpawnPos))) continue;
-
-                var biomeKey = chosenPlayerSpawnLevel.getBiome(finalSpawnPos).unwrapKey();
-                if (biomeKey.isEmpty())
-                    continue;
-
-                boolean underground = !spawnLevel.canSeeSky(finalSpawnPos);
-
-                Map<ResourceLocation, Alpha> alphaMap =
-                        AlphaJsonDataManager.getRandomAlphaForBiome(spawnLevel, biomeKey.get(), underground);
-
-                if (alphaMap == null || alphaMap.isEmpty())
-                    continue;
-
-                chosenAlpha = alphaMap.values().iterator().next();
-                spawnPos = spawnLocation;
-                break;
+                boolean spawnSucceeded = doSpawnAttempt(chosenPlayer);
+                if (spawnSucceeded)
+                    return;
             }
         }
 
-        spawnAlphaEntity(chosenAlpha, spawnLevel, spawnPos, ModConfig.doHerdSpawning);
-
-        // Return early if announcements are disabled
-        // ? This should probably be it's own function
-        // ! Beware of this return statement
-        if(!ModConfig.doSpawnAnnouncementMessage) return;
-        
-        // Announce spawn to all players
-        String announcement = ModConfig.spawnAnnouncementMessage;
-        if(ModConfig.showCoordinatesInAnnouncement){
-            announcement += " (" + spawnPos.getX() + ", " + spawnPos.getY() + ", " + spawnPos.getZ() + ")";
-        }
-
-        server.getPlayerList().broadcastSystemMessage(
-                Component.literal(announcement), false
-        );
+        CobblemonAlphasMod.LOGGER.info("Maximum spawn attempts reached. Skipping this alpha spawn");
     }
 
-    public void spawnAlphaEntity(Alpha alpha, Level level, Vec3i spawnPosition, boolean doHerdSpawning){
-        if(!level.isClientSide()){
+    public boolean doSpawnAttempt(ServerPlayer player) {
+        double totalChance = ModConfig.alphaSpawnChance
+                + ModConfig.perPlayerSpawnChanceBoost
+                        * (server.getPlayerCount() - ModConfig.requiredPlayerAmount);
+
+        // * Fail due to an RNG miss
+        if (RNG.nextDouble() > totalChance)
+            return false;
+
+        final Level level = player.level();
+        final Vec3i location = spawnLocationSelector.getSpawnLocation(player.level(), player.position());
+
+        // * Fail attempt if the position isn't valid
+        if (location == null)
+            return false;
+
+        // Get the exact block the spawn will happen on
+        BlockPos finalSpawnPos = new BlockPos(location.getX(), location.getY(), location.getZ());
+
+        // * Fail attempt if the block isn't safe
+        if (spawnConditions.stream().anyMatch(condition -> !condition.isSafe(level, finalSpawnPos)))
+            return false;
+
+        // Get the biome key the player is in
+        var biomeKey = level.getBiome(finalSpawnPos).unwrapKey();
+
+        // * Fail if the biomekey is invalid
+        if (biomeKey.isEmpty())
+            return false;
+
+        // Check if the spawn is happening underground
+        boolean underground = !level.canSeeSky(finalSpawnPos);
+
+        // Fetch all alphas
+        Map<ResourceLocation, Alpha> alphaMap = AlphaJsonDataManager.getRandomAlphaForBiome(
+                level,
+                biomeKey.get(),
+                underground);
+
+        // * Fail if we didn't load any alphas
+        if (alphaMap == null || alphaMap.isEmpty())
+            return false;
+
+        // * All checks have passed - proceeding with spawn
+
+        // Pick an alpha and spawn it in the world
+        Alpha chosenAlpha = alphaMap.values().iterator().next();
+        spawnAlphaEntity(chosenAlpha, level, location, ModConfig.doHerdSpawning);
+
+        // Announce the spawn if enabled
+        if (ModConfig.doSpawnAnnouncementMessage)
+            announceSpawn(location);
+
+        return true;
+    }
+
+    public void announceSpawn(Vec3i location) {
+        String announcement = ModConfig.spawnAnnouncementMessage;
+        if (ModConfig.showCoordinatesInAnnouncement) {
+            announcement += String.format(
+                    " (%d, %d, %d)",
+                    location.getX(),
+                    location.getY(),
+                    location.getZ());
+        }
+
+        server.getPlayerList().broadcastSystemMessage(Component.literal(announcement), false);
+
+        return;
+    }
+
+    public void spawnAlphaEntity(Alpha alpha, Level level, Vec3i spawnPosition, boolean doHerdSpawning) {
+        if (!level.isClientSide()) {
             PokemonEntity alphaEntity = AlphaGenerator.generate(alpha, level, spawnPosition);
 
-            if(alphaEntity != null){
+            if (alphaEntity != null) {
                 level.getChunkAt(new BlockPos(spawnPosition));
                 level.addFreshEntity(alphaEntity);
 
-                if(doHerdSpawning){
+                if (doHerdSpawning) {
                     spawnHerdPokemon(alphaEntity, alpha.getHerdMembers(), level, spawnPosition);
                 }
-            }
-            else{
+            } else {
                 CobblemonAlphasMod.LOGGER.error("An alpha spawn was attempted but the entity creation failed...");
             }
         }
     }
 
-    private void spawnHerdPokemon(PokemonEntity alphaEntity, List<HerdMember> herdMembers, Level spawnLevel, Vec3i spawnPos){
+    private void spawnHerdPokemon(PokemonEntity alphaEntity, List<HerdMember> herdMembers, Level spawnLevel,
+            Vec3i spawnPos) {
         String alphaString = alphaEntity.getPokemon().getSpecies().getName();
-        if(herdMembers.size() <= 0){
-            CobblemonAlphasMod.LOGGER.warn(String.format("Herd members for %s is empty. Skipping herd spawning for this alpha", alphaString));
+        if (herdMembers.size() <= 0) {
+            CobblemonAlphasMod.LOGGER.warn(
+                    String.format("Herd members for %s is empty. Skipping herd spawning for this alpha", alphaString));
             return;
         }
 
@@ -170,8 +197,10 @@ public class AlphaSpawner {
             HerdMember herdMember = herdMembers.get(RNG.nextInt(herdMembers.size()));
             Pokemon herdMemberPokemon = new Pokemon();
             Species herdMemberSpecies = PokemonSpecies.getByName(herdMember.getSpecies());
-            if(herdMemberSpecies == null){
-                CobblemonAlphasMod.LOGGER.warn(String.format("Incorrect species defined for herd member of %s. %s is not a valid pokemon species", alphaString, herdMember.getSpecies()));
+            if (herdMemberSpecies == null) {
+                CobblemonAlphasMod.LOGGER.warn(String.format(
+                        "Incorrect species defined for herd member of %s. %s is not a valid pokemon species",
+                        alphaString, herdMember.getSpecies()));
                 return;
             }
 
@@ -181,7 +210,8 @@ public class AlphaSpawner {
 
             herdMemberPokemon.getPersistentData().putUUID("ALPHA_ID", alphaEntity.getUUID());
 
-            if(RNG.nextDouble() < (1d / ModConfig.shinyOdds)) herdMemberPokemon.setShiny(true);
+            if (RNG.nextDouble() < (1d / ModConfig.shinyOdds))
+                herdMemberPokemon.setShiny(true);
 
             PokemonEntity herdEntity = new PokemonEntity(spawnLevel, herdMemberPokemon, CobblemonEntities.POKEMON);
             herdEntity.setDespawner(AlphaDespawner.getInstance());

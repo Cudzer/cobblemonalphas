@@ -24,6 +24,7 @@ public class ModConfig {
 
     // Float configs
     public static float alphaSpawnChance;
+    public static float perPlayerSpawnChanceBoost;
     public static double alphaSizeMultiplier;
 
     // Integer configs
@@ -35,6 +36,8 @@ public class ModConfig {
     public static int minimumSpawnDistance;
     public static int maximumSpawnDistance;
 
+    // String configs
+    public static String spawnBehavior;
     public static String spawnAnnouncementMessage;
 
     public static void init(Path baseConfigPath) {
@@ -78,6 +81,8 @@ public class ModConfig {
         defaultConfig.addProperty(ConfigKey.DO_SPAWN_ANNOUNCEMENT_MESSAGE, true);
         defaultConfig.addProperty(ConfigKey.SPAWN_ANNOUNCEMENT_MESSAGE, "An Alpha Pokemon has spawned near somebody!");
         defaultConfig.addProperty(ConfigKey.SHOW_COORDS_IN_ANNOUNCEMENT, false);
+        defaultConfig.addProperty(ConfigKey.SPAWN_BEHAVIOR, "world");
+        defaultConfig.addProperty(ConfigKey.PER_PLAYER_SPAWN_CHANCE_BOOST, 0.02);
     }
 
     private static void rewriteConfig(Gson gson, JsonObject defaultConfig, JsonObject finalConfig) {
@@ -113,5 +118,7 @@ public class ModConfig {
         spawnAnnouncementMessage = finalConfiguration.get(ConfigKey.SPAWN_ANNOUNCEMENT_MESSAGE).getAsString();
         showCoordinatesInAnnouncement = finalConfiguration.get(ConfigKey.SHOW_COORDS_IN_ANNOUNCEMENT).getAsBoolean();
         doSpawnAnnouncementMessage = finalConfiguration.get(ConfigKey.DO_SPAWN_ANNOUNCEMENT_MESSAGE).getAsBoolean();
+        spawnBehavior = finalConfiguration.get(ConfigKey.SPAWN_BEHAVIOR).getAsString();
+        perPlayerSpawnChanceBoost = finalConfiguration.get(ConfigKey.PER_PLAYER_SPAWN_CHANCE_BOOST).getAsFloat();
     }
 }
