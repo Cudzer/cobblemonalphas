@@ -27,9 +27,9 @@ dynamic herd behavior, configurable spawning, and full datapack support.
 
 <br/>
 
-<div style="display: flex; gap: 2rem; align-items: flex-start;">
-
-<div style="flex: 1;">
+<table align="center">
+  <tr>
+    <td valign="top">
 
 ### What this mod adds
 
@@ -39,13 +39,13 @@ dynamic herd behavior, configurable spawning, and full datapack support.
 - Underground Alpha support  
 - Fabric and NeoForge compatibility  
 
-</div>
+    </td>
+    <td>
+      <img src=".github/alpha_charizard.png" width="320" alt="An Alpha Charizard">
+    </td>
+  </tr>
+</table>
 
-<div>
-
-<img src="alpha_charizard.png" alt="An Alpha Charizard" width="320"/>
-
-</div>
 
 </div>
 

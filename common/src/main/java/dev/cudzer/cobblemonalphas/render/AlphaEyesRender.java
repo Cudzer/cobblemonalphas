@@ -5,23 +5,20 @@ import java.util.Deque;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-
 import com.cobblemon.mod.common.client.entity.PokemonClientDelegate;
 import com.cobblemon.mod.common.client.render.MatrixWrapper;
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Axis;
 
+import dev.cudzer.cobblemonalphas.util.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.phys.Vec3;
 
 public class AlphaEyesRender {
-    private static final int TRAIL_LENGTH = 60;
+    private static final int TRAIL_LENGTH = 45;
 
     public class TrailData {
         public final Deque<Vec3> leftEyeHistory = new ArrayDeque<>();
@@ -30,8 +27,12 @@ public class AlphaEyesRender {
 
     private static final Map<PokemonEntity, TrailData> TRAIL_CACHE = new WeakHashMap<>();
 
-    public void render(PokemonEntity entity, PoseStack poseStack, PokemonClientDelegate clientDelegate,
+    public void render(
+            PokemonEntity entity,
+            PoseStack poseStack,
+            PokemonClientDelegate clientDelegate,
             MultiBufferSource buffer) {
+
         // Fetch the positions of the eyes
         Map<String, MatrixWrapper> locatorStates = clientDelegate.getLocatorStates();
         MatrixWrapper leftEyeLocator = locatorStates.get("eye1");
@@ -43,8 +44,8 @@ public class AlphaEyesRender {
 
         TrailData data = TRAIL_CACHE.computeIfAbsent(entity, k -> new TrailData());
 
-        Vec3 currentLeft = captureWorldPos(poseStack, leftEyeLocator);
-        Vec3 currentRight = captureWorldPos(poseStack, rightEyeLocator);
+        Vec3 currentLeft = RenderUtils.captureWorldPos(poseStack, leftEyeLocator);
+        Vec3 currentRight = RenderUtils.captureWorldPos(poseStack, rightEyeLocator);
 
         updateHistory(data.leftEyeHistory, currentLeft);
         updateHistory(data.rightEyeHistory, currentRight);
@@ -53,25 +54,6 @@ public class AlphaEyesRender {
 
         renderTrail(buffer, data.leftEyeHistory, cameraPos);
         renderTrail(buffer, data.rightEyeHistory, cameraPos);
-    }
-
-    private Vec3 captureWorldPos(PoseStack stack, MatrixWrapper locator) {
-        stack.pushPose();
-
-        stack.mulPose(locator.getMatrix());
-        stack.mulPose(Axis.XP.rotationDegrees(180));
-        stack.mulPose(Axis.YP.rotationDegrees(180));
-
-        // Extract the position of (0,0,0) from the matrix
-        Matrix4f mat = stack.last().pose();
-        Vector3f vec = new Vector3f(0, 0, 0);
-        mat.transformPosition(vec);
-
-        stack.popPose();
-
-        // Convert Camera-Relative -> Absolute World Space
-        Vec3 cameraPos = Minecraft.getInstance().gameRenderer.getMainCamera().getPosition();
-        return new Vec3(vec.x, vec.y, vec.z).add(cameraPos);
     }
 
     private void updateHistory(Deque<Vec3> history, Vec3 newPos) {

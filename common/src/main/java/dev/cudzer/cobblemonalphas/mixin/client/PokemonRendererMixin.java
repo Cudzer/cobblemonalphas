@@ -1,5 +1,9 @@
 package dev.cudzer.cobblemonalphas.mixin.client;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -12,6 +16,8 @@ import com.cobblemon.mod.common.client.render.pokemon.PokemonRenderer;
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.mojang.blaze3d.vertex.PoseStack;
+
+import dev.cudzer.cobblemonalphas.client.TimedEffectsManager;
 import dev.cudzer.cobblemonalphas.render.AlphaEyesRender;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -22,7 +28,7 @@ public class PokemonRendererMixin {
     private final RenderContext alpha_project$context = new RenderContext();
 
     @Unique
-    private final AlphaEyesRender alpha_project$render = new AlphaEyesRender();
+    private final AlphaEyesRender alpha_project$eyes_render = new AlphaEyesRender();
 
     @Inject(method = "<init>", at = @At(value = "RETURN"))
     public void init(EntityRendererProvider.Context context, CallbackInfo ci) {
@@ -47,6 +53,8 @@ public class PokemonRendererMixin {
         if (!pokemon.getAspects().contains("alpha"))
             return;
 
-        alpha_project$render.render(entity, poseStack, clientDelegate, buffer);
+        alpha_project$eyes_render.render(entity, poseStack, clientDelegate, buffer);
+
+        TimedEffectsManager.tickAndRender(poseStack, buffer);
     }
 }
