@@ -1,9 +1,5 @@
 package dev.cudzer.cobblemonalphas.mixin.client;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -17,7 +13,6 @@ import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.mojang.blaze3d.vertex.PoseStack;
 
-import dev.cudzer.cobblemonalphas.client.TimedEffectsManager;
 import dev.cudzer.cobblemonalphas.render.AlphaEyesRender;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -54,7 +49,5 @@ public class PokemonRendererMixin {
             return;
 
         alpha_project$eyes_render.render(entity, poseStack, clientDelegate, buffer);
-
-        TimedEffectsManager.tickAndRender(poseStack, buffer);
     }
 }

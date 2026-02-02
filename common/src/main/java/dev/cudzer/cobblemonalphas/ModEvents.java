@@ -9,12 +9,9 @@ import com.cobblemon.mod.common.api.events.CobblemonEvents;
 import com.cobblemon.mod.common.api.events.battles.BattleStartedEvent;
 import com.cobblemon.mod.common.api.pokemon.stats.Stats;
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon;
-import com.cobblemon.mod.common.client.render.models.blockbench.bedrock.animation.BedrockActiveAnimation;
-import com.cobblemon.mod.common.client.render.models.blockbench.bedrock.animation.BedrockAnimationRepository;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.cobblemon.mod.common.util.LocalizationUtilsKt;
 
-import dev.cudzer.cobblemonalphas.network.CobblemonAlphasNetworkManager;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
@@ -54,17 +51,7 @@ public class ModEvents {
         String alphaName = alphaPokemon.getSpecies().getName();
 
         // Play the cry / roar animation
-        if (!alphaPokemon.getEntity().isSilent()) {
-            float duration = new BedrockActiveAnimation(
-                    BedrockAnimationRepository.INSTANCE.getAnimation(alphaName.toLowerCase(),
-                            "animation." + alphaName.toLowerCase() + ".cry"))
-                    .getDuration() * 1000;
-            alphaPokemon.getEntity().cry();
-            CobblemonAlphasNetworkManager.sendRoarEffect(
-                    battle.getPlayers().getFirst(),
-                    alphaPokemon.getEntity().getId(),
-                    duration);
-        }
+        alphaPokemon.getEntity().cry();
 
         // Construct wild might message
         MutableComponent wildMightMessage = LocalizationUtilsKt
