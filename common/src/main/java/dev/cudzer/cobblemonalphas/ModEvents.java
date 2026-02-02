@@ -5,13 +5,19 @@ import java.util.stream.StreamSupport;
 import com.cobblemon.mod.common.api.Priority;
 import com.cobblemon.mod.common.api.battles.model.PokemonBattle;
 import com.cobblemon.mod.common.api.battles.model.actor.ActorType;
+import com.cobblemon.mod.common.api.battles.model.actor.BattleActor;
 import com.cobblemon.mod.common.api.events.CobblemonEvents;
 import com.cobblemon.mod.common.api.events.battles.BattleStartedEvent;
 import com.cobblemon.mod.common.api.pokemon.stats.Stats;
+import com.cobblemon.mod.common.battles.dispatch.DispatchResult;
+import com.cobblemon.mod.common.battles.dispatch.DispatchResultKt;
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon;
+import com.cobblemon.mod.common.net.messages.client.battle.BattleMessagePacket;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.cobblemon.mod.common.util.LocalizationUtilsKt;
 
+import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
@@ -58,10 +64,22 @@ public class ModEvents {
                 .battleLang("ability.wildMight", alphaName)
                 .withStyle(ChatFormatting.RED, ChatFormatting.BOLD);
 
-        // Display wild might message
-        battle.broadcastChatMessage(wildMightMessage);
-        for (ServerPlayer player : battle.getPlayers()) {
-            player.displayClientMessage(wildMightMessage, true);
-        }
+        // Recursive retry until actors exist
+        Function0<Unit>[] retry = new Function0[1];
+
+        retry[0] = () -> {
+            if (!battle.getActors().iterator().hasNext()) {
+                battle.dispatchWaitingToFront(0.1f, retry[0]);
+                return Unit.INSTANCE;
+            }
+
+            for (BattleActor actor : battle.getActors()) {
+                actor.sendMessage(wildMightMessage);
+            }
+            return Unit.INSTANCE;
+        };
+
+        // schedule the first attempt
+        battle.dispatchWaitingToFront(0.1f, retry[0]);
     }
 }
