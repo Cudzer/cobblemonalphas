@@ -11,6 +11,7 @@
 * Added alpha eyes for gen1 and gen2 pokemon
 * Added a glowing tracer effect to alpha eyes
 * Added the Alpha mark to "former alpha pokemon"
+* The "wild might" message is now displayed in the battle chat
 ### Refactors
 * Reworked the README
 ### Removals
@@ -21,6 +22,7 @@
 ### Development
 * Set up gradlew
 * Set up a justfile
+* Wild might message is now under `assets/cobblemon/lang`
 ### Known issues
 ### WIP
 * Alpha eyes for gen3 through gen10
