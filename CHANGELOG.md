@@ -12,6 +12,7 @@
 * Added a glowing tracer effect to alpha eyes
 * Added the Alpha mark to "former alpha pokemon"
 * The "wild might" message is now displayed in the battle chat
+* Mega Showdown Support
 ### Refactors
 * Reworked the README
 ### Removals
