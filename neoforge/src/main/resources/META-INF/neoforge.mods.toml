@@ -11,7 +11,7 @@ authors = "Cudzer"
 description = '''
 Adds Alpha Pokemon to Minecraft
 '''
-#logoFile = ""
+#logoFile = "assets/cobblemonalphas/icon.png"
 
 [[dependencies.cobblemonalphas]]
 modId = "neoforge"

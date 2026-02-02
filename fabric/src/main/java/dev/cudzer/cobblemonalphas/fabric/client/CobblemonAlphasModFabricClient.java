@@ -5,6 +5,5 @@ import net.fabricmc.api.ClientModInitializer;
 public final class CobblemonAlphasModFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-
     }
 }

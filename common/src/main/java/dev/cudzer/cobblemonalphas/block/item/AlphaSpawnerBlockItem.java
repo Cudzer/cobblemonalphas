@@ -3,7 +3,6 @@ package dev.cudzer.cobblemonalphas.block.item;
 import dev.cudzer.cobblemonalphas.blockEntity.AlphaSpawnBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
@@ -21,13 +20,13 @@ public class AlphaSpawnerBlockItem extends BlockItem {
 
     @Override
     protected boolean updateCustomBlockEntityTag(BlockPos pos, Level level, Player player,
-                                                 ItemStack stack, BlockState state) {
+            ItemStack stack, BlockState state) {
 
         CustomData data = stack.get(DataComponents.CUSTOM_DATA);
 
         if (data != null && data.contains("AlphaId")) {
 
-            String alphaId = data.getUnsafe().getString("AlphaId");
+            String alphaId = data.copyTag().getString("AlphaId");
 
             if (level.getBlockEntity(pos) instanceof AlphaSpawnBlockEntity be) {
                 be.setForcedAlpha(ResourceLocation.tryParse(alphaId));
