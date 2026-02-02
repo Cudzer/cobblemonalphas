@@ -1,5 +1,5 @@
 {
-    "species": "cobblemon:aerodactyl",
+    "species": "cobblemon:houndoom",
     "order": 0,
     "variations": [
         {
@@ -9,7 +9,7 @@
             "layers": [
                 {
                     "name": "alpha_eyes",
-                    "texture": "cobblemon:textures/pokemon/0142_aerodactyl/aerodactyl_eyes.png",
+                    "texture": "cobblemon:textures/pokemon/0229_houndoom/houndoom_eyes.png",
                     "emissive": true,
                     "translucent": true
                 }
@@ -23,7 +23,7 @@
             "layers": [
                 {
                     "name": "alpha_eyes",
-                    "texture": "cobblemon:textures/pokemon/0142_aerodactyl/aerodactyl_mega_eyes.png",
+                    "texture": "cobblemon:textures/pokemon/0229_houndoom/houndoom_mega_eyes.png",
                     "emissive": true,
                     "translucent": true
                 }

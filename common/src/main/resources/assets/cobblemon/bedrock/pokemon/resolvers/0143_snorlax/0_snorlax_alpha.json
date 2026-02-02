@@ -14,6 +14,20 @@
                     "translucent": true
                 }
             ]
+        },
+        {
+            "aspects": [
+                "alpha",
+                "gmax"
+            ],
+            "layers": [
+                {
+                    "name": "alpha_eyes",
+                    "texture": "cobblemon:textures/pokemon/0143_snorlax/snorlax_gmax_eyes.png",
+                    "emissive": true,
+                    "translucent": true
+                }
+            ]
         }
     ]
 }

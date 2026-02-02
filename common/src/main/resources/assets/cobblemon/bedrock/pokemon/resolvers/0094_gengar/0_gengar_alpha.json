@@ -14,6 +14,34 @@
                     "translucent": true
                 }
             ]
+        },
+        {
+            "aspects": [
+                "alpha",
+                "mega"
+            ],
+            "layers": [
+                {
+                    "name": "alpha_eyes",
+                    "texture": "cobblemon:textures/pokemon/0094_gengar/gengar_mega_eyes.png",
+                    "emissive": true,
+                    "translucent": true
+                }
+            ]
+        },
+        {
+            "aspects": [
+                "alpha",
+                "gmax"
+            ],
+            "layers": [
+                {
+                    "name": "alpha_eyes",
+                    "texture": "cobblemon:textures/pokemon/0094_gengar/gengar_gmax_eyes.png",
+                    "emissive": true,
+                    "translucent": true
+                }
+            ]
         }
     ]
 }

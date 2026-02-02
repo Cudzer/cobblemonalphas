@@ -1,0 +1,19 @@
+{
+    "species": "cobblemon:entei",
+    "order": 0,
+    "variations": [
+        {
+            "aspects": [
+                "alpha"
+            ],
+            "layers": [
+                {
+                    "name": "alpha_eyes",
+                    "texture": "cobblemon:textures/pokemon/0242_entei/entei_eyes.png",
+                    "emissive": true,
+                    "translucent": true
+                }
+            ]
+        }
+    ]
+}

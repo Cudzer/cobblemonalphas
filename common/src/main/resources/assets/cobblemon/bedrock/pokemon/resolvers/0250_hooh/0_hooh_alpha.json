@@ -1,0 +1,19 @@
+{
+    "species": "cobblemon:hooh",
+    "order": 0,
+    "variations": [
+        {
+            "aspects": [
+                "alpha"
+            ],
+            "layers": [
+                {
+                    "name": "alpha_eyes",
+                    "texture": "cobblemon:textures/pokemon/0242_hooh/hooh_eyes.png",
+                    "emissive": true,
+                    "translucent": true
+                }
+            ]
+        }
+    ]
+}

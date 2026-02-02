@@ -14,6 +14,20 @@
                     "translucent": true
                 }
             ]
+        },
+        {
+            "aspects": [
+                "alpha",
+                "mega"
+            ],
+            "layers": [
+                {
+                    "name": "alpha_eyes",
+                    "texture": "cobblemon:textures/pokemon/0080_slowbro/slowbro_mega_eyes.png",
+                    "emissive": true,
+                    "translucent": true
+                }
+            ]
         }
     ]
 }

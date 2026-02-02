@@ -14,6 +14,48 @@
                     "translucent": true
                 }
             ]
+        },
+        {
+            "aspects": [
+                "alpha",
+                "mega_x"
+            ],
+            "layers": [
+                {
+                    "name": "alpha_eyes",
+                    "texture": "cobblemon:textures/pokemon/0006_charizard/charizard_mega_x_eyes.png",
+                    "emissive": true,
+                    "translucent": true
+                }
+            ]
+        },
+        {
+            "aspects": [
+                "alpha",
+                "mega_y"
+            ],
+            "layers": [
+                {
+                    "name": "alpha_eyes",
+                    "texture": "cobblemon:textures/pokemon/0006_charizard/charizard_mega_y_eyes.png",
+                    "emissive": true,
+                    "translucent": true
+                }
+            ]
+        },
+        {
+            "aspects": [
+                "alpha",
+                "gmax"
+            ],
+            "layers": [
+                {
+                    "name": "alpha_eyes",
+                    "texture": "cobblemon:textures/pokemon/0006_charizard/charizard_gmax_eyes.png",
+                    "emissive": true,
+                    "translucent": true
+                }
+            ]
         }
     ]
 }
