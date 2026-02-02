@@ -60,23 +60,22 @@ public class ModEvents {
                 .battleLang("ability.wildMight", alphaName)
                 .withStyle(ChatFormatting.RED, ChatFormatting.BOLD);
 
-        // Recursive retry until actors exist
-        @SuppressWarnings("unchecked")
-        Function0<Unit>[] retry = new Function0[1];
+        Function0<Unit> task = new Function0<Unit>() {
+            @Override
+            public Unit invoke() {
+                if (!battle.getStarted()) {
+                    battle.dispatchWaiting(0.1f, this);
+                    return Unit.INSTANCE;
+                }
 
-        retry[0] = () -> {
-            if (!battle.getActors().iterator().hasNext()) {
-                battle.dispatchWaitingToFront(0.1f, retry[0]);
+                for (BattleActor actor : battle.getActors()) {
+                    actor.sendMessage(wildMightMessage);
+                }
+
                 return Unit.INSTANCE;
             }
-
-            for (BattleActor actor : battle.getActors()) {
-                actor.sendMessage(wildMightMessage);
-            }
-            return Unit.INSTANCE;
         };
 
-        // schedule the first attempt
-        battle.dispatchWaitingToFront(0.1f, retry[0]);
+        battle.dispatchWaitingToFront(0.1f, task);
     }
 }

@@ -7,11 +7,11 @@ license = "All Rights Reserved"
 modId = "cobblemonalphas"
 version = "${version}"
 displayName = "CobblemonAlphas"
-authors = "Cudzer"
+authors = ["Cudzer", "TheEternalDragon"]
 description = '''
 Adds Alpha Pokemon to Minecraft
 '''
-#logoFile = "assets/cobblemonalphas/icon.png"
+logoFile = "assets/cobblemonalphas/icon.png"
 
 [[dependencies.cobblemonalphas]]
 modId = "neoforge"
