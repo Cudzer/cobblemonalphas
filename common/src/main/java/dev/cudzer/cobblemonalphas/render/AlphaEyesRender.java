@@ -4,12 +4,10 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.joml.Matrix4f;
-import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
 import com.cobblemon.mod.common.client.entity.PokemonClientDelegate;
@@ -17,21 +15,21 @@ import com.cobblemon.mod.common.client.render.MatrixWrapper;
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Axis;
 
 import dev.cudzer.cobblemonalphas.util.RenderUtils;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 
 public class AlphaEyesRender {
     public static final AlphaEyesRender INSTANCE = new AlphaEyesRender();
+    static final float TRAIL_WIDTH = 0.1f;
+    static final float MIN_SPAN = 0.1f;
+    static final int MAX_POINTS = 10;
 
     static class Trail {
-        static final int MAX_POINTS = 45;
         long lastFrameUpdated = -1;
         final Deque<Vec3> points = new ArrayDeque<>();
 
@@ -54,7 +52,6 @@ public class AlphaEyesRender {
         }
     }
 
-    private static final float TRAIL_WIDTH = 0.1f;
     private static final Map<PokemonEntity, List<Trail>> TRAILS = new HashMap<>();
 
     public void render(
@@ -119,66 +116,93 @@ public class AlphaEyesRender {
         if (history.points.size() < 2)
             return;
 
+        // Don't draw anything unless there is at least some movement
+        Vec3 first = history.points.getFirst();
+        Vec3 last = history.points.getLast();
+        if (first.distanceTo(last) < MIN_SPAN)
+            return;
+
         Camera cam = Minecraft.getInstance().gameRenderer.getMainCamera();
         Vec3 camPos = cam.getPosition();
         Vec3 camForward = RenderUtils.toVec3(cam.getLookVector());
-        
-        // We need the inverse of the entity pose so we can submit
-        // positions in entity-local space and let the pose stack put them
-        // back into view space correctly.
+
         Matrix4f pose = poseStack.last().pose();
         Matrix4f inversePose = new Matrix4f(pose).invert();
 
-        // Setup variables for the loop
-        int segments = history.points.size() - 1;
-        int seg = 0;
+        int count = history.points.size();
+        int segments = count - 1;
 
-        Iterator<Vec3> it = history.points.iterator();
-        Vec3 prev = it.next();
+        // Convert all points to entity-local space up front
+        List<Vec3> locals = new ArrayList<>(count);
+        for (Vec3 worldPt : history.points) {
+            Vec3 camRel = worldPt.subtract(camPos);
+            locals.add(RenderUtils.toVec3(
+                    inversePose.transformPosition(RenderUtils.toVector3f(camRel))));
+        }
 
-        // Render out the trail
-        while (it.hasNext()) {
-            // Fetch the position
-            Vec3 curr = it.next();
+        // Check if the length of the trail would be big enough
+        double maxDistSqr = 0.0;
+        Vec3 base = locals.get(0);
 
-            // World → camera-relative
-            Vec3 p1 = prev.subtract(camPos);
-            Vec3 p2 = curr.subtract(camPos);
+        for (Vec3 p : history.points) {
+            maxDistSqr = Math.max(maxDistSqr, p.distanceToSqr(base));
+        }
 
-            // Camera-relative → entity-local (undo the pose stack transform)
-            // so that addVertex(pose, ...) puts them back correctly
-            Vec3 p1local = RenderUtils.toVec3(inversePose.transformPosition(RenderUtils.toVector3f(p1)));
-            Vec3 p2local = RenderUtils.toVec3(inversePose.transformPosition(RenderUtils.toVector3f(p2)));
+        if (maxDistSqr < MIN_SPAN * MIN_SPAN)
+            return;
 
-            Vec3 dir = p2local.subtract(p1local).normalize();
-            Vec3 side = dir.cross(camForward).normalize();
+        // Pre-compute a side vector and width at each point
+        Vec3[] sides = new Vec3[count];
+        float[] widths = new float[count];
+        int[] colors = new int[count];
 
-            // Tapering factor
-            float t1 = (float) seg / segments;
-            float t2 = (float) (seg + 1) / segments;
-            float w1 = TRAIL_WIDTH * (1.0f - t1);
-            float w2 = TRAIL_WIDTH * (1.0f - t2);
+        for (int i = 0; i < count; i++) {
+            Vec3 dir;
+            if (i == 0) {
+                // First point: use direction toward next point
+                dir = locals.get(1).subtract(locals.get(0));
+            } else if (i == count - 1) {
+                // Last point: use direction from previous point
+                dir = locals.get(i).subtract(locals.get(i - 1));
+            } else {
+                // Middle points: average the two adjacent segment directions
+                Vec3 d1 = locals.get(i).subtract(locals.get(i - 1)).normalize();
+                Vec3 d2 = locals.get(i + 1).subtract(locals.get(i)).normalize();
+                dir = d1.add(d2);
+            }
 
-            // Colors (Red with fade)
-            int c1 = (int) ((1.0f - t1) * 255) << 24 | 255 << 16;
-            int c2 = (int) ((1.0f - t2) * 255) << 24 | 255 << 16;
+            // Skip degenerate
+            if (dir.lengthSqr() < 1e-10) {
+                sides[i] = new Vec3(1, 0, 0);
+            } else {
+                Vec3 side = dir.normalize().cross(camForward);
+                if (side.lengthSqr() < 1e-10) {
+                    sides[i] = new Vec3(1, 0, 0);
+                } else {
+                    sides[i] = side.normalize();
+                }
+            }
 
-            Vector3f p1a = RenderUtils.toVector3f(p1local.add(side.scale(w1)));
-            Vector3f p1b = RenderUtils.toVector3f(p1local.subtract(side.scale(w1)));
+            float t = (float) i / segments;
+            widths[i] = TRAIL_WIDTH * (1.0f - t);
+            colors[i] = (int) ((1.0f - t) * 255) << 24 | 255 << 16;
+        }
 
-            Vector3f p2a = RenderUtils.toVector3f(p2local.add(side.scale(w2)));
-            Vector3f p2b = RenderUtils.toVector3f(p2local.subtract(side.scale(w2)));
+        // Emit connected quads — each pair of adjacent points shares
+        // the exact same edge vertices, so no gaps can appear
+        for (int i = 0; i < segments; i++) {
+            Vec3 p1 = locals.get(i);
+            Vec3 p2 = locals.get(i + 1);
 
-            // Submit in entity-local space WITH the pose matrix
-            // so the GPU transform pipeline is correct for all passes
-            vc.addVertex(pose, p1a.x, p1a.y, p1a.z).setColor(c1);
-            vc.addVertex(pose, p1b.x, p1b.y, p1b.z).setColor(c1);
-            vc.addVertex(pose, p2b.x, p2b.y, p2b.z).setColor(c2);
-            vc.addVertex(pose, p2a.x, p2a.y, p2a.z).setColor(c2);
+            Vector3f p1a = RenderUtils.toVector3f(p1.add(sides[i].scale(widths[i])));
+            Vector3f p1b = RenderUtils.toVector3f(p1.subtract(sides[i].scale(widths[i])));
+            Vector3f p2a = RenderUtils.toVector3f(p2.add(sides[i + 1].scale(widths[i + 1])));
+            Vector3f p2b = RenderUtils.toVector3f(p2.subtract(sides[i + 1].scale(widths[i + 1])));
 
-            // Update loop params
-            prev = curr;
-            seg++;
+            vc.addVertex(pose, p1a.x, p1a.y, p1a.z).setColor(colors[i]);
+            vc.addVertex(pose, p1b.x, p1b.y, p1b.z).setColor(colors[i]);
+            vc.addVertex(pose, p2b.x, p2b.y, p2b.z).setColor(colors[i + 1]);
+            vc.addVertex(pose, p2a.x, p2a.y, p2a.z).setColor(colors[i + 1]);
         }
     }
 }
