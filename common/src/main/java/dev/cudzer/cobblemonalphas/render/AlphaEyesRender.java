@@ -1,121 +1,184 @@
 package dev.cudzer.cobblemonalphas.render;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import java.util.WeakHashMap;
+
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 import com.cobblemon.mod.common.client.entity.PokemonClientDelegate;
 import com.cobblemon.mod.common.client.render.MatrixWrapper;
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Axis;
 
 import dev.cudzer.cobblemonalphas.util.RenderUtils;
+import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 
 public class AlphaEyesRender {
-    private static final int TRAIL_LENGTH = 45;
+    public static final AlphaEyesRender INSTANCE = new AlphaEyesRender();
 
-    public class TrailData {
-        public final Deque<Vec3> leftEyeHistory = new ArrayDeque<>();
-        public final Deque<Vec3> rightEyeHistory = new ArrayDeque<>();
+    static class Trail {
+        static final int MAX_POINTS = 45;
+        long lastFrameUpdated = -1;
+        final Deque<Vec3> points = new ArrayDeque<>();
+
+        private void add(Vec3 newPos, long currentTick) {
+            if (currentTick == lastFrameUpdated)
+                return;
+            lastFrameUpdated = currentTick;
+
+            // Update the history and timestamp
+            points.addFirst(newPos);
+
+            // Remove any points when the trail becomes too long
+            while (points.size() > MAX_POINTS) {
+                points.removeLast();
+            }
+        }
+
+        int size() {
+            return points.size();
+        }
     }
 
-    private static final Map<PokemonEntity, TrailData> TRAIL_CACHE = new WeakHashMap<>();
+    private static final float TRAIL_WIDTH = 0.1f;
+    private static final Map<PokemonEntity, List<Trail>> TRAILS = new HashMap<>();
 
     public void render(
             PokemonEntity entity,
+            float entityYaw,
+            float partialTicks,
             PoseStack poseStack,
             PokemonClientDelegate clientDelegate,
             MultiBufferSource buffer) {
 
-        // Fetch the positions of the eyes
-        Map<String, MatrixWrapper> locatorStates = clientDelegate.getLocatorStates();
-        MatrixWrapper leftEyeLocator = locatorStates.get("eye1");
-        MatrixWrapper rightEyeLocator = locatorStates.get("eye2");
+        // Fetch the positions of all eye locators
+        MatrixWrapper[] eyeLocators = clientDelegate
+                .getLocatorStates()
+                .entrySet()
+                .stream()
+                .filter(e -> e.getKey().contains("eye"))
+                .map(Map.Entry::getValue)
+                .toArray(MatrixWrapper[]::new);
 
-        // Most models don't have these locators implemented yet so we will skip them
-        if (leftEyeLocator == null || rightEyeLocator == null)
+        // If there are no locators on the model or the pokemon doesn't have eyes skip
+        if (eyeLocators.length < 1)
             return;
 
-        TrailData data = TRAIL_CACHE.computeIfAbsent(entity, k -> new TrailData());
+        // Create a trail cache entry for the alpha if it doesn't have one
+        // Each eye is assigned its own history under the entity
+        List<Trail> trails = TRAILS.computeIfAbsent(entity, k -> {
+            List<Trail> list = new ArrayList<>(eyeLocators.length);
+            for (int i = 0; i < eyeLocators.length; i++) {
+                list.add(new Trail());
+            }
 
-        Vec3 currentLeft = RenderUtils.captureWorldPos(poseStack, leftEyeLocator);
-        Vec3 currentRight = RenderUtils.captureWorldPos(poseStack, rightEyeLocator);
+            return list;
+        });
 
-        updateHistory(data.leftEyeHistory, currentLeft);
-        updateHistory(data.rightEyeHistory, currentRight);
+        // Fetch the postion and rotation
+        Vec3 entityPos = entity.position();
 
-        Vec3 cameraPos = Minecraft.getInstance().gameRenderer.getMainCamera().getPosition();
+        // Fetch static parameters needed for rendering
+        long gameTick = Minecraft.getInstance().level.getGameTime();
+        VertexConsumer vc = buffer.getBuffer(RenderType.lightning());
 
-        renderTrail(buffer, data.leftEyeHistory, cameraPos);
-        renderTrail(buffer, data.rightEyeHistory, cameraPos);
-    }
+        // Add the current position of each eye to their respective history
+        int idx = 0;
+        for (MatrixWrapper wrapper : eyeLocators) {
+            // 1) Get the locator in model-relative space
+            Vec3 modelPos = RenderUtils.locatorToModelSpace(wrapper);
 
-    private void updateHistory(Deque<Vec3> history, Vec3 newPos) {
-        // Add new position to the head (start) of the list
-        history.addFirst(newPos);
+            // 2) Translate to world space
+            Vec3 worldPos = entityPos.add(modelPos);
 
-        // Trim the tail if it gets too long
-        while (history.size() > TRAIL_LENGTH) {
-            history.removeLast();
+            // 3) Store the position
+            Trail trail = trails.get(idx);
+            trail.add(worldPos, gameTick);
+
+            // 4) Render
+            renderTrail(trail, vc, poseStack);
+            idx++;
         }
     }
 
-    private void renderTrail(MultiBufferSource buffer, Deque<Vec3> history, Vec3 cameraPos) {
-        if (history.size() < 2)
+    private void renderTrail(Trail history, VertexConsumer vc, PoseStack poseStack) {
+        if (history.points.size() < 2)
             return;
 
-        VertexConsumer vc = buffer.getBuffer(RenderType.lightning());
+        Camera cam = Minecraft.getInstance().gameRenderer.getMainCamera();
+        Vec3 camPos = cam.getPosition();
+        Vec3 camForward = RenderUtils.toVec3(cam.getLookVector());
+        
+        // We need the inverse of the entity pose so we can submit
+        // positions in entity-local space and let the pose stack put them
+        // back into view space correctly.
+        Matrix4f pose = poseStack.last().pose();
+        Matrix4f inversePose = new Matrix4f(pose).invert();
 
-        float startWidth = 0.1f;
-        int i = 0;
-        int size = history.size();
+        // Setup variables for the loop
+        int segments = history.points.size() - 1;
+        int seg = 0;
 
-        java.util.List<Vec3> points = new java.util.ArrayList<>(history);
+        Iterator<Vec3> it = history.points.iterator();
+        Vec3 prev = it.next();
 
-        for (i = 0; i < points.size() - 1; i++) {
-            Vec3 worldPos1 = points.get(i);
-            Vec3 worldPos2 = points.get(i + 1);
+        // Render out the trail
+        while (it.hasNext()) {
+            // Fetch the position
+            Vec3 curr = it.next();
 
-            Vec3 pos1 = worldPos1.subtract(cameraPos);
-            Vec3 pos2 = worldPos2.subtract(cameraPos);
+            // World → camera-relative
+            Vec3 p1 = prev.subtract(camPos);
+            Vec3 p2 = curr.subtract(camPos);
 
-            // Direction of this specific segment
-            Vec3 dir = pos1.subtract(pos2).normalize();
-            Vec3 toCamera = pos1.reverse().normalize();
-            Vec3 side = dir.cross(toCamera).normalize();
+            // Camera-relative → entity-local (undo the pose stack transform)
+            // so that addVertex(pose, ...) puts them back correctly
+            Vec3 p1local = RenderUtils.toVec3(inversePose.transformPosition(RenderUtils.toVector3f(p1)));
+            Vec3 p2local = RenderUtils.toVec3(inversePose.transformPosition(RenderUtils.toVector3f(p2)));
 
-            // Tapering
-            float p1 = (float) i / size;
-            float p2 = (float) (i + 1) / size;
-            float w1 = startWidth * (1.0f - p1);
-            float w2 = startWidth * (1.0f - p2);
+            Vec3 dir = p2local.subtract(p1local).normalize();
+            Vec3 side = dir.cross(camForward).normalize();
+
+            // Tapering factor
+            float t1 = (float) seg / segments;
+            float t2 = (float) (seg + 1) / segments;
+            float w1 = TRAIL_WIDTH * (1.0f - t1);
+            float w2 = TRAIL_WIDTH * (1.0f - t2);
 
             // Colors (Red with fade)
-            int c1 = (int) ((1.0f - p1) * 255) << 24 | 255 << 16;
-            int c2 = (int) ((1.0f - p2) * 255) << 24 | 255 << 16;
+            int c1 = (int) ((1.0f - t1) * 255) << 24 | 255 << 16;
+            int c2 = (int) ((1.0f - t2) * 255) << 24 | 255 << 16;
 
-            // Draw a Quad for this segment
-            // Top Left
-            vc.addVertex((float) (pos1.x + side.x * w1), (float) (pos1.y + side.y * w1), (float) (pos1.z + side.z * w1))
-                    .setColor(c1).setNormal(0, 1, 0);
+            Vector3f p1a = RenderUtils.toVector3f(p1local.add(side.scale(w1)));
+            Vector3f p1b = RenderUtils.toVector3f(p1local.subtract(side.scale(w1)));
 
-            // Bottom Left
-            vc.addVertex((float) (pos1.x - side.x * w1), (float) (pos1.y - side.y * w1), (float) (pos1.z - side.z * w1))
-                    .setColor(c1).setNormal(0, 1, 0);
+            Vector3f p2a = RenderUtils.toVector3f(p2local.add(side.scale(w2)));
+            Vector3f p2b = RenderUtils.toVector3f(p2local.subtract(side.scale(w2)));
 
-            // Bottom Right
-            vc.addVertex((float) (pos2.x - side.x * w2), (float) (pos2.y - side.y * w2), (float) (pos2.z - side.z * w2))
-                    .setColor(c2).setNormal(0, 1, 0);
+            // Submit in entity-local space WITH the pose matrix
+            // so the GPU transform pipeline is correct for all passes
+            vc.addVertex(pose, p1a.x, p1a.y, p1a.z).setColor(c1);
+            vc.addVertex(pose, p1b.x, p1b.y, p1b.z).setColor(c1);
+            vc.addVertex(pose, p2b.x, p2b.y, p2b.z).setColor(c2);
+            vc.addVertex(pose, p2a.x, p2a.y, p2a.z).setColor(c2);
 
-            // Top Right
-            vc.addVertex((float) (pos2.x + side.x * w2), (float) (pos2.y + side.y * w2), (float) (pos2.z + side.z * w2))
-                    .setColor(c2).setNormal(0, 1, 0);
+            // Update loop params
+            prev = curr;
+            seg++;
         }
     }
 }
