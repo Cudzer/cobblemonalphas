@@ -1,3 +1,10 @@
+# v1.4.1
+### Bug Fixes
+* Fixed an issue that would cause the eye trails to turn into lazers when shaders were enabled
+
+### Chores
+* Updated muks eye textures to be in line with the new model
+
 # v1.4
 ### Bug Fixes
 * Fixed an issue that could cause the game to crash if an alpha that didn't exist attempted to spawn #5
