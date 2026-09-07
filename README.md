@@ -1,5 +1,7 @@
 # Cobblemon Alphas
 
+## ALPHA POKEMON HAVE BEEN ADDED AS OF COBBLEMON 1.8 THIS REPOSITORY IS ARCHIVAL ONLY AND WILL NO LONGER RECEIVE UPDATES
+
 <div align="center">
 
 <a href="https://www.curseforge.com/minecraft/mc-mods/cobblemon-alpha-project">
